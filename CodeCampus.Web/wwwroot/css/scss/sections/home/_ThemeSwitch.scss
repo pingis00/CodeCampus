@@ -1,0 +1,74 @@
+﻿.theme-switch {
+    background: linear-gradient(to right, $gray-900 50%, white 50%);
+    position: relative;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 20px;
+        padding-bottom: 30px;
+
+        @include lg {
+            padding-top: 50px;
+            padding-bottom: 60px;
+        }
+
+        @include xxl {
+            padding-bottom: 110px;
+            padding-top: 105px;
+        }
+
+
+        h1 {
+            @include h6;
+            text-align: center;
+
+            @include sm {
+                @include h5;
+            }
+
+            @include lg {
+                @include h3;
+            }
+
+            @include xxl {
+                @include h1;
+            }
+
+
+            .left-text {
+                color: $white;
+            }
+
+            .right-text {
+                color: $black;
+                position: relative;
+                right: -2%;
+            }
+        }
+
+        .theme-image {
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+
+            @include lg {
+                margin-top: 30px;
+            }
+
+            margin-top: 60px;
+        }
+
+        a {
+            img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 10;
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+    }
+}

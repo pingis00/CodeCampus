@@ -1,0 +1,171 @@
+﻿.newsletter-section {
+    background: $gray-100;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    @include md {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+
+
+    .container {
+        @include lg {
+            padding-left: 80px;
+            padding-right: 80px;
+        }
+
+        @include xl {
+            padding-left: 150px;
+            padding-right: 150px;
+        }
+
+        @include xxl {
+            padding-left: 250px;
+            padding-right: 250px;
+        }
+
+        .newsletter-header {
+            text-align: center;
+
+            @include lg {
+                text-align: left;
+            }
+
+            h1 {
+                @include h5;
+
+                @include sm {
+                    @include h3;
+                }
+
+                @include lg {
+                    @include h1;
+                }
+
+                img {
+                    width: 25px;
+
+                    @include sm {
+                        width: 40px;
+                    }
+
+                    @include lg {
+                        width: 65px;
+                    }
+                }
+            }
+        }
+
+        .newsletter-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            @include sm {
+                display: block;
+            }
+
+            @include lg {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                align-items: center;
+            }
+
+            h5 {
+                text-align: center;
+                @include h6;
+
+                @include sm {
+                    @include h5;
+                }
+
+                @include lg {
+                    width: 70%;
+                    text-align: left;
+                }
+            }
+
+            .checkbox-group {
+                display: grid;
+                grid-template-columns: 1fr;
+                margin-top: 20px;
+                margin-bottom: 20px;
+
+                @include sm {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                @include md {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+
+                @include lg {
+                    margin-bottom: 40px;
+                }
+
+                .checkbox {
+
+                    input {
+                    }
+
+                    label {
+                    }
+                }
+            }
+        }
+
+        form {
+
+            .content {
+                display: grid;
+                grid-template-columns: 1fr;
+
+
+                @include lg {
+                    grid-template-columns: 1fr auto;
+                    gap: 20px;
+                }
+
+                .input-group {
+                    position: relative;
+                    width: 100%;
+                    margin-bottom: 20px;
+
+
+
+                    .email-icon {
+                        position: absolute;
+                        left: 10px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+
+                    .text-danger {
+                    }
+
+                    input[type="email"] {
+                        padding: 10px 10px 10px 40px;
+                    }
+                }
+
+                .subscribe-button {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+
+        .terms-and-privacy {
+            text-align: center;
+
+            @include lg {
+                text-align: left;
+            }
+
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+﻿.error-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .container {
+        max-width: 500px;
+
+        @include lg {
+            padding-top: 100px;
+        }
+
+        .error-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            @include d5;
+        }
+
+        p {
+            margin-bottom: 30px;
+
+            @include lg {
+                margin-bottom: 30px;
+                @include text-xl;
+            }
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+
+            .icon {
+            }
+        }
+    }
+}

@@ -1,0 +1,90 @@
+﻿.integration-tools {
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    @include xxl {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .container {
+        text-align: center;
+
+        h1 {
+            @include h3;
+
+            @include lg {
+                @include h2;
+            }
+
+            @include xxl {
+                @include h1;
+            }
+        }
+
+        .subtitle {
+            margin-bottom: 30px;
+            color: $gray-600;
+
+            @include lg {
+                max-width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            @include xxl {
+                max-width: 55%;
+                margin-bottom: 80px;
+            }
+        }
+
+        .tools-grid {
+            @include sm {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 10px;
+            }
+
+            @include lg {
+                grid-template-columns: repeat(4, 1fr);
+                grid-gap: 20px;
+            }
+
+            @include xxl {
+                padding-left: 50px;
+                padding-right: 50px;
+                gap: 50px;
+            }
+
+            .tool-item {
+                margin-bottom: 20px;
+
+                @include lg {
+                    text-align: left;
+                }
+
+                img {
+                    margin-bottom: 10px;
+
+                    @include lg {
+                    }
+                }
+
+                p {
+                    color: $gray-700;
+                    max-width: 70%;
+                    margin-left: auto;
+                    margin-right: auto;
+
+                    @include sm {
+                        text-align: left;
+                    }
+
+                    @include lg {
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+    <Content Remove="wwwroot\css\site.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\site.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Models\Components\" />
     <Folder Include="ViewModels\Account\" />
     <Folder Include="ViewModels\Auth\" />
@@ -19,8 +28,23 @@
     <Folder Include="Views\Contact\" />
     <Folder Include="Views\Courses\" />
     <Folder Include="Views\SelectedCourse\" />
-    <Folder Include="wwwroot\css\scss\sections\" />
     <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <None Include="wwwroot\css\scss\sections\home\_download.scss" />
+    <None Include="wwwroot\css\scss\sections\home\_features.scss" />
+    <None Include="wwwroot\css\scss\sections\home\_IntegrationTools.scss" />
+    <None Include="wwwroot\css\scss\sections\home\_newsletter.scss" />
+    <None Include="wwwroot\css\scss\sections\home\_showcase.scss" />
+    <None Include="wwwroot\css\scss\sections\home\_ThemeSwitch.scss" />
+    <None Include="wwwroot\css\scss\sections\home\_workManagement.scss" />
+    <None Include="wwwroot\css\scss\sections\shared\_404.scss" />
+    <None Include="wwwroot\css\scss\sections\shared\_coursecard.scss" />
+    <None Include="wwwroot\css\scss\sections\shared\_footer.scss" />
+    <None Include="wwwroot\css\scss\sections\shared\_header.scss" />
+    <None Include="wwwroot\css\site.scss" />
   </ItemGroup>
 
   <ItemGroup>
