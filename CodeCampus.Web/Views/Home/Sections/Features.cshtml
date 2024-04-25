@@ -1,0 +1,19 @@
+﻿@model FeaturesViewModel
+
+<section class="features">
+    <div class="container">
+        <h1>@Model.Title</h1>
+        <p class="subtitle">@Model.Text</p>
+        <div class="tool-features">
+            @foreach (var item in Model.IconFeatures)
+            {
+                <div class="box">
+                    <img src="@item.Icon.ImageUrl" alt="@item.Icon.AltText" />
+                    <h5>@item.Title</h5>
+                    <p>@item.Description</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+

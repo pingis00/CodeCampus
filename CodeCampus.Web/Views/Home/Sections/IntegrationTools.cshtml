@@ -1,0 +1,17 @@
+﻿@model IntegrationToolsViewModel
+
+<section id="@Model.Id" class="integration-tools">
+    <div class="container">
+        <h1>@Model.Title</h1>
+        <p class="subtitle">@Model.Subtitle</p>
+        <div class="tools-grid">
+            @foreach (var tool in Model.Tools)
+            {
+                <div class="tool-item">
+                    <img src="@tool.Icon.ImageUrl" alt="@tool.Icon.AltText" />
+                    <p class="tool-description">@tool.Description</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,11 @@
+﻿@model ThemeSwitchViewModel
+
+<section id="@Model.Id" class="theme-switch">
+    <div class="container">
+        <h1>
+            <span class="left-text">@Model.TitleLeft</span><span class="right-text">@Model.TitleRight</span>
+        </h1>
+        <img class="theme-image" src="@Model.Image.ImageUrl" alt="@Model.Image.AltText" />
+        <a><img src="@Model.SwitchButton.ImageUrl" alt="@Model.SwitchButton.AltText" /></a>
+    </div>
+</section>

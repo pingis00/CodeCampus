@@ -1,0 +1,31 @@
+﻿@model DownloadViewModel
+
+<section id="@Model.Id" class="download-section">
+    <div class="container">
+        <div class="mobile-image">
+            <img src="@Model.MobileImage.ImageUrl" alt="@Model.MobileImage.AltText"/>
+        </div>
+        <div class="download">
+            <h1>@Model.Title</h1>
+            @foreach (var applink in Model.AppLinks)
+            {
+                <div class="store">
+                    <div class="text-container">
+                        <p class="store-name">@applink.StoreName</p>
+                        <div class="star-rating">
+                            @for (int i = 0; i < applink.StarRating.NumberOfStars; i++)
+                            {
+                                <img src="@applink.StarRating.StarIcon.ImageUrl" alt="Star" />
+                            }
+                        </div>
+                        <h4 class="editor-choice">@applink.EditorChoiceText</h4>
+                        <p class="rating-text">@applink.RatingText</p>
+                    </div>
+                    <a href="@applink.Link.Url" target="_blank" rel="noopener noreferrer">
+                        <img src="@applink.Link.Icon.ImageUrl" alt="@applink.Link.Icon.AltText" />
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>

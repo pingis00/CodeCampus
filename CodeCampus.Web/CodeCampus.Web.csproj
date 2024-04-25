@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Components\" />
     <Folder Include="ViewModels\Account\" />
     <Folder Include="ViewModels\Auth\" />
     <Folder Include="ViewModels\Contact\" />
@@ -28,6 +27,10 @@
     <Folder Include="Views\Contact\" />
     <Folder Include="Views\Courses\" />
     <Folder Include="Views\SelectedCourse\" />
+    <Folder Include="wwwroot\Assets\Icons\social\" />
+    <Folder Include="wwwroot\Assets\Images\Courses\" />
+    <Folder Include="wwwroot\Assets\Images\Downloads\" />
+    <Folder Include="wwwroot\Assets\Images\Integrations\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

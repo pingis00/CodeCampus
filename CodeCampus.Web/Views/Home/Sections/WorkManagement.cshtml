@@ -1,0 +1,25 @@
+﻿@model WorkManagementViewModel
+
+<section id="@Model.Id" class="work-management">
+    <div class="container">
+        <div class="work-management-image">
+            <img src="@Model.Image.ImageUrl" alt="@Model.Image.AltText" />
+        </div>
+        <div class="work-management-content">
+            <h2>@Model.Title</h2>
+            <ul class="features-list">
+                @foreach (var feature in Model.Features)
+                {
+                    <li class="feature-item">
+                        <img src="@feature.Icon.ImageUrl" alt="@feature.Icon.AltText"/>
+                        <span>@feature.Description</span>
+                    </li>
+                }
+
+            </ul>
+            <a class="btn-theme-s learn-more-button" asp-controller="@Model.Link.ControllerName" asp-action="@Model.Link.ActionName">@Model.Link.Text
+                <img src="@Model.Link.Icon.ImageUrl", alt="@Model.Link.Icon.AltText" class="button-icon"/>
+            </a>
+        </div>
+    </div>
+</section>

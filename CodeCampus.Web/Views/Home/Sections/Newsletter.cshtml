@@ -1,0 +1,37 @@
+﻿@model NewsletterViewModel
+
+<section id="@Model.Id" class="newsletter-section">
+    <div class="container">
+        <div class="newsletter-header">
+            <h1>@Model.Title <img src="@Model.Image.ImageUrl" alt="@Model.Image.AltText" /></h1>
+        </div>
+        <div class="newsletter-info">
+            <h5>@Model.SubTitle</h5>
+            <div class="checkbox-group">
+                @foreach (var option in Model.NewsletterOptions)
+                {
+                    <div class="checkbox">
+                        <input type="checkbox" asp-for="@option.IsChecked" id="@option.DisplayName" />
+                        <label asp-for="@option.IsChecked">@option.DisplayName</label>
+                    </div>
+                }
+            </div>
+        </div>
+        <form method="post" asp-controller="Home" asp-action="Subscribe" class="newsletter-content" novalidate>            
+            <div class="content">
+                <div id="form-email" class="input-group">
+                    <img src="~/images/icons/envelope-icon.svg" alt="Email Icon" class="email-icon" />
+                    <span asp-validation-for="NewsletterSignup.Email" class="text-danger"></span>
+                    <input asp-for="NewsletterSignup.Email" />            
+                </div>
+                <button type="submit" class="btn-theme-s subscribe-button">Subscribe *</button> 
+            </div>   
+        </form>
+
+        <div class="terms-and-privacy">
+            <p>
+                *Yes, I agree to the <a asp-controller="About" asp-action="Terms">terms</a> and <a asp-controller="About" asp-action="PrivacyPolicy">privacy policy</a>.
+            </p>
+        </div>
+    </div>
+</section>

@@ -1,3 +1,19 @@
-﻿@{
+﻿@model HomeIndexViewModel
+
+@{
     ViewData["Title"] = "Home";
 }
+
+@await Html.PartialAsync("~/Views/Home/Sections/Showcase.cshtml", Model.Showcase)
+
+@await Html.PartialAsync("~/Views/Home/Sections/Features.cshtml", Model.Features)
+
+@await Html.PartialAsync("/Views/Home/Sections/ThemeSwitch.cshtml", Model.ThemeSwitch)
+
+@await Html.PartialAsync("/Views/Home/Sections/Workmanagement.cshtml", Model.WorkManagement)
+
+@await Html.PartialAsync("/Views/Home/Sections/Download.cshtml", Model.Download)
+
+@await Html.PartialAsync("/Views/Home/Sections/IntegrationTools.cshtml", Model.IntegrationTools)
+
+@await Html.PartialAsync("/Views/Home/Sections/Newsletter.cshtml", Model.Newsletter)
