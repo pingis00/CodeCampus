@@ -1,0 +1,204 @@
+﻿.contact {
+    background: $gray-100;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        @include lg {
+            position: relative;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 14px;
+
+            @include lg {
+                justify-content: left;
+                margin-top: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            a {
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                color: $gray-600;
+
+                i {
+                    margin-right: 5px
+                }
+            }
+
+            .breadcrumb-separator {
+                margin: 0 0.5rem;
+                color: $gray-600;
+            }
+
+            .active {
+                color: $theme;
+            }
+        }
+
+        h1 {
+            @include h2;
+            text-align: center;
+            margin-bottom: 1.5rem;
+
+            @include xl {
+                @include h1;
+                margin-bottom: 3rem;
+            }
+        }
+
+        .contact-us {
+            margin-bottom: 2rem;
+
+            @include lg {
+                margin-bottom: 6rem;
+            }
+
+            .contact-option {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 1rem;
+
+                @include lg {
+                    justify-content: flex-start;
+                }
+
+                @include xl {
+                    margin-bottom: 2.5rem;
+                }
+
+                .images {
+                    margin-right: 0.5rem;
+
+                    @include md {
+                        margin-right: 1rem;
+                    }
+
+                    @include xl {
+                        margin-right: 2rem;
+                    }
+
+                    img {
+                        width: 70%;
+
+                        @include md {
+                            width: 80%;
+                        }
+
+                        @include xl {
+                            width: 100%;
+                        }
+                    }
+                }
+
+                .contact-text {
+                    width: 65%;
+
+                    @include md {
+                        width: 60%;
+                    }
+
+                    @include xl {
+                        width: 55%;
+                    }
+
+                    h4 {
+                        @include h5;
+                        font-weight: 900;
+
+                        @include xl {
+                            @include h4;
+                        }
+                    }
+
+                    p {
+                        color: $gray-700;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        font-weight: 600;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+
+                        i.fa-arrow-right {
+                            margin-left: 0.6rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        .content {
+
+            @include lg {
+                position: absolute;
+                z-index: 1;
+                top: 5rem;
+                right: 0;
+            }
+
+            form {
+                background: $white;
+                padding: 2rem;
+                border-radius: 2%;
+
+                @include xl {
+                    padding: 4rem;
+                }
+
+                h2 {
+                    @include h3;
+                    text-align: center;
+                    margin-bottom: 1.5rem;
+                }
+
+                .input-group {
+                    margin-bottom: 1.5rem;
+                }
+
+                #service {
+
+                    span {
+                        color: $gray-500;
+                        font-weight: 400;
+                    }
+                }
+
+                .service {
+                    padding: 1rem;
+                    border-radius: 0.5rem !important;
+                    border: 0.063rem solid $gray-400;
+                    cursor: pointer;
+                    color: $gray-400;
+
+                    option {
+                        color: $gray-900;
+                    }
+
+                    &:focus {
+                        outline: none;
+                        border: 0.063rem solid $gray-600;
+                    }
+                }
+            }
+        }
+    }
+
+    #map {
+    }
+}
