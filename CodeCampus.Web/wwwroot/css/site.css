@@ -2868,3 +2868,136 @@ footer .container span {
   outline: none;
   border: 0.063rem solid #9397AD;
 }
+#signup {
+  height: 100%;
+}
+#signup .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+@media (min-width: 992px) {
+  #signup .container {
+    width: 60%;
+  }
+}
+@media (min-width: 1200px) {
+  #signup .container {
+    width: 40%;
+  }
+}
+#signup .container form {
+  padding: 1rem;
+}
+#signup .container form .content {
+  display: grid;
+  gap: 1rem 2rem;
+  grid-template-columns: 1fr;
+  grid-template-areas: "firstname" "lastname" "email" "password" "confirm" "terms" "button";
+}
+@media (min-width: 768px) {
+  #signup .container form .content {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "firstname lastname" "email email" "password password" "confirm confirm" "terms terms" "button button";
+  }
+}
+#signup .container form .content #form-firstname {
+  grid-area: firstname;
+}
+#signup .container form .content #form-lastname {
+  grid-area: lastname;
+}
+#signup .container form .content #form-email {
+  grid-area: email;
+}
+#signup .container form .content #form-password {
+  grid-area: password;
+}
+#signup .container form .content #form-confirm {
+  grid-area: confirm;
+}
+#signup .container form .content #form-terms {
+  grid-area: terms;
+  padding: 1rem 0;
+}
+#signup .container form .content #form-submit {
+  grid-area: button;
+  padding-bottom: 150px;
+}
+
+#signin {
+  height: 100%;
+}
+#signin .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+@media (min-width: 992px) {
+  #signin .container {
+    width: 60%;
+  }
+}
+@media (min-width: 1200px) {
+  #signin .container {
+    width: 30%;
+  }
+}
+#signin .container form {
+  padding: 1rem;
+}
+#signin .container form .content {
+  display: grid;
+  gap: 1rem 2rem;
+  grid-template-columns: 1fr;
+  grid-template-areas: "email" "password" "remember" "button" "forgot";
+}
+#signin .container form .content #form-email {
+  grid-area: email;
+}
+#signin .container form .content #form-password {
+  grid-area: password;
+}
+#signin .container form .content #form-remember {
+  grid-area: remember;
+  padding: 1rem 0;
+}
+#signin .container form .content #form-button {
+  grid-area: button;
+}
+#signin .container form .content #form-forgot-password {
+  width: 100%;
+  grid-area: forgot;
+  margin: 1rem 0;
+  text-align: center;
+}
+#signin .container form .external-providers h6 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+#signin .container form .external-providers .providers .google-btn {
+  background-color: #131314;
+  color: white;
+  margin-bottom: 1rem;
+}
+#signin .container form .external-providers .providers .google-btn:hover {
+  background-color: #2c2c2e;
+}
+#signin .container form .external-providers .providers .facebook-btn {
+  background-color: #3b5998;
+  color: white;
+  border: 1px solid black;
+}
+#signin .container form .external-providers .providers .facebook-btn:hover {
+  background-color: #4c70ba;
+}
+#signin .container form .external-providers .providers .facebook-btn .social-icon {
+  background-color: #3b5998;
+  width: 38px;
+  height: 38px;
+  border: 1.5px solid #8e918f;
+  border-radius: 50%;
+  padding: 5px;
+}

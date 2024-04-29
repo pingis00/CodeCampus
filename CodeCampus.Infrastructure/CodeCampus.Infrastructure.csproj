@@ -24,7 +24,6 @@
     <Folder Include="Contexts\" />
     <Folder Include="Entities\" />
     <Folder Include="Factories\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Services\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
