@@ -71,9 +71,14 @@
             color: $gray-800;
             margin-bottom: 0;
 
-            @include xxl {
+            @include xl {
 
                 @include h5;
+            }
+
+            @include xl {
+
+                margin-right: 15px;
             }
         }
 

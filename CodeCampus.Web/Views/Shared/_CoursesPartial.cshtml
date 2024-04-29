@@ -1,0 +1,29 @@
+﻿@model SavedCoursesViewModel
+
+@foreach (var course in Model.Courses)
+{
+    <div class="course-card">
+        <div class="image-container">
+            <img class="course-image" src="@course.CourseImage.ImageUrl" alt="@course.CourseImage.AltText" />
+            <button class="remove-course-icon-btn" data-tooltip="Remove">
+                <span class="fa-stack">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-bookmark fa-stack-1x"></i>
+                </span>
+            </button>
+        </div>
+        <div class="course-info">
+            <h5>@course.Title</h5>
+            <p class="author">@course.CourseAuthor</p>
+            <p class="price">@course.CoursePrice</p>
+            <div class="course-meta">
+                <span class="hours">
+                    <img src="/Assets/Icons/ui/course-clock-icon.svg" alt="Course Duration Icon" />@course.CourseHours
+                </span>
+                <span class="likes">
+                    <img src="/Assets/Icons/ui/thumbsup-icon.svg" alt="Likes Icon" />@course.Likes
+                </span>
+            </div>
+        </div>
+    </div>
+}

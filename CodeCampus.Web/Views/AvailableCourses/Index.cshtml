@@ -1,0 +1,11 @@
+﻿@model AvailableCoursesViewModel
+
+@await Html.PartialAsync("/Views/AvailableCourses/Sections/CourseSearch.cshtml", Model.CourseSearch)
+
+<div class="course-list-page">
+    <div class="container">
+        @await Html.PartialAsync("/Views/Shared/_CoursesPartial.cshtml", Model.Courses)
+    </div>
+</div>
+
+@await Html.PartialAsync("/Views/AvailableCourses/Sections/GetStarted.cshtml", Model.GetStarted)

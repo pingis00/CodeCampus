@@ -1,0 +1,97 @@
+﻿.course-search {
+    padding: 1rem;
+
+    .container {
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+
+            @include lg {
+                justify-content: left;
+                margin-top: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            a {
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                color: $gray-600;
+
+                i {
+                    margin-right: 5px
+                }
+            }
+
+            .breadcrumb-separator {
+                margin: 0 0.5rem;
+                color: $gray-600;
+            }
+
+            .active {
+                color: $theme;
+            }
+        }
+
+        .course-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            @include lg {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1.5rem;
+            }
+
+            h1 {
+                margin-bottom: 1rem;
+
+                @include lg {
+                    margin-bottom: 0;
+                    text-align: left;
+                    flex: 1;
+                }
+            }
+
+            .search-controls {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                @include lg {
+                    flex-direction: row;
+                    flex: 2;
+                    align-items: center;
+                    justify-content: flex-end;
+                }
+
+                select, .search-input {
+                    width: 100%;
+                    color: $gray-700;
+                    border: 1px solid $gray-400;
+                    padding: 0.5rem;
+                    margin-bottom: 0.5rem;
+                    border-radius: 0.25rem;
+
+                    @include lg {
+                        width: auto;
+                        margin-right: 1rem;
+                    }
+                }
+
+                .search-input::placeholder {
+                    color: $gray-500;
+                }
+
+                input {
+                    padding-right: 2.5rem;
+                    background: url('/images/icons/search-icon.svg') no-repeat right 0.75rem center;
+                }
+            }
+        }
+    }
+}

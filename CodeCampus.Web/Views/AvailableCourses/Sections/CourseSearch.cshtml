@@ -1,0 +1,21 @@
+﻿@model CourseSearchViewModel
+
+<section id="@Model.Id" class="course-search">
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="@Model.HomeLink">
+                <i class="fa-light fa-house"></i> Home
+            </a>
+            <span class="breadcrumb-separator">»</span>
+            <span class="active">@Model.CoursesText</span>
+        </div>
+        <div class="course-header">
+            <h1>@Model.Title</h1>
+            <div class="search-controls">
+                <select asp-for="SelectedCategory" asp-items="@(new SelectList(Model.Categories))"></select>
+                <input type="search" class="search-input" asp-for="SearchQuery" placeholder="Search courses">
+            </div>
+        </div>
+    </div>
+
+</section>

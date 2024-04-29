@@ -1,0 +1,62 @@
+﻿#get-started {
+    background: $gray-100;
+    margin-top: 2rem;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+
+        @include lg {
+            flex-direction: row;
+        }
+
+        .get-started-content {
+            text-align: center;
+
+            @include lg {
+                text-align: left;
+            }
+
+            @include xl {
+                width: 40%;
+            }
+
+            .subtitle {
+                @include text-xl;
+
+                @include xxl {
+                    @include text-lead;
+                }
+            }
+
+            .title {
+
+                @include xxl {
+                    @include d5;
+                }
+
+                .highlight {
+                    color: $theme;
+                }
+            }
+
+            .cta-button {
+                display: inline-block;
+                margin-top: 1rem;
+                margin-bottom: 3rem;
+            }
+        }
+
+        .get-started-image {
+            margin-bottom: 2rem;
+
+            img {
+                max-width: 100%;
+            }
+        }
+    }
+}

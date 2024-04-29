@@ -67,35 +67,35 @@ public class HomeIndexViewModel
         Id = "ThemeSwitch",
         TitleLeft = "Switch Between",
         TitleRight = "Light & Dark Mode",
-        Image = new ImageComponent { ImageUrl = "/Assets/Images/Homepage/Imac-light-dark-theme.svg", AltText = "Screenshots of the app showing light and dark mode" },
+        Image = new ImageComponent { ImageUrl = "/Assets/Images/Homepage/theme-switch-imac.svg", AltText = "Screenshots of the app showing light and dark mode" },
         SwitchButton = new ImageComponent { ImageUrl = "/Assets/Images/Homepage/slider-button.svg", AltText = "Switch between light and dark mode" }
     };
 
     public WorkManagementViewModel WorkManagement { get; set; } = new WorkManagementViewModel
     {
         Id = "WorkManagement",
-        Image = new ImageComponent { ImageUrl = "images/test.svg", AltText = "A dashboard showing various project management features" },
+        Image = new ImageComponent { ImageUrl = "Assets/Images/Homepage/dashboard-features.svg", AltText = "A dashboard showing various project management features" },
         Title = "Manage Your Work",
         Features =
         [
             new IconComponent {
-                Icon = new ImageComponent { ImageUrl = "images/icons/bx-check-circle.svg", AltText = ""},
+                Icon = new ImageComponent { ImageUrl = "Assets/Icons/ui/check-circle-icon.svg", AltText = ""},
                 Description = "Powerful project management"
             },
             new IconComponent {
-                Icon = new ImageComponent { ImageUrl = "images/icons/bx-check-circle.svg", AltText = ""},
+                Icon = new ImageComponent { ImageUrl = "Assets/Icons/ui/check-circle-icon.svg", AltText = ""},
                 Description = "Transparent work management"
             },
             new IconComponent {
-                Icon = new ImageComponent { ImageUrl = "images/icons/bx-check-circle.svg", AltText = ""},
+                Icon = new ImageComponent { ImageUrl = "Assets/Icons/ui/check-circle-icon.svg", AltText = ""},
                 Description = "Manage work & focus on the most important tasks"
             },
             new IconComponent {
-                Icon = new ImageComponent { ImageUrl = "images/icons/bx-check-circle.svg", AltText = ""},
+                Icon = new ImageComponent { ImageUrl = "Assets/Icons/ui/check-circle-icon.svg", AltText = ""},
                 Description = "Track your progress with interactive charts"
             },
             new IconComponent {
-                Icon = new ImageComponent { ImageUrl = "images/icons/bx-check-circle.svg", AltText = ""},
+                Icon = new ImageComponent { ImageUrl = "Assets/Icons/ui/check-circle-icon.svg", AltText = ""},
                 Description = "Easiest way to track time spent on tasks"
             }
         ],
@@ -106,7 +106,7 @@ public class HomeIndexViewModel
             Text = "Learn more",
             Icon = new ImageComponent
             {
-                ImageUrl = "images/icons/arrow-right.svg",
+                ImageUrl = "Assets/Icons/ui/learn-more-arrow.svg",
                 AltText = "right arrow"
             }
         },
@@ -115,14 +115,14 @@ public class HomeIndexViewModel
     public DownloadViewModel Download { get; set; } = new DownloadViewModel
     {
         Id = "Download",
-        MobileImage = new ImageComponent { ImageUrl = "images/mobile-screen-image.svg", AltText = "Screenshots of TaskMaster mobile app interface displaying a daily task overview and navigation icons." },
+        MobileImage = new ImageComponent { ImageUrl = "Assets/Images/Downloads/mobile-app-screenshots.svg", AltText = "Screenshots of TaskMaster mobile app interface displaying a daily task overview and navigation icons." },
         Title = "Download Our App for Any Devices:",
         AppLinks =
         [
             new AppLinkComponent {
                 StoreName = "App Store",
                 StarRating = new StarRatingComponent {
-                    StarIcon = new ImageComponent { ImageUrl = "images/icons/star.svg", AltText = "star rating" },
+                    StarIcon = new ImageComponent { ImageUrl = "Assets/Icons/ui/star-icon.svg", AltText = "star rating" },
                     NumberOfStars = 5
                 },
                 EditorChoiceText = "Editor’s Choice",
@@ -130,14 +130,14 @@ public class HomeIndexViewModel
                 Link = new LinkComponent
                 {
                 Url = "https://apps.apple.com/app/your-app-id",
-                Icon = new ImageComponent { ImageUrl = "images/brands/appstore-image.svg", AltText = "App store badge" }
+                Icon = new ImageComponent { ImageUrl = "Assets/Icons/brands/app-store-badge.svg", AltText = "App store badge" }
                 }
             },
 
             new AppLinkComponent {
                 StoreName = "Google Play",
                 StarRating = new StarRatingComponent {
-                    StarIcon = new ImageComponent { ImageUrl = "images/icons/star.svg", AltText = "star rating" },
+                    StarIcon = new ImageComponent { ImageUrl = "Assets/Icons/ui/star-icon.svg", AltText = "star rating" },
                     NumberOfStars = 5
                 },
                 EditorChoiceText = "App of the Day",
@@ -145,7 +145,7 @@ public class HomeIndexViewModel
                 Link = new LinkComponent
                 {
                     Url = "https://play.google.com/store/apps/details?id=your.app.id",
-                    Icon = new ImageComponent { ImageUrl = "images/brands/googleplay-image.svg", AltText = "Google play badge" }
+                    Icon = new ImageComponent { ImageUrl = "Assets/Icons/brands/google-play-badge.svg", AltText = "Google play badge" }
                 }
             }
         ]
@@ -159,35 +159,35 @@ public class HomeIndexViewModel
         Tools =
         [
             new IconComponent {
-                Icon = new ImageComponent { ImageUrl = "images/icons/google-icon.svg", AltText = "Googles ikon"},
+                Icon = new ImageComponent { ImageUrl = "Assets/Icons/Integrations/google-icon.svg", AltText = "Googles ikon"},
                 Description = "Lorem magnis pretium sed curabitur nunc facilisi nunc cursus sagittis."
             },
             new IconComponent {
-                Icon = new ImageComponent { ImageUrl = "images/icons/zoom-icon.svg", AltText = "Zooms ikon"},
+                Icon = new ImageComponent { ImageUrl = "Assets/Icons/Integrations/zoom-icon.svg", AltText = "Zooms ikon"},
                 Description = "In eget a mauris quis. Tortor dui tempus quis integer est sit natoque placerat dolor."
             },
             new IconComponent {
-                Icon = new ImageComponent { ImageUrl = "images/icons/slack-icon.svg", AltText = "Slacks ikon"},
+                Icon = new ImageComponent { ImageUrl = "Assets/Icons/Integrations/slack-icon.svg", AltText = "Slacks ikon"},
                 Description = "Id mollis consectetur congue egestas egestas suspendisse blandit justo."
             },
             new IconComponent {
-                Icon = new ImageComponent { ImageUrl = "images/icons/gmail-icon.svg", AltText = "Gmails ikon"},
+                Icon = new ImageComponent { ImageUrl = "Assets/Icons/Integrations/gmail-icon.svg", AltText = "Gmails ikon"},
                 Description = "Rutrum interdum tortor, sed at nulla. A cursus bibendum elit purus cras praesent."
             },
             new IconComponent {
-                Icon = new ImageComponent { ImageUrl = "images/icons/trello-icon.svg", AltText = "Trellos ikon"},
+                Icon = new ImageComponent { ImageUrl = "Assets/Icons/Integrations/trello-icon.svg", AltText = "Trellos ikon"},
                 Description = "Congue pellentesque amet, viverra curabitur quam diam scelerisque fermentum urna."
             },
             new IconComponent {
-                Icon = new ImageComponent { ImageUrl = "images/icons/mailchimp-icon.svg", AltText = "Mailchimps ikon"},
+                Icon = new ImageComponent { ImageUrl = "Assets/Icons/Integrations/mailchimp-icon.svg", AltText = "Mailchimps ikon"},
                 Description = "A elementum, imperdiet enim, pretium etiam facilisi in aenean quam mauris."
             },
             new IconComponent {
-                Icon = new ImageComponent { ImageUrl = "images/icons/dropbox-icon.svg", AltText = "Dropbox ikon"},
+                Icon = new ImageComponent { ImageUrl = "Assets/Icons/Integrations/dropbox-icon.svg", AltText = "Dropbox ikon"},
                 Description = "Ut in turpis consequat odio diam lectus elementum. Est faucibus blandit platea."
             },
             new IconComponent {
-                Icon = new ImageComponent { ImageUrl = "images/icons/evernote-icon.svg", AltText = "Evernotes ikon"},
+                Icon = new ImageComponent { ImageUrl = "Assets/Icons/Integrations/evernote-icon.svg", AltText = "Evernotes ikon"},
                 Description = "Faucibus cursus maecenas lorem cursus nibh. Sociis sit risus id. Sit facilisis dolor arcu."
             }
         ]
@@ -197,7 +197,7 @@ public class HomeIndexViewModel
     {
         Id = "Newsletter",
         Title = "Don't Want to Miss Anything?",
-        Image = new ImageComponent { ImageUrl = "images/cycling-arrow.svg", AltText = "Stylized cyclic arrow forming a loop" },
+        Image = new ImageComponent { ImageUrl = "Assets/Images/Homepage/cycling-arrow.svg", AltText = "Stylized cyclic arrow forming a loop" },
         SubTitle = "Sign up for Newsletters",
         NewsletterOptions =
         [

@@ -1,0 +1,16 @@
+﻿@model GetStartedViewModel
+
+<section id="@Model.Id">
+    <div class="container">
+        <div class="get-started-content">
+            <p class="subtitle">@Model.SubTitle</p>
+            <h1 class="title">
+                @Model.PreHighlightTitle <span class="highlight">@Model.HighlightedWord</span> @Model.PostHighlightTitle
+            </h1>
+            <a href="@Model.CtaButton.Url" class="cta-button btn-theme">@Model.CtaButton.Text</a>
+        </div>
+        <div class="get-started-image">
+            <img src="@Model.Image.ImageUrl" alt="@Model.Image.AltText" />
+        </div>
+    </div>
+</section>
