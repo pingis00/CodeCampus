@@ -21,3 +21,29 @@ const checkScreenSize = () => {
 
 window.addEventListener('resize', checkScreenSize);
 checkScreenSize();
+
+function initMap() {
+    var centerCoords = { lat: 37.733905, lng: -122.406190 }
+    var mapOptions = {
+        center: centerCoords,
+        zoom: 15,
+
+    };
+    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    var marker1 = new google.maps.Marker({
+        position: centerCoords,
+        map: map,
+        title: 'Centered marker',
+        icon: '/Assets/Icons/ui/marker-icon.svg'
+    });
+
+    var offsetCoords = { lat: 37.729743, lng: -122.410866 };
+
+    var marker2 = new google.maps.Marker({
+        position: offsetCoords,
+        map: map,
+        title: 'Another marker',
+        icon: '/Assets/Icons/ui/marker-icon.svg'
+    });
+}

@@ -17,10 +17,8 @@
 
   <ItemGroup>
     <Folder Include="ViewModels\Auth\" />
-    <Folder Include="ViewModels\Contact\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Auth\" />
-    <Folder Include="Views\Contact\" />
     <Folder Include="Views\Courses\" />
   </ItemGroup>
 
