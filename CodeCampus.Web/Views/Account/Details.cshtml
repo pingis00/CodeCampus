@@ -1,0 +1,102 @@
+﻿@model AccountDetailsViewModel
+
+<div class="container">
+    <section id="account">
+        @await Html.PartialAsync("_SidebarPartial")
+
+        <div class="details">
+            <section class="basic-info">
+                <form method="post" asp-controller="Account" asp-action="Details" novalidate>
+                    <h2>Account Details</h2>
+                    <h5>Basic Info</h5>
+                    <div class="content">
+                        <div id="form-firstName" class="input-group">
+                            <label asp-for="BasicInfo.FirstName"></label>
+                            <input asp-for="BasicInfo.FirstName" readonly />
+@*                             @if (Model.ProfileInfo.IsExternalAccount)
+                            {
+                                
+                            }
+                            else
+                            {
+                                <input asp-for="BasicInfo.FirstName" />
+                                <span asp-validation-for="BasicInfo.FirstName"></span>
+                            } *@
+                        </div>
+                        <div id="form-lastName" class="input-group">
+                            <label asp-for="BasicInfo.LastName"></label>
+                            <input asp-for="BasicInfo.LastName" readonly />
+@*                             @if (Model.ProfileInfo.IsExternalAccount)
+                            {
+                                
+                            }
+                            else
+                            {
+                                <input asp-for="BasicInfo.LastName" />
+                                <span asp-validation-for="BasicInfo.LastName"></span>
+                            } *@
+                        </div>
+                        <div id="form-email" class="input-group">
+                            <label asp-for="BasicInfo.Email"></label>
+                            <input asp-for="BasicInfo.Email" readonly />
+
+@*                             @if (Model.ProfileInfo.IsExternalAccount)
+                            {
+                            }
+                            else
+                            {
+                                <input asp-for="BasicInfo.Email" />
+                                <span asp-validation-for="BasicInfo.Email"></span>
+                            } *@
+                        </div>
+                        <div id="form-phone" class="input-group">
+                            <label asp-for="BasicInfo.PhoneNumber"></label>
+                            <input asp-for="BasicInfo.PhoneNumber" />
+                            <span asp-validation-for="BasicInfo.PhoneNumber"></span>
+                        </div>
+                        <div id="form-bio" class="input-group">
+                            <label asp-for="BasicInfo.Biography">Bio <span>(optional)</span></label>
+                            <textarea asp-for="BasicInfo.Biography"></textarea>
+                        </div>
+                        <div class="form-buttons">
+                            <button class="btn-gray" type="reset">Cancel</button>
+                            <button class="btn-theme" type="submit">Save Changes</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+            <hr />
+            <section class="address-info">
+                <form method="post" asp-controller="Account" asp-action="Details" novalidate>
+                    <h5>Address</h5>
+
+                    <div class="content">
+                        <div id="form-addressline_1" class="input-group">
+                            <label asp-for="AddressInfo.Addressline_1"></label>
+                            <input asp-for="AddressInfo.Addressline_1" />
+                            <span asp-validation-for="AddressInfo.Addressline_1"></span>
+                        </div>
+                        <div id="form-addressline_2" class="input-group">
+                            <label asp-for="AddressInfo.Addressline_2">Address line 2<span>(optional)</span></label>
+                            <input asp-for="AddressInfo.Addressline_2" />
+                        </div>
+                        <div id="form-postalcode" class="input-group">
+                            <label asp-for="AddressInfo.PostalCode"></label>
+                            <input asp-for="AddressInfo.PostalCode" />
+                            <span asp-validation-for="AddressInfo.PostalCode"></span>
+                        </div>
+                        <div id="form-city" class="input-group">
+                            <label asp-for="AddressInfo.City"></label>
+                            <input asp-for="AddressInfo.City" />
+                            <span asp-validation-for="AddressInfo.City"></span>
+                        </div>
+                        <div class="form-buttons">
+                            <button class="btn-gray" type="reset">Cancel</button>
+                            <button class="btn-theme" type="submit">Save Changes</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </section>
+</div>
