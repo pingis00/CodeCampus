@@ -1,0 +1,76 @@
+﻿#account {
+
+    @include lg {
+        display: grid;
+        grid-template-columns: 2fr 5fr;
+        gap: 150px;
+        margin-bottom: 70px;
+    }
+
+    .details {
+        margin-top: 50px;
+        width: 100%;
+
+        .security-info {
+
+            form {
+                padding: 1rem;
+
+                h5 {
+                    color: $theme;
+                }
+
+                .content {
+
+                    @include md {
+                        display: grid;
+                        gap: 1rem 2rem;
+                        grid-template-columns: 1fr 1fr;
+                        grid-template-areas: "currentpassword empty" "newpassword confirm" "buttons buttons";
+                    }
+
+                    #form-current_password {
+                        grid-area: currentpassword;
+                    }
+
+                    #form-new_password {
+                        grid-area: newpassword;
+                    }
+
+                    #form-confirm {
+                        grid-area: confirm;
+                    }
+
+                    .form-buttons {
+                        grid-area: buttons;
+                        margin: 20px 0;
+                        display: flex;
+                        gap: 20px;
+                    }
+                }
+            }
+
+            .delete-account {
+                padding: 1rem;
+                margin-top: 2rem;
+
+                h5 {
+                    color: $theme;
+                    margin-bottom: 1rem;
+                }
+
+                p {
+                    margin-bottom: 1rem;
+                }
+
+                .delete-form {
+                    display: inline-block; 
+                    padding: 0;
+                }
+
+                .btn {
+                }
+            }
+        }
+    }
+}

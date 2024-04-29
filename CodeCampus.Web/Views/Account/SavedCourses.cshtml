@@ -1,0 +1,15 @@
+﻿<div class="container">
+    <section id="account">
+        @await Html.PartialAsync("_SidebarPartial")
+
+        <div class="saved-item-card">
+            <div class="saved-item-header">
+                <h2>@Model.Title</h2>
+                <button class="btn-error-shadow btn"><img src="~/Assets/Icons/ui/delete-icon.svg" alt="Account Icon" class="icon" />Delete all</button>
+            </div>
+            <div class="saved-course-page">
+                @await Html.PartialAsync("_CoursesPartial")
+            </div>
+        </div>
+    </section>
+</div>
