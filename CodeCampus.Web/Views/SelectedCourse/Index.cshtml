@@ -1,0 +1,5 @@
+﻿@model SelectedCourseViewModel
+
+@await Html.PartialAsync("~/Views/SelectedCourse/Sections/CourseIntro.cshtml", Model.CourseIntro)
+@await Html.PartialAsync("~/Views/SelectedCourse/Sections/CourseDetails.cshtml", Model.CourseDetails)
+@await Html.PartialAsync("~/Views/SelectedCourse/Sections/InstructorInfo.cshtml", Model.InstructorInfo)

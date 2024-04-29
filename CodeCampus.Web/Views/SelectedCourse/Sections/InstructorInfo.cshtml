@@ -1,0 +1,36 @@
+﻿@model InstructorInfoViewModel
+
+<section class="instructor-section">
+    <div class="container">
+        <div class="instructor-image">
+            <img src="@Model.InstructorImage.ImageUrl" alt="@Model.InstructorImage.AltText" class="instructor-image" />
+        </div>
+        <div class="instructor-info">
+            <div class="decorative-svg">
+                <img src="~/Assets/Images/SelectedCourse/Pattern/patternLine-upLeft.svg" alt="" class="decorative-svg decorative-svg-1" aria-hidden="true">
+                <img src="~/Assets/Images/SelectedCourse/Pattern/patternLine-upRight.svg" alt="" class="decorative-svg decorative-svg-2" aria-hidden="true">
+                <img src="~/Assets/Images/SelectedCourse/Pattern/patternLine-big.svg" alt="" class="decorative-svg decorative-svg-3" aria-hidden="true">
+                <img src="~/Assets/Images/SelectedCourse/Pattern/patternLine-right.svg" alt="" class="decorative-svg decorative-svg-4" aria-hidden="true">
+                <img src="~/Assets/Images/SelectedCourse/Pattern/patternLine-center.svg" alt="" class="decorative-svg decorative-svg-5" aria-hidden="true">
+                <img src="~/Assets/Images/SelectedCourse/Pattern/patternLine-downLeft-big.svg" alt="" class="decorative-svg decorative-svg-6" aria-hidden="true">
+                <img src="~/Assets/Images/SelectedCourse/Pattern/patternLine-downLeft-small.svg" alt="" class="decorative-svg decorative-svg-7" aria-hidden="true">
+                <img src="~/Assets/Images/SelectedCourse/Pattern/patternLine-downRight-big.svg" alt="" class="decorative-svg decorative-svg-8" aria-hidden="true">
+                <img src="~/Assets/Images/SelectedCourse/Pattern/patternLine-downRight-small.svg" alt="" class="decorative-svg decorative-svg-8" aria-hidden="true">
+            </div>
+
+            <h5>@Model.Title</h5>
+            <h1>@Model.InstructorName</h1>
+            <p>@Model.Biography</p>
+            <div class="social-links">
+                <a class="btn-error youtube-link" href="@Model.YoutubeLink.Url">                  
+                    <img src="@Model.YoutubeLink.Icon.ImageUrl" alt="@Model.YoutubeLink.Icon.AltText" />  
+                    @Model.YoutubeLink.Text
+                </a>
+                <a href="@Model.FacebookLink.Url" class="facebook-link btn-info">
+                    <img src="@Model.FacebookLink.Icon.ImageUrl" alt="@Model.FacebookLink.Icon.AltText" />
+                    @Model.FacebookLink.Text
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
