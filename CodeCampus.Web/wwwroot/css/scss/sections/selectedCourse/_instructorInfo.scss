@@ -1,0 +1,160 @@
+﻿.instructor-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    .container {
+        @include lg {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .instructor-image {
+            display: flex;
+            justify-content: center;
+
+            @include lg {
+                flex: 0 0 40%;
+            }
+
+            img {
+                width: 70%;
+                height: auto;
+                object-fit: cover;
+
+                @include lg {
+                    width: 100%;
+                }
+            }
+        }
+
+        .instructor-info {
+            position: relative;
+            background: $gray-900;
+            padding: 2rem;
+            overflow: hidden;
+
+            @include lg {
+                flex: 1;
+            }
+
+            @include xxl {
+                padding-left: 8.5rem;
+                padding-top: 6rem;
+                padding-right: 7rem;
+            }
+
+
+            .decorative-svg {
+                pointer-events: none;
+
+                img {
+                    position: absolute;
+                }
+
+                .decorative-svg-1 {
+                    top: 0;
+                    left: 0;
+                }
+
+                .decorative-svg-2 {
+                    top: 0;
+                    right: 7rem;
+                }
+
+                .decorative-svg-3 {
+                    top: 0;
+                    right: 3rem;
+                }
+
+                .decorative-svg-4 {
+                    right: 0;
+                    top: 7rem;
+                }
+
+                .decorative-svg-5 {
+                    left: 28%;
+                    bottom: 24%;
+                }
+
+                .decorative-svg-6 {
+                    left: -2.5rem;
+                    bottom: 0;
+                }
+
+                .decorative-svg-7 {
+                    left: 2rem;
+                    bottom: 0;
+                }
+
+                .decorative-svg-8 {
+                    right: 0;
+                    bottom: 0;
+                }
+
+                .decorative-svg-9 {
+                    right: 0;
+                    bottom: 0;
+                }
+            }
+
+            h5 {
+                @include h6;
+                color: rgba(255, 255, 255, 0.5) !important;
+                font-weight: 300 !important;
+
+                @include sm {
+                    @include h5;
+                }
+            }
+
+            h1 {
+                @include h3;
+                color: $white !important;
+
+                @include sm {
+                    @include h1;
+                }
+            }
+
+            p {
+                @include text-s;
+                color: rgba(255, 255, 255, 0.7);
+                margin-bottom: 2rem;
+
+                @include sm {
+                    font-size: 16px;
+                }
+            }
+
+            .social-links {
+                z-index: 1;
+
+                @include xl {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 1rem;
+                }
+
+                .youtube-link {
+                    margin-bottom: 1rem;
+
+                    @include xl {
+                        margin-bottom: 0;
+                        margin-right: 1.5rem;
+                    }
+
+                    @include xxl {
+                        padding: 12px 28px;
+                    }
+                }
+
+                .facebook-link {
+                    @include xxl {
+                        padding: 12px 28px;
+                    }
+                }
+            }
+        }
+    }
+}

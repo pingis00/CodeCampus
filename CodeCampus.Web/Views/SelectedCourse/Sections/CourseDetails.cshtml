@@ -1,0 +1,56 @@
+﻿@model CourseDetailsViewModel
+
+<section class="course-details">
+    <div class="container">
+        <div class="content">
+            <h1 class="title">@Model.Title</h1>
+            <p>@Model.Description</p>
+            <h3>What you'll learn</h3>
+            <ul class="learn-list">
+                @foreach (var outcome in Model.LearningOutcomes)
+                {
+                    <li class="learn-item">
+                        <img src="@outcome.Icon.ImageUrl" alt="@outcome.Icon.AltText" />
+                        <span>@outcome.Description</span>
+                    </li>
+                }
+            </ul>
+            <div class="program-details">
+                <h1>Program Details</h1>
+                <div class="steps">
+                    @foreach (var detail in Model.ProgramDetails)
+                    {
+                        <div class="step">
+                            <div class="number-circle">
+                                <span class="order-number">@detail.Number</span>
+                            </div>
+                            <div>
+                                <h4>@detail.Title</h4>
+                                <p>@detail.Description</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <aside class="sidebar">
+            <div class="course-includes">
+                <h4>@Model.Includes.Title</h4>
+                <ul class="includes-list">
+                    @foreach (var item in Model.Includes.Icon)
+                    {
+                        <li class="includes-item">
+                            <img src="@item.Icon.ImageUrl" alt="@item.Icon.AltText" />
+                            <span>@item.Description</span>
+                        </li>
+                    }
+                </ul>
+                <div class="price-info">
+                    <span class="sale-price">@Model.Includes.SalePrice</span>
+                    <span class="original-price">@Model.Includes.OriginalPrice</span>
+                </div>
+                <a href="*" class="btn-join-course btn-theme">@Model.Includes.JoinCourseButton.Text</a>
+            </div>
+        </aside>
+    </div>
+</section>

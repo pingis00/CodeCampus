@@ -18,13 +18,10 @@
   <ItemGroup>
     <Folder Include="ViewModels\Auth\" />
     <Folder Include="ViewModels\Contact\" />
-    <Folder Include="ViewModels\SelectedCourse\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Auth\" />
     <Folder Include="Views\Contact\" />
     <Folder Include="Views\Courses\" />
-    <Folder Include="Views\SelectedCourse\" />
-    <Folder Include="wwwroot\Assets\Icons\social\" />
   </ItemGroup>
 
   <ItemGroup>

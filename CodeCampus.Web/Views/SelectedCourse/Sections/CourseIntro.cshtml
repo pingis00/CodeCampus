@@ -1,0 +1,54 @@
+﻿@model CourseIntroViewModel
+
+<section id="@Model.Id" class="course-intro">
+    <img class="background-image" src="@Model.BackgroundImage.ImageUrl" alt="@Model.BackgroundImage.AltText"/>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a class="home-link" href="@Model.HomeLink.Url">
+                <i class="fa-light fa-house"></i> Home
+            </a>
+            <span class="breadcrumb-separator">»</span>
+            <a class="courses-link" href="@Model.CoursesLink.Url">Courses</a>
+            <span class="breadcrumb-separator">»</span>
+            <span class="course-name">@Model.CourseView</span>
+        </nav>
+        <div class="tags">
+            @foreach (var tag in Model.Tags)
+            {
+                <span class="tag @tag.Replace(" ", "-").ToLowerInvariant()">@tag</span>
+            }
+        </div>
+        <h1 class="title">@Model.CourseTitle</h1>
+        <p class="description">@Model.CourseDescription</p>
+        <div class="info">
+            <div class="rating">
+                @for (int i = 0; i < Model.StarRating.TotalStars; i++)
+                {
+                    if (i < Model.StarRating.NumberOfStars)
+                    {
+                        <img class="star-filled" src="@Model.StarRating.StarIcon.ImageUrl" alt="Filled Star" />
+                    }
+                    else
+                    {
+                        <img class="star-empty" src="@Model.StarRating.EmptyStarIcon.ImageUrl" alt="Empty Star" />
+                    }
+                }
+                <p class="reviews">@Model.Reviews</p>
+                <p class="likes">
+                    <img src="~/Assets/Icons/ui/thumbsup-icon.svg" alt="Likes Icon" />@Model.Likes
+                </p>
+                <p class="course-hours">
+                    <img src="~/Assets/Icons/ui/course-clock-icon.svg" alt="Course Duration Icon" />@Model.CourseHours
+                </p>
+            </div>
+        </div>
+        <div class="author">
+            <img src="@Model.AuthorImage.ImageUrl" alt="@Model.AuthorImage.AltText" />
+            <div class="created">
+                <p class="author-text">@Model.AuthorText</p>
+                <p class="author-name">@Model.AuthorName</p>
+            </div>
+
+        </div>
+    </div>
+</section>
