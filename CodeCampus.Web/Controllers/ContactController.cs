@@ -23,6 +23,6 @@ public class ContactController(IConfiguration configuration) : Controller
             return RedirectToAction("ThankYou");
         }
 
-        return View("Index", viewModel);
+        return View("Contact", viewModel);
     }
 }

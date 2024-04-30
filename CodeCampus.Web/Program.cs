@@ -1,8 +1,17 @@
+
+using CodeCampus.Infrastructure.Contexts;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
-builder.Services.AddControllersWithViews();
+
+services.AddControllersWithViews();
 services.AddRouting(x => x.LowercaseUrls = true);
+
+services.AddDbContext<DataContext>(x => x.UseSqlServer(configuration.GetConnectionString("SqlServer")));
+
+var googleMapsApiKey = configuration["GoogleMapsApiKey"];
 
 var app = builder.Build();
 app.UseHsts();
@@ -10,6 +19,7 @@ app.UseStatusCodePagesWithReExecute("/Home/Error", "?statusCode={0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
