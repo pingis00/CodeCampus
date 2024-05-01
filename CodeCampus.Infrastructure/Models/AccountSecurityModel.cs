@@ -19,7 +19,7 @@ public class AccountSecurityModel
     [DataType(DataType.Password)]
     [Display(Name = "Confirm new password", Prompt = "Confirm your new password", Order = 2)]
     [Required(ErrorMessage = "New password must be confirmed")]
-    [Compare(nameof(NewPassword), ErrorMessage = "Cinfirm new password must match new password")]
+    [Compare(nameof(NewPassword), ErrorMessage = "Confirm new password must match new password")]
     public string ConfirmNewPassword { get; set; } = null!;
     public bool DeleteAccount { get; set; } = false;
 }
