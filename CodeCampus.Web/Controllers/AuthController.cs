@@ -87,4 +87,12 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
         ViewData["ErrorMessage"] = "Incorrect email or password";
         return View(viewModel);
     }
+
+    [HttpGet]
+    [Route("/signout")]
+    public new async Task<IActionResult> SignOut()
+    {
+        await _signInManager.SignOutAsync();
+        return RedirectToAction("Index", "Home");
+    }
 }
