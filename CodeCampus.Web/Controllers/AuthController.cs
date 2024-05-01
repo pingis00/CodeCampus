@@ -55,9 +55,36 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     }
 
     [Route("/signin")]
-    public IActionResult SignIn()
+    public IActionResult SignIn(string returnUrl)
     {
-        var viewModel = new SignInViewModel();
+        if (_signInManager.IsSignedIn(User)) 
+            return RedirectToAction("Details", "Account");
+
+        ViewData["ReturnUrl"] = returnUrl ?? Url.Content("~/");
+        return View();
+    }
+
+    [Route("/signin")]
+    [HttpPost]
+
+    public async Task<IActionResult> SignIn(SignInViewModel viewModel, string returnUrl)
+    {
+        ModelState.Clear();
+
+        if (ModelState.IsValid)
+        {
+            var result = await _signInManager.PasswordSignInAsync(viewModel.Form.Email, viewModel.Form.Password, viewModel.Form.RememberMe, false);
+            if (result.Succeeded)
+            {
+                if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    return Redirect(returnUrl);
+
+                return RedirectToAction("Details", "Account");
+            }
+        }
+
+        ModelState.AddModelError("IncorrectValues", "Incorrect email or password");
+        ViewData["ErrorMessage"] = "Incorrect email or password";
         return View(viewModel);
     }
 }
