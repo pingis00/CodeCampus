@@ -19,6 +19,11 @@
 }
 
 const textValidator = (element, minLength = 2) => {
+
+    if (element.name === "AddressInfo.Addressline_2") {
+        return;
+    }
+
     if (element.value.length >= minLength) {
         formErrorHandler(element, true)
     }

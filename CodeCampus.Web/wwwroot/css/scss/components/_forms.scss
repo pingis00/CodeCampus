@@ -56,7 +56,7 @@
 
             &.field-validation-error {
                 @include text-s;
-                color: $danger;
+                color: green;
 
                 &::after {
                     position: absolute;
@@ -127,7 +127,7 @@
             top: 0;
             right: 0;
             @include text-s;
-            color: $danger;
+            color: $danger !important;
 
             &::after {
                 position: absolute;

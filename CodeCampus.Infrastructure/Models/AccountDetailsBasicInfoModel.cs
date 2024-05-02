@@ -8,8 +8,8 @@ public class AccountDetailsBasicInfoModel
 
     [DataType(DataType.Text)]
     [Display(Name = "First name", Prompt = "Enter your first name", Order = 0)]
-    //[Required(ErrorMessage = "First name is required")]
-    //[MinLength(2, ErrorMessage = "First name is required")]
+    [Required(ErrorMessage = "First name is required")]
+    [MinLength(2, ErrorMessage = "First name is required")]
     public string FirstName { get; set; } = null!;
 
     [DataType(DataType.Text)]

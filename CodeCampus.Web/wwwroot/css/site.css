@@ -544,7 +544,7 @@ form .checkbox-group span.field-validation-error {
   color: #565973;
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
-  color: #EF4444;
+  color: green;
 }
 form .checkbox-group span.field-validation-error::after {
   position: absolute;
@@ -604,7 +604,7 @@ form span.field-validation-error {
   color: #565973;
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
-  color: #EF4444;
+  color: #EF4444 !important;
 }
 form span.field-validation-error::after {
   position: absolute;
