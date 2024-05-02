@@ -1,6 +1,8 @@
 
 using CodeCampus.Infrastructure.Contexts;
 using CodeCampus.Infrastructure.Entities;
+using CodeCampus.Infrastructure.Repositories;
+using CodeCampus.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,8 @@ services.AddControllersWithViews();
 services.AddRouting(x => x.LowercaseUrls = true);
 
 services.AddDbContext<DataContext>(x => x.UseSqlServer(configuration.GetConnectionString("SqlServer")));
+services.AddScoped<AddressRepository>();
+services.AddScoped<AddressService>();
 
 services.AddDefaultIdentity<UserEntity>(x =>
 {
