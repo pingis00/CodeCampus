@@ -1,4 +1,5 @@
 ﻿using CodeCampus.Infrastructure.Entities;
+using CodeCampus.Infrastructure.Models;
 using CodeCampus.Infrastructure.Services;
 using CodeCampus.Web.ViewModels.Account;
 using Microsoft.AspNetCore.Authentication;
@@ -12,11 +13,18 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly AddressService _addressService = addressService;
 
+    [HttpGet]
     [Route("/account/details")]
-    public IActionResult Details()
+    public async Task<IActionResult> Details()
     {
+        var claims = HttpContext.User.Identities.FirstOrDefault();
+
         ViewBag.ActiveLink = "Details";
         var viewModel = new AccountDetailsViewModel();
+
+        viewModel.ProfileInfo = await PopulateProfileInfoAsync();
+        viewModel.BasicInfo = await PopulateBasicInfoAsync();
+        viewModel.AddressInfo = await PopulateAddressInfoAsync();
 
         return View(viewModel);
     }
@@ -65,6 +73,9 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
             }
         }
         ViewBag.ActiveLink = "Details";
+        viewModel.ProfileInfo = await PopulateProfileInfoAsync();
+        viewModel.BasicInfo = await PopulateBasicInfoAsync();
+        viewModel.AddressInfo = await PopulateAddressInfoAsync();
         return View(viewModel);
     }
 
@@ -123,12 +134,58 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
         var viewModel = new SavedCoursesViewModel();
         return View(viewModel);
     }
+
+    private async Task<ProfileInfoViewModel> PopulateProfileInfoAsync()
+    {
+        var user = await _userManager.GetUserAsync(User);
+
+        if (user == null) { return new ProfileInfoViewModel(); }
+
+        return new ProfileInfoViewModel
+        {
+            FirstName = user!.FirstName,
+            LastName = user.LastName,
+            Email = user.Email!,
+            IsExternalAccount = user.IsExternalAccount,
+        };
+    }
+
+    private async Task<AccountDetailsBasicInfoModel> PopulateBasicInfoAsync()
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null) { return new AccountDetailsBasicInfoModel(); }
+
+        return new AccountDetailsBasicInfoModel
+        {
+            UserId = user!.Id,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Email = user.Email!,
+            PhoneNumber = user.PhoneNumber,
+            Biography = user.Bio
+        };
+
+    }
+
+    private async Task<AccountDetailsAddressInfoModel> PopulateAddressInfoAsync()
+    {
+
+        var user = await _userManager.GetUserAsync(User);
+        var userAddress = await _addressService.GetUserAddressAsync(user!.Id);
+
+        if (userAddress != null)
+        {
+            return new AccountDetailsAddressInfoModel
+            {
+                Addressline_1 = userAddress.AddressLine_1,
+                Addressline_2 = userAddress.AddressLine_2,
+                PostalCode = userAddress.PostalCode,
+                City = userAddress.City
+            };
+        }
+        else
+        {
+            return new AccountDetailsAddressInfoModel();
+        }
+    }
 }
-
-//[HttpPost]
-//[Route("/account/account-security")]
-//public IActionResult DeleteAccount(AccountSecurityViewModel viewModel)
-//{
-
-//    return View(viewModel);
-//}
