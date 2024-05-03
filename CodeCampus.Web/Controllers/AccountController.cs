@@ -3,11 +3,13 @@ using CodeCampus.Infrastructure.Models;
 using CodeCampus.Infrastructure.Services;
 using CodeCampus.Web.ViewModels.Account;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CodeCampus.Web.Controllers;
 
+[Authorize]
 public class AccountController(UserManager<UserEntity> userManager, AddressService addressService) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
@@ -33,45 +35,54 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
     [Route("/account/details")]
     public async Task<IActionResult> Details(AccountDetailsViewModel viewModel)
     {
-        var user = await _userManager.GetUserAsync(User);
-
-        if (user == null)
+        try
         {
-            return NotFound();
-        }
-
-        if (viewModel.BasicInfo != null)
-        {
-            if (viewModel.BasicInfo.FirstName != null && viewModel.BasicInfo.LastName != null && viewModel.BasicInfo.Email != null)
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
             {
-                if (user != null)
-                {
-                    user.FirstName = viewModel.BasicInfo.FirstName;
-                    user.LastName = viewModel.BasicInfo.LastName;
-                    user.Email = viewModel.BasicInfo.Email;
-                    user.PhoneNumber = viewModel.BasicInfo.PhoneNumber;
-                    user.Bio = viewModel.BasicInfo.Biography;
+                return NotFound();
+            }
 
-                    var result = await _userManager.UpdateAsync(user);
-                    if (!result.Succeeded)
+            if (viewModel.BasicInfo != null)
+            {
+                if (viewModel.BasicInfo.FirstName != null && viewModel.BasicInfo.LastName != null && viewModel.BasicInfo.Email != null)
+                {
+                    if (user != null)
                     {
-                        ModelState.AddModelError("IncorrectValues", "Something went wrong! Unable to save data");
-                        ViewData["ErrorMessage"] = "Something went wrong! Unable to save data";
+                        user.FirstName = viewModel.BasicInfo.FirstName;
+                        user.LastName = viewModel.BasicInfo.LastName;
+                        user.Email = viewModel.BasicInfo.Email;
+                        user.PhoneNumber = viewModel.BasicInfo.PhoneNumber;
+                        user.Bio = viewModel.BasicInfo.Biography;
+
+                        var result = await _userManager.UpdateAsync(user);
+                        if (!result.Succeeded)
+                        {
+                            ModelState.AddModelError("IncorrectValues", "Something went wrong! Unable to save data");
+                            ViewData["ErrorMessage"] = "Something went wrong! Unable to save data";
+                        }
                     }
                 }
             }
-        }
 
 
-        if (viewModel.AddressInfo != null)
-        {
-            var addressResponse = await _addressService.CreateOrUpdateAddressAsync(user!, viewModel.AddressInfo);
-            if (addressResponse.Status != Infrastructure.Responses.StatusCode.OK)
+            if (viewModel.AddressInfo != null)
             {
-                ModelState.AddModelError("IncorrectValues", "Something went wrong! Unable to save data");
-                ViewData["ErrorMessage"] = "Something went wrong! Unable to save data";
+                var addressResponse = await _addressService.CreateOrUpdateAddressAsync(user!, viewModel.AddressInfo);
+                if (addressResponse.Status != Infrastructure.Responses.StatusCode.OK)
+                {
+                    ModelState.AddModelError("IncorrectValues", "Something went wrong! Unable to save data");
+                    ViewData["ErrorMessage"] = "Something went wrong! Unable to save data";
+                }
             }
         }
+        catch (Exception ex)
+        {
+            ModelState.AddModelError("", $"Error updating profile: {ex.Message}");
+            return View(viewModel);
+        }
+
+
         ViewBag.ActiveLink = "Details";
         viewModel.ProfileInfo = await PopulateProfileInfoAsync();
         viewModel.BasicInfo = await PopulateBasicInfoAsync();
@@ -92,39 +103,49 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
     [Route("/account/account-security")]
     public async Task<IActionResult> AccountSecurity(AccountSecurityViewModel viewModel)
     {
-        if (!ModelState.IsValid)
+        try
         {
-            return View(viewModel);
-        }
-
-        var user = await _userManager.GetUserAsync(User);
-        if (user == null)
-        {
-            return NotFound();
-        }
-
-        var checkPasswordResult = await _userManager.CheckPasswordAsync(user, viewModel.SecurityInfo.CurrentPassword);
-        if (!checkPasswordResult)
-        {
-            ModelState.AddModelError("SecurityInfo.CurrentPassword", "The current password is incorrect.");
-            return View(viewModel);
-        }
-
-        var changePasswordResult = await _userManager.ChangePasswordAsync(user, viewModel.SecurityInfo.CurrentPassword, viewModel.SecurityInfo.NewPassword);
-        if (!changePasswordResult.Succeeded)
-        {
-            foreach (var error in changePasswordResult.Errors)
+            if (!ModelState.IsValid)
             {
-                ModelState.AddModelError(string.Empty, error.Description);
+                return View(viewModel);
             }
+
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var checkPasswordResult = await _userManager.CheckPasswordAsync(user, viewModel.SecurityInfo.CurrentPassword);
+            if (!checkPasswordResult)
+            {
+                ModelState.AddModelError("SecurityInfo.CurrentPassword", "The current password is incorrect.");
+                return View(viewModel);
+            }
+
+            var changePasswordResult = await _userManager.ChangePasswordAsync(user, viewModel.SecurityInfo.CurrentPassword, viewModel.SecurityInfo.NewPassword);
+            if (!changePasswordResult.Succeeded)
+            {
+                foreach (var error in changePasswordResult.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+                return View(viewModel);
+            }
+            await _userManager.UpdateSecurityStampAsync(user);
+            await HttpContext.SignOutAsync(IdentityConstants.ApplicationScheme);
+
+            TempData["SuccessMessage"] = "Your password has been changed successfully. Please log in with your new password.";
+
+            return RedirectToAction("SignIn", "Auth");
+        }
+        catch (Exception ex)
+        {
+            ModelState.AddModelError("", ex.Message);
             return View(viewModel);
         }
-        await _userManager.UpdateSecurityStampAsync(user);
-        await HttpContext.SignOutAsync(IdentityConstants.ApplicationScheme);
 
-        TempData["SuccessMessage"] = "Your password has been changed successfully. Please log in with your new password.";
 
-        return RedirectToAction("SignIn", "Auth");
     }
 
     [Route("/account/saved-courses")]

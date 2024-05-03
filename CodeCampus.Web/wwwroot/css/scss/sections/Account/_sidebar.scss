@@ -13,6 +13,52 @@
                 margin: 20px;
             }
 
+            .image-overlay {
+                position: relative;
+                width: 110px;
+                height: 110px;
+                margin: auto;
+                border: 2px solid transparent;
+
+                .user-avatar {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    object-position: center;
+                    transition: 0.3s ease-in-out;
+                }
+
+                .change-icon-overlay {
+                    position: absolute;
+                    bottom: -15px;
+                    right: -15px;
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                    opacity: 0;
+                    cursor: pointer;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+
+                &:hover {
+                    border-color: #ffffff;
+
+                    .user-avatar {
+                        opacity: 0.6;
+                    }
+
+                    .change-icon-overlay {
+                        opacity: 1;
+                        transition: 0.3s ease-in-out;
+                    }
+                }
+            }
+
             h5 {
                 margin-top: 15px;
                 margin-bottom: 0;

@@ -28,27 +28,36 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     {
         if (ModelState.IsValid)
         {
-            var exists = await _userManager.Users.AnyAsync(x => x.Email == viewModel.Form.Email);
-            if (exists)
+            try
             {
-                ModelState.AddModelError("AlreadyExists", "User with the same email address already exists");
-                ViewData["ErrorMessage"] = "User with the same email address already exists";
-                return View();
+                var exists = await _userManager.Users.AnyAsync(x => x.Email == viewModel.Form.Email);
+                if (exists)
+                {
+                    ModelState.AddModelError("AlreadyExists", "User with the same email address already exists");
+                    ViewData["ErrorMessage"] = "User with the same email address already exists";
+                    return View();
+                }
+
+                var userEntity = new UserEntity
+                {
+                    FirstName = viewModel.Form.FirstName,
+                    LastName = viewModel.Form.LastName,
+                    Email = viewModel.Form.Email,
+                    UserName = viewModel.Form.Email
+                };
+
+                var result = await _userManager.CreateAsync(userEntity, viewModel.Form.Password);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("SignIn", "Auth");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", $"Unexpected error occurred: {ex.Message}");
+                return View(viewModel);
             }
 
-            var userEntity = new UserEntity
-            {
-                FirstName = viewModel.Form.FirstName,
-                LastName = viewModel.Form.LastName,
-                Email = viewModel.Form.Email,
-                UserName = viewModel.Form.Email
-            };
-
-            var result = await _userManager.CreateAsync(userEntity, viewModel.Form.Password);
-            if (result.Succeeded)
-            {
-                return RedirectToAction("SignIn", "Auth");
-            }
             
         }
         return View(viewModel);
@@ -77,19 +86,26 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
             return View(viewModel);
         }
 
-        if (ModelState.IsValid)
+        try
         {
-            var result = await _signInManager.PasswordSignInAsync(viewModel.Form.Email, viewModel.Form.Password, viewModel.Form.RememberMe, false);
-            if (result.Succeeded)
+            if (ModelState.IsValid)
             {
-                if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                    return Redirect(returnUrl);
+                var result = await _signInManager.PasswordSignInAsync(viewModel.Form.Email, viewModel.Form.Password, viewModel.Form.RememberMe, false);
+                if (result.Succeeded)
+                {
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                        return Redirect(returnUrl);
 
-                return RedirectToAction("Details", "Account");
+                    return RedirectToAction("Details", "Account");
+                }
             }
+            ModelState.AddModelError("IncorrectValues", "Incorrect email or password");
         }
-
-        ModelState.AddModelError("IncorrectValues", "Incorrect email or password");
+        catch (Exception ex)
+        {
+            ModelState.AddModelError("", $"Sign in failed: {ex.Message}");
+        }
+  
         ViewData["ErrorMessage"] = "Incorrect email or password";
         return View(viewModel);
     }
