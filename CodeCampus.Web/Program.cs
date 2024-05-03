@@ -35,6 +35,20 @@ services.ConfigureApplicationCookie(x =>
     x.Cookie.SecurePolicy = CookieSecurePolicy.Always;
 });
 
+services.AddAuthentication()
+    .AddGoogle(googleOptions =>
+    {
+        googleOptions.ClientId = "161635572771-gq43sqj3l5iaqfrfatfvte4dcv3tm9hp.apps.googleusercontent.com";
+        googleOptions.ClientSecret = "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";
+    })
+    .AddFacebook(x =>
+    {
+        x.AppId = "1496868827911909";
+        x.AppSecret = "ec545aa4b8fa5ece5ffe500589aa3a4b";
+        x.Fields.Add("first_name");
+        x.Fields.Add("last_name");
+    });
+
 var googleMapsApiKey = configuration["GoogleMapsApiKey"];
 
 var app = builder.Build();

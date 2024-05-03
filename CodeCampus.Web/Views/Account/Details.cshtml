@@ -12,18 +12,40 @@
                     <div class="content">
                         <div id="form-firstName" class="input-group">
                             <label asp-for="BasicInfo.FirstName"></label>
-                            <input asp-for="BasicInfo.FirstName" />
-                            <span asp-validation-for="BasicInfo.FirstName"></span>
+                            @if (Model.ProfileInfo.IsExternalAccount)
+                            {
+                                <input asp-for="BasicInfo.FirstName" readonly />
+                            }
+                            else
+                            {
+                                <input asp-for="BasicInfo.FirstName" />
+                                <span asp-validation-for="BasicInfo.FirstName"></span>
+                            }
                         </div>
                         <div id="form-lastName" class="input-group">
                             <label asp-for="BasicInfo.LastName"></label>
-                            <input asp-for="BasicInfo.LastName" />
-                            <span asp-validation-for="BasicInfo.LastName"></span>
+                            @if (Model.ProfileInfo.IsExternalAccount)
+                            {
+                                <input asp-for="BasicInfo.LastName" readonly />
+                            }
+                            else
+                            {
+                                <input asp-for="BasicInfo.LastName" />
+                                <span asp-validation-for="BasicInfo.LastName"></span>
+                            }
                         </div>
                         <div id="form-email" class="input-group">
                             <label asp-for="BasicInfo.Email"></label>
-                            <input asp-for="BasicInfo.Email" />
-                            <span asp-validation-for="BasicInfo.Email"></span>
+
+                            @if (Model.ProfileInfo.IsExternalAccount)
+                            {
+                                <input asp-for="BasicInfo.Email" readonly />
+                            }
+                            else
+                            {
+                                <input asp-for="BasicInfo.Email" />
+                                <span asp-validation-for="BasicInfo.Email"></span>
+                            }
                         </div>
                         <div id="form-phone" class="input-group">
                             <label asp-for="BasicInfo.PhoneNumber"></label>
