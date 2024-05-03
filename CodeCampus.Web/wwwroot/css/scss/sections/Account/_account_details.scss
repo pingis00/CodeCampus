@@ -21,7 +21,8 @@
                 }
 
                 .content {
-
+                    .input-group {
+                    }
 
                     @include md {
                         display: grid;
@@ -57,9 +58,15 @@
 
                     .form-buttons {
                         grid-area: buttons;
-                        margin: 20px 0;
+                        padding-top: 20px;
+                        width: 100%;
                         display: flex;
-                        gap: 20px;
+                        flex-direction: column;
+
+                        @include md {
+                            flex-direction: row;
+                            gap: 20px;
+                        }
                     }
                 }
             }
@@ -107,9 +114,15 @@
 
                     .form-buttons {
                         grid-area: buttons;
-                        margin: 20px 0;
+                        padding-top: 20px;
+                        width: 100%;
                         display: flex;
-                        gap: 20px;
+                        flex-direction: column;
+
+                        @include md {
+                            flex-direction: row;
+                            gap: 20px;
+                        }
                     }
                 }
             }

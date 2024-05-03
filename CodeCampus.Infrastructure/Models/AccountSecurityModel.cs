@@ -5,8 +5,8 @@ namespace CodeCampus.Infrastructure.Models;
 public class AccountSecurityModel
 {
     [DataType(DataType.Password)]
-    [Required(ErrorMessage = "Current password is required")]
     [Display(Name = "Current Password", Prompt = "Enter your current password", Order = 0)]
+    [Required(ErrorMessage = "Current password is required")]
 
     public string CurrentPassword { get; set; } = null!;
 

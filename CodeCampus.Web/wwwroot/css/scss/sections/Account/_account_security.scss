@@ -22,11 +22,16 @@
 
                 .content {
 
+
                     @include md {
                         display: grid;
                         gap: 1rem 2rem;
                         grid-template-columns: 1fr 1fr;
                         grid-template-areas: "currentpassword empty" "newpassword confirm" "buttons buttons";
+                    }
+
+                    .input-group {
+                        margin-bottom: 20px;
                     }
 
                     #form-current_password {
@@ -43,9 +48,23 @@
 
                     .form-buttons {
                         grid-area: buttons;
-                        margin: 20px 0;
+                        padding-top: 20px;
+                        width: 100%;
                         display: flex;
-                        gap: 20px;
+                        flex-direction: column;
+
+                        @include md {
+                            flex-direction: row;
+                            gap: 20px;
+                        }
+
+                        button {
+                            margin-bottom: 10px;
+
+                            @include md {
+                                margin-bottom: 0;
+                            }
+                        }
                     }
                 }
             }
@@ -64,7 +83,7 @@
                 }
 
                 .delete-form {
-                    display: inline-block; 
+                    display: inline-block;
                     padding: 0;
                 }
 

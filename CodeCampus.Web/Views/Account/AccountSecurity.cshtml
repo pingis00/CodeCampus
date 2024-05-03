@@ -6,7 +6,8 @@
 
         <div class="details">
             <section class="security-info">
-                <form method="post" asp-controller="Account" asp-action="AccountSecurity">
+                <form id="securityForm" method="post" asp-controller="Account" asp-action="AccountSecurity">
+
                     <h2>Security</h2>
                     <h5>Password</h5>
 
@@ -23,13 +24,13 @@
                             <span asp-validation-for="SecurityInfo.NewPassword"></span>
                         </div>
 
-                        <div id="form-confirm" class="input-group">
+                        <div id="form-confirm" class="input-group ">
                             <label asp-for="SecurityInfo.ConfirmNewPassword"></label>
                             <input asp-for="SecurityInfo.ConfirmNewPassword" />
                             <span asp-validation-for="SecurityInfo.ConfirmNewPassword"></span>
                         </div>
                         <div class="form-buttons">
-                            <button class="btn-gray" type="reset">Cancel</button>
+                            <button id="cancelSecurity" class="btn-gray" type="button">Cancel</button>
                             <button class="btn-theme" type="submit">Change password</button>
                         </div>
                     </div>
@@ -56,3 +57,4 @@
         </div>
     </section>
 </div>
+@await Html.PartialAsync("_ValidationScriptPartial")
