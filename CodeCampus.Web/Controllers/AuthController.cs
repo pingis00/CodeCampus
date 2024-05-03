@@ -66,10 +66,16 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
 
     [Route("/signin")]
     [HttpPost]
-
     public async Task<IActionResult> SignIn(SignInViewModel viewModel, string returnUrl)
     {
         ModelState.Clear();
+
+        if (string.IsNullOrWhiteSpace(viewModel.Form.Email) || string.IsNullOrWhiteSpace(viewModel.Form.Password))
+        {
+            ModelState.AddModelError("IncorrectValues", "Email and password are required");
+            ViewData["ErrorMessage"] = "Email and password are required";
+            return View(viewModel);
+        }
 
         if (ModelState.IsValid)
         {
