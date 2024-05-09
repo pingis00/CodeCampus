@@ -20,19 +20,20 @@
   --color-success: #bcf7d2;
   --color-warning: #ffe8ad;
   --color-info: #cfdefd;
+  --color-transparent: transparent;
   --color-standard: "Manrope", sans-serif;
 }
 
 :root.dark {
   --color-gray-000: #0B0F19;
-  --color-gray-100: #33354D;
-  --color-gray-200: #565973;
-  --color-gray-300: #9397AD;
-  --color-gray-400: #B4B7C9;
-  --color-gray-500: #D4D7E5;
-  --color-gray-600: #E2E5F1;
-  --color-gray-700: #EFF2FC;
-  --color-gray-800: #F3F6FF;
+  --color-gray-100: #0D0D0D;
+  --color-gray-200: #1A1A1A;
+  --color-gray-300: #4D4D4D;
+  --color-gray-400: #666666;
+  --color-gray-500: #808080;
+  --color-gray-600: #808080;
+  --color-gray-700: #B3B3B3;
+  --color-gray-800: #D9D9D9;
   --color-gray-900: #FFFFFF;
   --color-white: #FFFFFF;
   --color-black: #000000;
@@ -42,182 +43,183 @@
   --color-success: #bcf7d2;
   --color-warning: #ffe8ad;
   --color-info: #cfdefd;
+  --color-transparent: transparent;
   --color-standard: "Manrope", sans-serif;
 }
 
 html, body {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 16px;
 }
 
 .text-xs {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 12px !important;
 }
 
 .text-s {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 14px !important;
 }
 
 .text-m {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 16px !important;
 }
 
 .text-lg {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 18px !important;
 }
 
 .text-xl {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 20px !important;
 }
 
 .text-lead {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 24px !important;
 }
 
 .d1 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 80px !important;
 }
 
 .d2 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 72px !important;
 }
 
 .d3 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 64px !important;
 }
 
 .d4 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 56px !important;
 }
 
 .d5 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 48px !important;
 }
 
 .d6 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 42px !important;
 }
 
 h1, .h1 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 40px !important;
 }
 
 h2, .h2 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 32px !important;
 }
 
 h3, .h3 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 28px !important;
 }
 
 h4, .h4 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 24px !important;
 }
 
 h5, .h5 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 20px !important;
 }
 
 h6, .h6 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 16px !important;
 }
 
@@ -230,9 +232,9 @@ h6, .h6 {
 a {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
-  color: #6366F1;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
+  color: var(--color-theme);
   text-decoration: underline;
   transition: all 0.25s ease-in-out;
 }
@@ -243,25 +245,25 @@ a:hover {
 .menu-link {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 16px;
-  color: #33354D;
+  color: var(--color-gray-800);
   font-weight: 600 !important;
   text-decoration: none;
   transition: color 0.25s ease-in-out;
 }
 .menu-link:hover, .menu-link:active, .menu-link:focus,
 .menu-link .active {
-  color: #6366F1;
+  color: var(--color-theme);
   text-decoration: underline;
 }
 
 .more-link {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 14px !important;
   display: flex;
   align-items: center;
@@ -270,7 +272,7 @@ a:hover {
 }
 .more-link i {
   box-shadow: 0px 2px 6.4px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 12px -1px rgba(19, 16, 34, 0.06);
-  background: #FFFFFF;
+  background: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -282,8 +284,8 @@ a:hover {
   text-decoration: underline;
 }
 .more-link:hover i {
-  background: #33354D;
-  color: #FFFFFF;
+  background: var(--color-gray-800);
+  color: var(--color-white);
 }
 
 .btn-theme {
@@ -296,14 +298,14 @@ a:hover {
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  background: #6366F1;
-  color: #FFFFFF;
+  background: var(--color-theme);
+  color: var(--color-white);
   border: none;
 }
 .btn-theme:hover {
   text-decoration: none;
-  background: #565973;
-  color: #FFFFFF;
+  background: var(--color-gray-700);
+  color: var(--color-white);
 }
 
 .btn-theme-s {
@@ -317,16 +319,16 @@ a:hover {
   gap: 12px;
   text-decoration: none;
   box-shadow: 0px 8px 18px -8px rgba(99, 102, 241, 0.9);
-  background: #6366F1;
-  color: #FFFFFF;
+  background: var(--color-theme);
+  color: var(--color-white);
   padding-top: 10px;
   padding-bottom: 13px;
 }
 .btn-theme-s:hover {
   box-shadow: 0px 8px 18px -8px rgba(19, 16, 34, 0.15);
   text-decoration: none;
-  background: #565973;
-  color: #FFFFFF;
+  background: var(--color-gray-700);
+  color: var(--color-white);
 }
 
 .btn-gray {
@@ -339,14 +341,14 @@ a:hover {
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  background: #EFF2FC;
-  color: #33354D;
+  background: var(--color-gray-200);
+  color: var(--color-gray-800);
   border: none;
 }
 .btn-gray:hover {
   text-decoration: none;
-  background: #565973;
-  color: #FFFFFF;
+  background: var(--color-gray-700);
+  color: var(--color-white);
 }
 
 .btn-transparent {
@@ -359,14 +361,14 @@ a:hover {
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  background: transparent;
-  color: #33354D;
+  background: var(--color-transparent);
+  color: var(--color-gray-800);
   border: none;
 }
 .btn-transparent:hover {
   text-decoration: none;
-  background: #565973;
-  color: #FFFFFF;
+  background: var(--color-gray-700);
+  color: var(--color-white);
 }
 
 .btn-info {
@@ -379,13 +381,13 @@ a:hover {
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  background: #4C82F7;
-  color: #FFFFFF;
+  background: var(--color-info);
+  color: var(--color-white);
   border: none;
 }
 .btn-info:hover {
   background: #1b60f5;
-  color: #FFFFFF;
+  color: var(--color-white);
 }
 
 .btn-error {
@@ -398,14 +400,14 @@ a:hover {
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  background: #EF4444;
-  color: #FFFFFF;
+  background: var(--color-danger);
+  color: var(--color-white);
   border: none;
 }
 .btn-error:hover {
   text-decoration: none;
   background: #eb1515;
-  color: #FFFFFF;
+  color: var(--color-white);
 }
 
 .btn-error-shadow {
@@ -419,14 +421,14 @@ a:hover {
   gap: 12px;
   text-decoration: none;
   box-shadow: 0px 4px 9px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 20px -1px rgba(19, 16, 34, 0.05);
-  background: #FFFFFF;
-  color: #EF4444;
-  border: 1px solid rgba(239, 68, 68, 0.35);
+  background: var(--color-white);
+  color: var(--color-theme);
+  border: 1px solid rgba(var(--color-theme), 0.35);
 }
 .btn-error-shadow:hover {
   background: #eb1515;
   box-shadow: 0px 8px 18px -8px rgba(99, 102, 241, 0.9);
-  color: #FFFFFF;
+  color: var(--color-white);
 }
 
 .btn-switch {
@@ -437,10 +439,10 @@ a:hover {
 .btn-switch label {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 16px;
-  color: #33354D;
+  color: var(--color-gray-800);
   font-weight: 600 !important;
 }
 .btn-switch .switch {
@@ -455,14 +457,14 @@ a:hover {
   height: 0;
 }
 .btn-switch .switch input:checked + .slider {
-  background-color: #6366F1;
+  background-color: var(--color-theme);
 }
 .btn-switch .switch input:focus + .slider {
-  box-shadow: 0 0 1px #6366F1;
+  box-shadow: 0 0 1px var(--color-theme);
 }
 .btn-switch .switch input:checked + .slider:before {
   transform: translateX(20px);
-  background-color: #FFFFFF;
+  background-color: var(--color-white);
 }
 .btn-switch .switch .slider {
   position: absolute;
@@ -471,7 +473,7 @@ a:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #565973;
+  background-color: var(--color-gray-700);
   transition: 0.4s;
 }
 .btn-switch .switch .slider:before {
@@ -481,7 +483,7 @@ a:hover {
   width: 20px;
   left: 3px;
   bottom: 2.7px;
-  background-color: #FFFFFF;
+  background-color: var(--color-white);
   transition: 0.4s;
 }
 .btn-switch .switch .slider.round {
@@ -494,8 +496,8 @@ a:hover {
 .btn-social {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 20px !important;
   display: flex;
   justify-content: center;
@@ -503,14 +505,14 @@ a:hover {
   border-radius: 8px;
   width: 44px;
   height: 44px;
-  background-color: #EFF2FC;
-  color: #33354D;
+  background-color: var(--color-gray-200);
+  color: var(--color-gray-800);
   text-decoration: none;
 }
 .btn-social:hover {
   text-decoration: none;
-  background: #565973;
-  color: #FFFFFF;
+  background: var(--color-gray-700);
+  color: var(--color-white);
 }
 
 .btn-mobileMenu {
@@ -523,14 +525,14 @@ a:hover {
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  background: transparent;
-  color: #33354D;
+  background: var(--color-transparent);
+  color: var(--color-gray-800);
   border: none;
   font-size: 1.7rem;
 }
 .btn-mobileMenu:hover {
   text-decoration: none;
-  color: #33354D;
+  color: var(--color-gray-800);
 }
 
 form {
@@ -555,10 +557,10 @@ form .checkbox span.field-validation-error {
   right: 0;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 14px !important;
-  color: #EF4444;
+  color: var(--color-danger);
 }
 form .checkbox-group {
   position: relative;
@@ -576,11 +578,11 @@ form .checkbox-group .input-group input[type=checkbox] {
 }
 form .checkbox-group .input-group input[type=checkbox].input-validation-error {
   position: relative;
-  box-shadow: 0 0 0 0.063rem #EF4444;
-  color: #EF4444;
+  box-shadow: 0 0 0 0.063rem var(--color-danger);
+  color: var(--color-theme);
 }
 form .checkbox-group .input-group input[type=checkbox].input-validation-error::placeholder {
-  color: #EF4444;
+  color: varvar(--color-danger);
 }
 form .checkbox-group .input-group label {
   margin: 0;
@@ -592,10 +594,10 @@ form .checkbox-group span {
 form .checkbox-group span.field-validation-error {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 14px !important;
-  color: #EF4444;
+  color: var(--color-danger);
 }
 form .checkbox-group span.field-validation-error::after {
   display: none;
@@ -607,47 +609,47 @@ form label {
 form input {
   padding: 1rem;
   border-radius: 0.5rem !important;
-  border: 0.063rem solid #D4D7E5;
+  border: 0.063rem solid var(--color-gray-400);
 }
 form input::placeholder {
   opacity: 0.4;
 }
 form input.input-validation-error {
   position: relative;
-  border: 0.063rem solid #EF4444 !important;
-  color: #EF4444;
+  border: 0.063rem solid var(--color-danger) !important;
+  color: var(--color-danger);
 }
 form input.input-validation-error::placeholder {
-  color: #EF4444;
+  color: var(--color-danger);
 }
 form input:focus {
   outline: none;
-  border: 0.063rem solid #9397AD;
+  border: 0.063rem solid var(--color-gray-600);
 }
 form textarea {
   padding: 1rem;
   border-radius: 0.5rem !important;
-  border: 0.063rem solid #D4D7E5;
+  border: 0.063rem solid var(--color-gray-400);
   resize: none;
 }
 form textarea::placeholder {
   opacity: 0.4;
 }
 form textarea.input-validation-error {
-  border: 0.063rem solid #EF4444 !important;
-  color: #EF4444;
+  border: 0.063rem solid var(--color-danger) !important;
+  color: var(--color-danger);
 }
 form textarea.input-validation-error::placeholder {
-  color: #EF4444;
+  color: var(--color-danger);
 }
 form span.field-validation-error {
   position: absolute;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 14px !important;
-  color: #EF4444 !important;
+  color: var(--color-danger) !important;
   top: 90%;
   right: 0;
 }
@@ -755,6 +757,9 @@ header .container #menu nav {
     flex-direction: row;
   }
 }
+header .container #menu nav .menu-link {
+  color: var(--color-gray-800);
+}
 header .container .btn-switch {
   grid-area: switch;
   display: none;
@@ -763,6 +768,9 @@ header .container .btn-switch {
   header .container .btn-switch {
     display: block;
   }
+}
+header .container .btn-switch label {
+  color: var(--color-gray-700);
 }
 header .container #account-buttons {
   grid-area: buttons;
@@ -804,8 +812,8 @@ footer {
   padding: 20px 15px;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 14px !important;
   color: #9397AD;
 }
@@ -856,10 +864,10 @@ footer .container span {
 .error-page .container h1 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 48px !important;
 }
 .error-page .container p {
@@ -870,8 +878,8 @@ footer .container span {
     margin-bottom: 30px;
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-size: 20px !important;
   }
 }
@@ -924,20 +932,20 @@ footer .container span {
 .showcase .container .content h1 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 32px !important;
 }
 @media (min-width: 992px) {
   .showcase .container .content h1 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 56px !important;
     line-height: 120%;
   }
@@ -946,8 +954,8 @@ footer .container span {
   margin: 20px 0 40px 0;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 16px !important;
   color: #565973;
 }
@@ -956,8 +964,8 @@ footer .container span {
     margin: 40px 0 50px 0;
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-size: 18px !important;
   }
 }
@@ -1052,17 +1060,17 @@ footer .container span {
 .features .container .tool-features .box h5 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 20px !important;
 }
 .features .container .tool-features .box p {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 16px !important;
 }
 
@@ -1091,10 +1099,10 @@ footer .container span {
 .theme-switch .container h1 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 16px !important;
   text-align: center;
 }
@@ -1102,10 +1110,10 @@ footer .container span {
   .theme-switch .container h1 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 20px !important;
   }
 }
@@ -1113,10 +1121,10 @@ footer .container span {
   .theme-switch .container h1 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 28px !important;
   }
 }
@@ -1124,10 +1132,10 @@ footer .container span {
   .theme-switch .container h1 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 40px !important;
   }
 }
@@ -1225,16 +1233,16 @@ footer .container span {
 .work-management .container .work-management-content .features-list .feature-item span {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 12px !important;
 }
 @media (min-width: 576px) {
   .work-management .container .work-management-content .features-list .feature-item span {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-size: 16px !important;
   }
 }
@@ -1298,10 +1306,10 @@ footer .container span {
   margin-bottom: 20px;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 28px !important;
 }
 @media (min-width: 992px) {
@@ -1309,10 +1317,10 @@ footer .container span {
     text-align: left;
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 32px !important;
   }
 }
@@ -1320,10 +1328,10 @@ footer .container span {
   .download-section .container .download h1 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 40px !important;
     line-height: 1.2;
     width: 70%;
@@ -1364,10 +1372,10 @@ footer .container span {
 .download-section .container .download .store .text-container h4 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 16px !important;
   color: #0B0F19;
   margin-bottom: 0;
@@ -1376,10 +1384,10 @@ footer .container span {
   .download-section .container .download .store .text-container h4 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 20px !important;
   }
 }
@@ -1387,10 +1395,10 @@ footer .container span {
   .download-section .container .download .store .text-container h4 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 24px !important;
   }
 }
@@ -1398,16 +1406,16 @@ footer .container span {
   color: #565973;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 14px !important;
 }
 @media (min-width: 992px) {
   .download-section .container .download .store .text-container .rating-text {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-size: 16px !important;
   }
 }
@@ -1448,20 +1456,20 @@ footer .container span {
 .integration-tools .container h1 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 28px !important;
 }
 @media (min-width: 992px) {
   .integration-tools .container h1 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 32px !important;
   }
 }
@@ -1469,10 +1477,10 @@ footer .container span {
   .integration-tools .container h1 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 40px !important;
   }
 }
@@ -1581,20 +1589,20 @@ footer .container span {
 .newsletter-section .container .newsletter-header h1 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 20px !important;
 }
 @media (min-width: 576px) {
   .newsletter-section .container .newsletter-header h1 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 28px !important;
   }
 }
@@ -1602,10 +1610,10 @@ footer .container span {
   .newsletter-section .container .newsletter-header h1 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 40px !important;
   }
 }
@@ -1643,20 +1651,20 @@ footer .container span {
   text-align: center;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 16px !important;
 }
 @media (min-width: 576px) {
   .newsletter-section .container .newsletter-info h5 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 20px !important;
   }
 }
@@ -1781,10 +1789,10 @@ footer .container span {
 .course-card .course-info h5 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 16px !important;
   margin-top: 10px;
   color: #33354D;
@@ -1794,10 +1802,10 @@ footer .container span {
   .course-card .course-info h5 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 20px !important;
   }
 }
@@ -1974,16 +1982,16 @@ footer .container span {
 #get-started .container .get-started-content .subtitle {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 20px !important;
 }
 @media (min-width: 1400px) {
   #get-started .container .get-started-content .subtitle {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-size: 24px !important;
   }
 }
@@ -1991,10 +1999,10 @@ footer .container span {
   #get-started .container .get-started-content .title {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 48px !important;
   }
 }
@@ -2043,8 +2051,8 @@ footer .container span {
   margin-bottom: 1rem;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 14px !important;
   color: #FFFFFF;
 }
@@ -2122,10 +2130,10 @@ footer .container span {
 .course-intro .container .title {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 24px !important;
   line-height: 1.2;
   margin-bottom: 0.5rem;
@@ -2136,10 +2144,10 @@ footer .container span {
   .course-intro .container .title {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 32px !important;
   }
 }
@@ -2147,18 +2155,18 @@ footer .container span {
   .course-intro .container .title {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 40px !important;
   }
 }
 .course-intro .container .description {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 18px !important;
   margin-bottom: 1.5rem;
   color: rgba(255, 255, 255, 0.7) !important;
@@ -2285,20 +2293,20 @@ footer .container span {
 .course-details .container .content h1 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 28px !important;
 }
 @media (min-width: 768px) {
   .course-details .container .content h1 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 32px !important;
   }
 }
@@ -2306,10 +2314,10 @@ footer .container span {
   .course-details .container .content h1 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 40px !important;
     margin-bottom: 1rem;
   }
@@ -2317,10 +2325,10 @@ footer .container span {
 .course-details .container .content h3 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 24px !important;
 }
 @media (min-width: 768px) {
@@ -2351,10 +2359,10 @@ footer .container span {
 .course-details .container .content .program-details h1 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 28px !important;
   margin-bottom: 1.5rem;
 }
@@ -2362,10 +2370,10 @@ footer .container span {
   .course-details .container .content .program-details h1 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 32px !important;
     margin-top: 1.5rem;
   }
@@ -2374,10 +2382,10 @@ footer .container span {
   .course-details .container .content .program-details h1 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 40px !important;
     margin-top: 5rem;
     margin-bottom: 3rem;
@@ -2439,10 +2447,10 @@ footer .container span {
 .course-details .container .content .program-details .steps h4 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 16px !important;
   margin-left: 5rem;
 }
@@ -2450,10 +2458,10 @@ footer .container span {
   .course-details .container .content .program-details .steps h4 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 24px !important;
     margin-left: 7rem;
   }
@@ -2489,20 +2497,20 @@ footer .container span {
 .course-details .container .sidebar .course-includes h4 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 20px !important;
 }
 @media (min-width: 1200px) {
   .course-details .container .sidebar .course-includes h4 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 24px !important;
     margin-bottom: 1.5rem;
     font-weight: 800;
@@ -2525,10 +2533,10 @@ footer .container span {
 .course-details .container .sidebar .course-includes .price-info .sale-price {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 28px !important;
   font-weight: 900;
   margin-right: 0.5rem;
@@ -2537,10 +2545,10 @@ footer .container span {
   .course-details .container .sidebar .course-includes .price-info .sale-price {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 32px !important;
   }
 }
@@ -2552,8 +2560,8 @@ footer .container span {
   .course-details .container .sidebar .course-includes .price-info .original-price {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-size: 18px !important;
   }
 }
@@ -2661,10 +2669,10 @@ footer .container span {
 .instructor-section .container .instructor-info h5 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 16px !important;
   color: rgba(255, 255, 255, 0.5) !important;
   font-weight: 300 !important;
@@ -2673,20 +2681,20 @@ footer .container span {
   .instructor-section .container .instructor-info h5 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 20px !important;
   }
 }
 .instructor-section .container .instructor-info h1 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 28px !important;
   color: #FFFFFF !important;
 }
@@ -2694,18 +2702,18 @@ footer .container span {
   .instructor-section .container .instructor-info h1 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 40px !important;
   }
 }
 .instructor-section .container .instructor-info p {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 14px !important;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 2rem;
@@ -2796,10 +2804,10 @@ footer .container span {
 .contact .container h1 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 32px !important;
   text-align: center;
   margin-bottom: 1.5rem;
@@ -2808,10 +2816,10 @@ footer .container span {
   .contact .container h1 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 40px !important;
     margin-bottom: 3rem;
   }
@@ -2881,10 +2889,10 @@ footer .container span {
 .contact .container .contact-us .contact-option .contact-text h4 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 20px !important;
   font-weight: 900;
 }
@@ -2892,10 +2900,10 @@ footer .container span {
   .contact .container .contact-us .contact-option .contact-text h4 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
-    font-family: "Manrope", sans-serif;
+    color: var(--color-gray-700);
+    font-family: var(--color-standard);
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 24px !important;
   }
 }
@@ -2933,10 +2941,10 @@ footer .container span {
 .contact .container .content form h2 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 28px !important;
   text-align: center;
   margin-bottom: 1.5rem;
@@ -3156,8 +3164,8 @@ footer .container span {
 #account aside .profile-info p {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
+  color: var(--color-gray-700);
+  font-family: var(--color-standard);
   font-size: 16px !important;
 }
 #account aside nav {
