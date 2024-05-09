@@ -1,5 +1,5 @@
 ﻿.features {
-    background: $gray-100;
+    background: var(--color-background-002);
     padding: 80px 0;
 
     .container {
@@ -8,7 +8,7 @@
         text-align: center;
 
         .subtitle {
-            color: $gray-600;
+            color: var(--color-gray-600);
         }
 
         .tool-features {
@@ -21,49 +21,49 @@
 
             .box {
                 padding: 20px;
-                border: 1px solid $gray-300;
+                border: 1px solid var(--color-gray-300);
                 transition: all 0.15s ease-in-out;
 
                 @include lg {
                     &:nth-child(1) {
-                        border-top: 0px solid $gray-300;
-                        border-left: 0px solid $gray-300;
+                        border-top: 0px;
+                        border-left: 0px;
                     }
 
                     &:nth-child(2) {
-                        border-top: 0px solid $gray-300;
+                        border-top: 0px;
                     }
 
                     &:nth-child(3) {
-                        border-top: 0px solid $gray-300;
-                        border-right: 0px solid $gray-300;
+                        border-top: 0px;
+                        border-right: 0px;
                     }
 
                     &:nth-child(4) {
-                        border-bottom: 0px solid $gray-300;
-                        border-left: 0px solid $gray-300;
+                        border-bottom: 0px;
+                        border-left: 0px;
                     }
 
                     &:nth-child(5) {
-                        border-bottom: 0px solid $gray-300;
+                        border-bottom: 0px;
                     }
 
                     &:nth-child(6) {
-                        border-bottom: 0px solid $gray-300;
-                        border-right: 0px solid $gray-300;
+                        border-bottom: 0px;
+                        border-right: 0px;
                     }
                 }
 
                 &:hover {
                     transition: all 0.15s ease-in-out;
                     cursor: pointer;
-                    background: $white;
+                    background: var(--color-background-004);
                     @include shadow-m;
                 }
 
                 img {
                     padding: 10px;
-                    background-color: $gray-100;
+                    background-color: var(--color-background-003);
                     margin: 20px;
                     border-radius: 8px;
                 }

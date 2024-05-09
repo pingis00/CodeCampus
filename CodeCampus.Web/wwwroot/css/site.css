@@ -1,6 +1,9 @@
 ﻿@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 :root {
+  --color-background-002: #F3F6FF;
+  --color-background-003: #F3F6FF;
+  --color-background-004: #FFFFFF;
   --color-gray-000: #FFFFFF;
   --color-gray-100: #F3F6FF;
   --color-gray-200: #EFF2FC;
@@ -25,6 +28,9 @@
 }
 
 :root.dark {
+  --color-background-002: #151822;
+  --color-background-003: #2C2F38;
+  --color-background-004: #2C2F3880;
   --color-gray-000: #0B0F19;
   --color-gray-100: #0D0D0D;
   --color-gray-200: #1A1A1A;
@@ -891,7 +897,7 @@ footer .container span {
   position: relative;
   background-color: var(--color-gray-000);
   transition: background-color 0.3s ease;
-  margin-bottom: 80px;
+  padding-bottom: 80px;
 }
 @media (min-width: 992px) {
   .showcase {
@@ -998,7 +1004,7 @@ footer .container span {
 }
 
 .features {
-  background: #F3F6FF;
+  background: var(--color-background-002);
   padding: 80px 0;
 }
 .features .container {
@@ -1007,7 +1013,7 @@ footer .container span {
   text-align: center;
 }
 .features .container .subtitle {
-  color: #9397AD;
+  color: var(--color-gray-600);
 }
 .features .container .tool-features {
   margin-top: 20px;
@@ -1020,42 +1026,42 @@ footer .container span {
 }
 .features .container .tool-features .box {
   padding: 20px;
-  border: 1px solid #E2E5F1;
+  border: 1px solid var(--color-gray-300);
   transition: all 0.15s ease-in-out;
 }
 @media (min-width: 992px) {
   .features .container .tool-features .box:nth-child(1) {
-    border-top: 0px solid #E2E5F1;
-    border-left: 0px solid #E2E5F1;
+    border-top: 0px;
+    border-left: 0px;
   }
   .features .container .tool-features .box:nth-child(2) {
-    border-top: 0px solid #E2E5F1;
+    border-top: 0px;
   }
   .features .container .tool-features .box:nth-child(3) {
-    border-top: 0px solid #E2E5F1;
-    border-right: 0px solid #E2E5F1;
+    border-top: 0px;
+    border-right: 0px;
   }
   .features .container .tool-features .box:nth-child(4) {
-    border-bottom: 0px solid #E2E5F1;
-    border-left: 0px solid #E2E5F1;
+    border-bottom: 0px;
+    border-left: 0px;
   }
   .features .container .tool-features .box:nth-child(5) {
-    border-bottom: 0px solid #E2E5F1;
+    border-bottom: 0px;
   }
   .features .container .tool-features .box:nth-child(6) {
-    border-bottom: 0px solid #E2E5F1;
-    border-right: 0px solid #E2E5F1;
+    border-bottom: 0px;
+    border-right: 0px;
   }
 }
 .features .container .tool-features .box:hover {
   transition: all 0.15s ease-in-out;
   cursor: pointer;
-  background: #FFFFFF;
+  background: var(--color-background-004);
   box-shadow: 0px 4px 9px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 20px -1px rgba(19, 16, 34, 0.05);
 }
 .features .container .tool-features .box img {
   padding: 10px;
-  background-color: #F3F6FF;
+  background-color: var(--color-background-003);
   margin: 20px;
   border-radius: 8px;
 }
