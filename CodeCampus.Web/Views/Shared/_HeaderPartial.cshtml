@@ -11,7 +11,7 @@
 <header>
     <div class="container">
         <a id="logo" asp-controller="Home" asp-action="Index">
-            <img src="~/Assets/Images/Common/Silicon_Logotype_Light_Mode.svg" alt="">
+            <img src="~/Assets/Images/Common/@(isDark ? "Silicon_Logotype_Dark_Mode.svg" : "Silicon_Logotype_Light_Mode.svg")" alt="">
         </a>
 
         <div id="menu" class="hide">

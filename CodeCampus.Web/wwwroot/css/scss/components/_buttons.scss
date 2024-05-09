@@ -10,97 +10,97 @@
     text-decoration: none;
 }
 
-.btn-theme { 
+.btn-theme {
     @include button;
-    background: $theme;
-    color: $white;
+    background: var(--color-theme);
+    color: var(--color-white);
     border: none;
 
     &:hover {
         text-decoration: none;
-        background: $gray-700;
-        color: $white;
-    } 
+        background: var(--color-gray-700);
+        color: var(--color-white);
+    }
 }
 
 .btn-theme-s {
     @include button;
     @include theme-shadow;
-    background: $theme;
-    color: $white;
+    background: var(--color-theme);
+    color: var(--color-white);
     padding-top: 10px;
     padding-bottom: 13px;
 
     &:hover {
         @include theme-secondary-shadow;
         text-decoration: none;
-        background: $gray-700;
-        color: $white;
-    } 
+        background: var(--color-gray-700);
+        color: var(--color-white);
+    }
 }
 
-.btn-gray { 
+.btn-gray {
     @include button;
-    background: $gray-200;
-    color: $gray-800;
+    background: var(--color-gray-200);
+    color: var(--color-gray-800);
     border: none;
 
     &:hover {
         text-decoration: none;
-        background: $gray-700;
-        color: $white;
-    } 
+        background: var(--color-gray-700);
+        color: var(--color-white);
+    }
 }
 
 .btn-transparent {
     @include button;
-    background: $transparent;
-    color: $gray-800;
+    background: var(--color-transparent);
+    color: var(--color-gray-800);
     border: none;
 
     &:hover {
         text-decoration: none;
-        background: $gray-700;
-        color: $white;
+        background: var(--color-gray-700);
+        color: var(--color-white);
     }
 }
 
 .btn-info {
     @include button;
-    background: $info;
-    color: $white;
+    background: var(--color-info);
+    color: var(--color-white);
     border: none;
 
     &:hover {
         background: darken($info, 10%);
-        color: $white;
+        color: var(--color-white);
     }
 }
 
 .btn-error {
     @include button;
-    background: $danger;
-    color: $white;
+    background: var(--color-danger);
+    color: var(--color-white);
     border: none;
 
     &:hover {
         text-decoration: none;
         background: darken($danger, 10%);
-        color: $white;
+        color: var(--color-white);
     }
 }
 
 .btn-error-shadow {
     @include button;
     @include shadow-m;
-    background: $white;
-    color: $danger;
-    border: 1px solid rgba($danger, 0.35);
+    background: var(--color-white);
+    color: var(--color-theme);
+    border: 1px solid rgba(var(--color-theme), 0.35);
 
     &:hover {
         background: darken($danger, 10%);
         @include theme-shadow;
-        color: $white;
+        color: var(--color-white);
     }
 }
 
@@ -125,16 +125,16 @@
             height: 0;
 
             &:checked + .slider {
-                background-color: $theme;
+                background-color: var(--color-theme);
             }
 
             &:focus + .slider {
-                box-shadow: 0 0 1px $theme;
+                box-shadow: 0 0 1px var(--color-theme);
             }
 
             &:checked + .slider:before {
                 transform: translateX(20px);
-                background-color: $white;
+                background-color: var(--color-white);
             }
         }
 
@@ -145,7 +145,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: $gray-700;
+            background-color: var(--color-gray-700);
             transition: .4s;
 
             &:before {
@@ -155,7 +155,7 @@
                 width: 20px;
                 left: 3px;
                 bottom: 2.7px;
-                background-color: $white;
+                background-color: var(--color-white);
                 transition: .4s;
             }
 
@@ -178,26 +178,26 @@
     border-radius: 8px;
     width: 44px;
     height: 44px;
-    background-color: $gray-200;
-    color: $gray-800;
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-800);
     text-decoration: none;
 
     &:hover {
         text-decoration: none;
-        background: $gray-700;
-        color: $white;
+        background: var(--color-gray-700);
+        color: var(--color-white);
     }
 }
 
 .btn-mobileMenu {
     @include button;
-    background: $transparent;
-    color: $gray-800;
+    background: var(--color-transparent);
+    color: var(--color-gray-800);
     border: none;
     font-size: 1.7rem;
 
     &:hover {
         text-decoration: none;
-        color: $gray-800;
+        color: var(--color-gray-800);
     }
 }
