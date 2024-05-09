@@ -1,4 +1,7 @@
 ﻿:root {
+    --color-background-002: #F3F6FF;
+    --color-background-003: #F3F6FF;
+    --color-background-004: #FFFFFF;
     --color-gray-000: #FFFFFF;
     --color-gray-100: #F3F6FF;
     --color-gray-200: #EFF2FC;
@@ -23,6 +26,9 @@
 }
 
 :root.dark {
+    --color-background-002: #151822;
+    --color-background-003: #2C2F38;
+    --color-background-004: #2C2F3880;
     --color-gray-000: #0B0F19;
     --color-gray-100: #0D0D0D;
     --color-gray-200: #1A1A1A;
