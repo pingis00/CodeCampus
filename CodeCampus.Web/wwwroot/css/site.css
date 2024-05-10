@@ -819,13 +819,14 @@ header .container .hide {
 }
 
 footer {
+  background-color: var(--color-gray-000);
+  transition: background-color 0.3s ease;
   padding: 20px 15px;
   line-height: 160%;
   font-weight: 400;
   color: var(--color-gray-700);
   font-family: var(--color-standard);
   font-size: 14px !important;
-  color: #9397AD;
 }
 footer .container {
   width: 100%;
