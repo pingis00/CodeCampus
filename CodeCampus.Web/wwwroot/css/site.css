@@ -20,11 +20,11 @@
   --color-black: #000000;
   --color-gray: #EFF2FC;
   --color-theme: #6366F1;
-  --color-danger: #F5D7DA;
+  --color-danger: #EF4444;
   --color-danger-dark: #e57e88;
-  --color-success: #bcf7d2;
-  --color-warning: #ffe8ad;
-  --color-info: #cfdefd;
+  --color-success: #22C55E;
+  --color-warning: #FFBA08;
+  --color-info: #4C82F7;
   --color-transparent: transparent;
   --color-standard: "Manrope", sans-serif;
 }
@@ -48,11 +48,11 @@
   --color-white: #FFFFFF;
   --color-black: #000000;
   --color-theme: #6366F1;
-  --color-danger: #F5D7DA;
+  --color-danger: #EF4444;
   --color-danger-dark: #e57e88;
-  --color-success: #bcf7d2;
-  --color-warning: #ffe8ad;
-  --color-info: #cfdefd;
+  --color-success: #22C55E;
+  --color-warning: #FFBA08;
+  --color-info: #4C82F7;
   --color-transparent: transparent;
   --color-standard: "Manrope", sans-serif;
 }
@@ -589,10 +589,10 @@ form .checkbox-group .input-group input[type=checkbox] {
 form .checkbox-group .input-group input[type=checkbox].input-validation-error {
   position: relative;
   box-shadow: 0 0 0 0.063rem var(--color-danger);
-  color: var(--color-theme);
+  color: var(--color-danger);
 }
 form .checkbox-group .input-group input[type=checkbox].input-validation-error::placeholder {
-  color: varvar(--color-danger);
+  color: var(--color-danger);
 }
 form .checkbox-group .input-group label {
   margin: 0;
@@ -627,7 +627,7 @@ form input::placeholder {
 form input.input-validation-error {
   position: relative;
   border: 0.063rem solid var(--color-danger) !important;
-  color: var(--color-danger);
+  color: var(--color-danger) !important;
 }
 form input.input-validation-error::placeholder {
   color: var(--color-danger);
@@ -1565,7 +1565,7 @@ footer .container span {
 }
 
 .newsletter-section {
-  background: #F3F6FF;
+  background: var(--color-background-002);
   padding-top: 30px;
   padding-bottom: 30px;
 }
@@ -1710,6 +1710,9 @@ footer .container span {
     margin-bottom: 40px;
   }
 }
+.newsletter-section .container .newsletter-info .checkbox-group .checkbox input[type=checkbox]:checked {
+  accent-color: var(--color-theme);
+}
 .newsletter-section .container form .content {
   display: grid;
   grid-template-columns: 1fr;
@@ -1732,6 +1735,8 @@ footer .container span {
   transform: translateY(-50%);
 }
 .newsletter-section .container form .content .input-group input[type=email] {
+  background-color: var(--color-background-004);
+  color: var(--color-gray-005);
   padding: 10px 10px 10px 40px;
 }
 .newsletter-section .container form .content .subscribe-button {
