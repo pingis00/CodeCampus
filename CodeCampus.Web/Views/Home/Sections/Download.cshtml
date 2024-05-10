@@ -1,5 +1,10 @@
 ﻿@model DownloadViewModel
 
+@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = (themeMode == "dark") ? true : false;
+}
+
 <section id="@Model.Id" class="download-section">
     <div class="container">
         <div class="mobile-image">
@@ -22,7 +27,7 @@
                         <p class="rating-text">@applink.RatingText</p>
                     </div>
                     <a href="@applink.Link.Url" target="_blank" rel="noopener noreferrer">
-                        <img src="@applink.Link.Icon.ImageUrl" alt="@applink.Link.Icon.AltText" />
+                        <img src="@(isDark ? applink.Link.Icon.DarkModeImageUrl : applink.Link.Icon.ImageUrl)" alt="@applink.Link.Icon.AltText" />
                     </a>
                 </div>
             }

@@ -130,7 +130,10 @@ public class HomeIndexViewModel
                 Link = new LinkComponent
                 {
                 Url = "https://apps.apple.com/app/your-app-id",
-                Icon = new ImageComponent { ImageUrl = "Assets/Icons/brands/app-store-badge.svg", AltText = "App store badge" }
+                Icon = new ImageComponent { 
+                    ImageUrl = "Assets/Icons/brands/app-store-badge-light.svg",
+                    DarkModeImageUrl = "Assets/Icons/brands/app-store-badge-dark.svg",
+                    AltText = "App store badge" }
                 }
             },
 
@@ -145,7 +148,10 @@ public class HomeIndexViewModel
                 Link = new LinkComponent
                 {
                     Url = "https://play.google.com/store/apps/details?id=your.app.id",
-                    Icon = new ImageComponent { ImageUrl = "Assets/Icons/brands/google-play-badge.svg", AltText = "Google play badge" }
+                    Icon = new ImageComponent { 
+                        ImageUrl = "Assets/Icons/brands/google-play-badge-light.svg",
+                        DarkModeImageUrl = "Assets/Icons/brands/google-play-badge-dark.svg",
+                        AltText = "Google play badge" }
                 }
             }
         ]
