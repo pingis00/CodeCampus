@@ -1,4 +1,6 @@
 ﻿.integration-tools {
+    background-color: var(--color-gray-000);
+    transition: background-color 0.3s ease;
     padding-top: 30px;
     padding-bottom: 30px;
 
@@ -57,17 +59,26 @@
             }
 
             .tool-item {
-                margin-bottom: 20px;
+                text-decoration: none;
+                padding: 15px;
 
                 @include lg {
                     text-align: left;
                 }
 
+                &:hover {
+                    background: var(--color-hoover-001);
+                    transition: all 0.15s ease-in-out;
+                    cursor: pointer;
+                    border-radius: 5%;
+
+                    &:not(.dark-mode) {
+                        @include shadow-s;
+                    }
+                }
+
                 img {
                     margin-bottom: 10px;
-
-                    @include lg {
-                    }
                 }
 
                 p {

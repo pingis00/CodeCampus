@@ -5,6 +5,7 @@
   --color-background-003: #F3F6FF;
   --color-background-004: #FFFFFF;
   --color-background-005: #EFF2FC;
+  --color-hoover-001: initial;
   --color-gray-000: #FFFFFF;
   --color-gray-100: #F3F6FF;
   --color-gray-200: #EFF2FC;
@@ -33,6 +34,7 @@
   --color-background-003: #2C2F38;
   --color-background-004: #1E222B;
   --color-background-005: #1E222B;
+  --color-hoover-001: #1E222B;
   --color-gray-000: #0B0F19;
   --color-gray-100: #0D0D0D;
   --color-gray-200: #1A1A1A;
@@ -1442,6 +1444,8 @@ footer .container span {
 }
 
 .integration-tools {
+  background-color: var(--color-gray-000);
+  transition: background-color 0.3s ease;
   padding-top: 30px;
   padding-bottom: 30px;
 }
@@ -1523,12 +1527,22 @@ footer .container span {
   }
 }
 .integration-tools .container .tools-grid .tool-item {
-  margin-bottom: 20px;
+  text-decoration: none;
+  padding: 15px;
 }
 @media (min-width: 992px) {
   .integration-tools .container .tools-grid .tool-item {
     text-align: left;
   }
+}
+.integration-tools .container .tools-grid .tool-item:hover {
+  background: var(--color-hoover-001);
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  border-radius: 5%;
+}
+.integration-tools .container .tools-grid .tool-item:hover:not(.dark-mode) {
+  box-shadow: 0px 2px 6.4px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 12px -1px rgba(19, 16, 34, 0.06);
 }
 .integration-tools .container .tools-grid .tool-item img {
   margin-bottom: 10px;
