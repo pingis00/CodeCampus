@@ -12,6 +12,7 @@
     }
 
     .checkbox {
+
         span {
             display: block;
 
@@ -42,10 +43,10 @@
                 &.input-validation-error {
                     position: relative;
                     box-shadow: 0 0 0 0.063rem var(--color-danger);
-                    color: var(--color-theme);
+                    color: var(--color-danger);
 
                     &::placeholder {
-                        color: varvar(--color-danger);
+                        color: var(--color-danger);
                     }
                 }
             }
@@ -87,7 +88,7 @@
         &.input-validation-error {
             position: relative;
             border: 0.063rem solid var(--color-danger) !important;
-            color: var(--color-danger);
+            color: var(--color-danger) !important;
 
             &::placeholder {
                 color: var(--color-danger);
