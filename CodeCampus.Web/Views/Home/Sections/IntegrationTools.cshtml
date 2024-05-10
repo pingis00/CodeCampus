@@ -7,10 +7,10 @@
         <div class="tools-grid">
             @foreach (var tool in Model.Tools)
             {
-                <div class="tool-item">
+                <a href="#" class="tool-item">
                     <img src="@tool.Icon.ImageUrl" alt="@tool.Icon.AltText" />
                     <p class="tool-description">@tool.Description</p>
-                </div>
+                </a>
             }
         </div>
     </div>
