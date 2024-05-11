@@ -10,7 +10,7 @@ public class SignInModel
     [RegularExpression("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", ErrorMessage = "Enter a valid email")]
     public string Email { get; set; } = null!;
 
-    [Display(Name = "Password", Prompt = "Enter your password", Order = 1)]
+    [Display(Name = "Password", Prompt = "********", Order = 1)]
     [DataType(DataType.Password)]
     [Required(ErrorMessage = "Password is required")]
     [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$", ErrorMessage = "Enter a valid password")]
