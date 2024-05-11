@@ -76,13 +76,15 @@
         font-weight: 700;
     }
 
-    input {
+    input, select, textarea {
+        background-color: var(--color-background-004);
+        color: var(--color-gray-500);
         padding: 1rem;
         border-radius: 0.5rem !important;
         border: 0.063rem solid var(--color-gray-400);
 
         &::placeholder {
-            opacity: 0.4;
+            opacity: 0.8;
         }
 
         &.input-validation-error {

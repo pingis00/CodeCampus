@@ -18,7 +18,11 @@ public class ContactViewModel
                 Text = "Please feel free to drop us a line. We will respond as soon as possible.",
                 ActionName = "Leave a message",
                 Url = "*",
-                Icon = new ImageComponent { ImageUrl = "/Assets/Icons/ui/email-icon.svg", AltText = "icon of a letter"}
+                Icon = new ImageComponent { 
+                    ImageUrl = "/Assets/Icons/ui/email-icon-light.svg",
+                    DarkModeImageUrl = "/Assets/Icons/ui/email-icon-dark.svg",
+                    AltText = "icon of a letter"
+                }
             },
             new LinkComponent()
             {
@@ -26,7 +30,11 @@ public class ContactViewModel
                 Text = "Sit ac ipsum leo lorem magna nunc mattis maecenas non vestibulum.",
                 ActionName = "Send an application",
                 Url = "*",
-                Icon = new ImageComponent { ImageUrl = "/Assets/Icons/ui/career-icon.svg", AltText = ""}
+                Icon = new ImageComponent { 
+                    ImageUrl = "/Assets/Icons/ui/career-icon-light.svg",
+                    DarkModeImageUrl = "/Assets/Icons/ui/career-icon-dark.svg",
+                    AltText = ""
+                }
             }
         ];
     public string Title { get; set; } = "Get In Contact With Us";
