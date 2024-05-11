@@ -26,7 +26,7 @@
             justify-content: center;
             margin-bottom: 1rem;
             @include text-s;
-            color: $white;
+            color: var(--color-white);
 
             @include sm {
                 flex-direction: row;
@@ -78,7 +78,7 @@
             }
 
             .courses-link {
-                color: $white;
+                color: var(--color-white);
             }
         }
 
@@ -102,8 +102,8 @@
                 }
 
                 &.best-seller {
-                    background-color: $success;
-                    color: $white;
+                    background-color: var(--color-success);
+                    color: var(--color-white);
                 }
 
                 &.digital {
@@ -118,7 +118,7 @@
             @include h4;
             line-height: 1.2;
             margin-bottom: 0.5rem;
-            color: $white !important;
+            color: var(--color-white) !important;
             font-weight: 900;
 
             @include sm {
@@ -234,7 +234,7 @@
             .created {
 
                 .author-text {
-                    color: $white;
+                    color: var(--color-white);
 
                     @include xl {
                         margin-bottom: 0;
