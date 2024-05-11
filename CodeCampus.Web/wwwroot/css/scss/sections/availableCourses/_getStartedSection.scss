@@ -1,14 +1,15 @@
 ﻿#get-started {
-    background: $gray-100;
-    margin-top: 2rem;
+    background: var(--color-gray-000);
+    padding: 2rem 0;
 
     .container {
+        background: var(--color-background-002);
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         padding-top: 2rem;
-        padding-bottom: 2rem;
+        padding-bottom: 1.5rem;
 
         @include lg {
             flex-direction: row;
@@ -36,11 +37,11 @@
             .title {
 
                 @include xxl {
-                    @include d5;
+                    @include d6;
                 }
 
                 .highlight {
-                    color: $theme;
+                    color: var(--color-theme);
                 }
             }
 

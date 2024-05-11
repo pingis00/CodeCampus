@@ -1,5 +1,6 @@
 ﻿
 .course-card {
+    background: var(--color-background-002);
     padding-bottom: 20px;
 
     @include lg {
@@ -27,7 +28,7 @@
 
 
                 .fa-circle {
-                    color: $white;
+                    color: var(--color-white);
                 }
 
                 .fa-bookmark {
@@ -39,7 +40,7 @@
             &:hover {
 
                 .fa-bookmark {
-                    color: $theme;
+                    color: var(--color-theme);
                 }
 
                 &::after {
@@ -68,7 +69,7 @@
         h5 {
             @include h6;
             margin-top: 10px;
-            color: $gray-800;
+            color: var(--color-gray-800);
             margin-bottom: 0;
 
             @include xl {
@@ -77,25 +78,24 @@
             }
 
             @include xl {
-
                 margin-right: 15px;
             }
         }
 
         .author {
-            color: $gray-700;
+            color: var(--color-gray-700);
             margin-bottom: 0;
         }
 
         .price {
-            color: $theme;
+            color: var(--color-theme);
             font-weight: bold;
-            border-bottom: 1px solid $gray-300;
+            border-bottom: 1px solid var(--color-gray-300);
             padding-bottom: 10px;
         }
 
         .course-meta {
-            color: $gray-600;
+            color: var(--color-gray-600);
 
             span {
                 margin-right: 20px;
@@ -123,6 +123,7 @@
 }
 
 .course-list-page {
+    background: var(--color-gray-000);
 
     .container {
 

@@ -122,25 +122,29 @@ public class HomeIndexViewModel
             new AppLinkComponent {
                 StoreName = "App Store",
                 StarRating = new StarRatingComponent {
-                    StarIcon = new ImageComponent { ImageUrl = "Assets/Icons/ui/star-icon.svg", AltText = "star rating" },
+                    StarIcon = new ImageComponent { 
+                        ImageUrl = "Assets/Icons/ui/star-icon.svg", AltText = "star rating" 
+                    },
                     NumberOfStars = 5
                 },
                 EditorChoiceText = "Editor’s Choice",
                 RatingText = "Rating 4.7, 187K+ reviews",
                 Link = new LinkComponent
                 {
-                Url = "https://apps.apple.com/app/your-app-id",
-                Icon = new ImageComponent { 
-                    ImageUrl = "Assets/Icons/brands/app-store-badge-light.svg",
-                    DarkModeImageUrl = "Assets/Icons/brands/app-store-badge-dark.svg",
-                    AltText = "App store badge" }
+                    Url = "https://apps.apple.com/app/your-app-id",
+                    Icon = new ImageComponent { 
+                        ImageUrl = "Assets/Icons/brands/app-store-badge-light.svg",
+                        DarkModeImageUrl = "Assets/Icons/brands/app-store-badge-dark.svg",
+                        AltText = "App store badge" 
+                    }
                 }
             },
 
             new AppLinkComponent {
                 StoreName = "Google Play",
                 StarRating = new StarRatingComponent {
-                    StarIcon = new ImageComponent { ImageUrl = "Assets/Icons/ui/star-icon.svg", AltText = "star rating" },
+                    StarIcon = new ImageComponent { 
+                        ImageUrl = "Assets/Icons/ui/star-icon.svg", AltText = "star rating" },
                     NumberOfStars = 5
                 },
                 EditorChoiceText = "App of the Day",
@@ -151,7 +155,8 @@ public class HomeIndexViewModel
                     Icon = new ImageComponent { 
                         ImageUrl = "Assets/Icons/brands/google-play-badge-light.svg",
                         DarkModeImageUrl = "Assets/Icons/brands/google-play-badge-dark.svg",
-                        AltText = "Google play badge" }
+                        AltText = "Google play badge" 
+                    }
                 }
             }
         ]
