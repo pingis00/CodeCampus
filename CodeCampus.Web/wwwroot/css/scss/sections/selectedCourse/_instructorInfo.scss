@@ -124,7 +124,7 @@
 
             h1 {
                 @include h3;
-                color: $white !important;
+                color: var(--color-white) !important;
 
                 @include sm {
                     @include h1;

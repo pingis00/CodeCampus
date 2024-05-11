@@ -1,7 +1,7 @@
 ﻿.contact {
-    background: $gray-100;
+    background: var(--color-background-002);
     padding-top: 1rem;
-    padding-bottom: 2rem;
+
 
     .container {
         display: flex;
@@ -31,7 +31,7 @@
                 text-decoration: none;
                 display: flex;
                 align-items: center;
-                color: $gray-600;
+                color: var(--color-gray-600);
 
                 i {
                     margin-right: 5px
@@ -40,11 +40,11 @@
 
             .breadcrumb-separator {
                 margin: 0 0.5rem;
-                color: $gray-600;
+                color: var(--color-gray-600);
             }
 
             .active {
-                color: $theme;
+                color: var(--color-theme);
             }
         }
 
@@ -124,7 +124,7 @@
                     }
 
                     p {
-                        color: $gray-700;
+                        color: var(--color-gray-700);
                     }
 
                     a {
@@ -153,7 +153,7 @@
             }
 
             form {
-                background: $white;
+                background: var(--color-gray-000);
                 padding: 2rem;
                 border-radius: 2%;
 
@@ -169,12 +169,16 @@
 
                 .input-group {
                     margin-bottom: 1.5rem;
+
+                    @include xl {
+                        width: 500px;
+                    }
                 }
 
                 #service {
 
                     span {
-                        color: $gray-500;
+                        color: var(--color-gray-400);
                         font-weight: 400;
                     }
                 }
@@ -182,17 +186,32 @@
                 .service {
                     padding: 1rem;
                     border-radius: 0.5rem !important;
-                    border: 0.063rem solid $gray-400;
+                    border: 0.063rem solid var(--color-gray-400);
                     cursor: pointer;
-                    color: $gray-400;
+                    color: var(--color-gray-500);
+
 
                     option {
-                        color: $gray-900;
+                        color: var(--color-gray-500);
+                        opacity: 0.8;
                     }
 
                     &:focus {
                         outline: none;
-                        border: 0.063rem solid $gray-600;
+                        border: 0.063rem solid var(--color-gray-600);
+                    }
+                }
+
+                #message {
+
+                    textarea {
+                        height: 10rem;
+                    }
+                }
+
+                .btn-theme-s {
+                    @include xl {
+                        width: 250px;
                     }
                 }
             }
@@ -200,5 +219,8 @@
     }
 
     #map {
+        @include xl {
+            height: 800px !important;
+        }
     }
 }
