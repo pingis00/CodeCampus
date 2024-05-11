@@ -133,6 +133,11 @@ public class AvailableCoursesViewModel
         PostHighlightTitle = "to the Next Level",
         SubTitle = "Ready to get started?",
         CtaButton = new LinkComponent { ControllerName = "Career", ActionName = "WorkWithUs", Text = "Work with us", Url = "/workwithus" },
-        Image = new ImageComponent { ImageUrl = "/Assets/Images/Homepage/illustration-image.svg", AltText = "Illustration" }
+        Image = new ImageComponent { 
+            ImageUrl = "/Assets/Images/Homepage/illustration-image-light.svg",
+            DarkModeImageUrl = "/Assets/Images/Homepage/illustration-image-dark.svg",
+            AltText = "Illustration" 
+        
+        }
     };
 }

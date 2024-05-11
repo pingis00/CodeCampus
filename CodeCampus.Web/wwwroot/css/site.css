@@ -6,6 +6,7 @@
   --color-background-004: #FFFFFF;
   --color-background-005: #EFF2FC;
   --color-hoover-001: initial;
+  --color-text-001: #6366F1;
   --color-gray-000: #FFFFFF;
   --color-gray-100: #F3F6FF;
   --color-gray-200: #EFF2FC;
@@ -35,10 +36,11 @@
   --color-background-004: #1E222B;
   --color-background-005: #1E222B;
   --color-hoover-001: #1E222B;
+  --color-text-001: #FFFFFF;
   --color-gray-000: #0B0F19;
   --color-gray-100: #0D0D0D;
   --color-gray-200: #1A1A1A;
-  --color-gray-300: #4D4D4D;
+  --color-gray-300: #262626;
   --color-gray-400: #666666;
   --color-gray-500: #808080;
   --color-gray-600: #808080;
@@ -821,7 +823,7 @@ header .container .hide {
 footer {
   background-color: var(--color-gray-000);
   transition: background-color 0.3s ease;
-  padding: 20px 15px;
+  padding: 30px 15px;
   line-height: 160%;
   font-weight: 400;
   color: var(--color-gray-700);
@@ -1737,7 +1739,7 @@ footer .container span {
 }
 .newsletter-section .container form .content .input-group input[type=email] {
   background-color: var(--color-background-004);
-  color: var(--color-gray-005);
+  color: var(--color-gray-500);
   padding: 10px 10px 10px 40px;
 }
 .newsletter-section .container form .content .subscribe-button {
@@ -1756,6 +1758,7 @@ footer .container span {
 }
 
 .course-card {
+  background: var(--color-background-002);
   padding-bottom: 20px;
 }
 @media (min-width: 992px) {
@@ -1780,13 +1783,13 @@ footer .container span {
   z-index: 2;
 }
 .course-card .image-container .remove-course-icon-btn .fa-stack .fa-circle {
-  color: #FFFFFF;
+  color: var(--color-white);
 }
 .course-card .image-container .remove-course-icon-btn .fa-stack .fa-bookmark {
   color: #33354D;
 }
 .course-card .image-container .remove-course-icon-btn:hover .fa-bookmark {
-  color: #6366F1;
+  color: var(--color-theme);
 }
 .course-card .image-container .remove-course-icon-btn:hover::after {
   content: attr(data-tooltip);
@@ -1816,7 +1819,7 @@ footer .container span {
   color: var(--color-gray-900);
   font-size: 16px !important;
   margin-top: 10px;
-  color: #33354D;
+  color: var(--color-gray-800);
   margin-bottom: 0;
 }
 @media (min-width: 1200px) {
@@ -1836,17 +1839,17 @@ footer .container span {
   }
 }
 .course-card .course-info .author {
-  color: #565973;
+  color: var(--color-gray-700);
   margin-bottom: 0;
 }
 .course-card .course-info .price {
-  color: #6366F1;
+  color: var(--color-theme);
   font-weight: bold;
-  border-bottom: 1px solid #E2E5F1;
+  border-bottom: 1px solid var(--color-gray-300);
   padding-bottom: 10px;
 }
 .course-card .course-info .course-meta {
-  color: #9397AD;
+  color: var(--color-gray-600);
 }
 .course-card .course-info .course-meta span {
   margin-right: 20px;
@@ -1866,6 +1869,9 @@ footer .container span {
   }
 }
 
+.course-list-page {
+  background: var(--color-gray-000);
+}
 @media (min-width: 768px) {
   .course-list-page .container {
     display: grid;
@@ -1882,6 +1888,7 @@ footer .container span {
 }
 
 .course-search {
+  background: var(--color-gray-000);
   padding: 1rem;
 }
 .course-search .container .breadcrumb {
@@ -1900,17 +1907,17 @@ footer .container span {
   text-decoration: none;
   display: flex;
   align-items: center;
-  color: #9397AD;
+  color: var(--color-gray-600);
 }
 .course-search .container .breadcrumb a i {
   margin-right: 5px;
 }
 .course-search .container .breadcrumb .breadcrumb-separator {
   margin: 0 0.5rem;
-  color: #9397AD;
+  color: var(--color-gray-600);
 }
 .course-search .container .breadcrumb .active {
-  color: #6366F1;
+  color: var(--color-text-001);
 }
 .course-search .container .course-header {
   display: flex;
@@ -1948,39 +1955,58 @@ footer .container span {
     justify-content: flex-end;
   }
 }
-.course-search .container .course-header .search-controls select, .course-search .container .course-header .search-controls .search-input {
+.course-search .container .course-header .search-controls select {
+  background-color: var(--color-background-004);
   width: 100%;
-  color: #565973;
-  border: 1px solid #D4D7E5;
+  color: var(--color-gray-700);
+  border: 1px solid var(--color-gray-400);
   padding: 0.5rem;
   margin-bottom: 0.5rem;
   border-radius: 0.25rem;
 }
 @media (min-width: 992px) {
-  .course-search .container .course-header .search-controls select, .course-search .container .course-header .search-controls .search-input {
+  .course-search .container .course-header .search-controls select {
     width: auto;
     margin-right: 1rem;
   }
 }
-.course-search .container .course-header .search-controls .search-input::placeholder {
-  color: #B4B7C9;
+.course-search .container .course-header .search-controls .search-wrapper {
+  position: relative;
 }
-.course-search .container .course-header .search-controls input {
-  padding-right: 2.5rem;
-  background: url("/images/icons/search-icon.svg") no-repeat right 0.75rem center;
+@media (min-width: 992px) {
+  .course-search .container .course-header .search-controls .search-wrapper {
+    width: auto;
+    margin-right: 1rem;
+  }
+}
+.course-search .container .course-header .search-controls .search-wrapper .search-input {
+  background-color: var(--color-background-004);
+  width: 100%;
+  color: var(--color-gray-700);
+  border: 1px solid var(--color-gray-400);
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.25rem;
+}
+.course-search .container .course-header .search-controls .search-wrapper .search-icon {
+  position: absolute;
+  right: 25px;
+  top: 15px;
+  pointer-events: none;
 }
 
 #get-started {
-  background: #F3F6FF;
-  margin-top: 2rem;
+  background: var(--color-gray-000);
+  padding: 2rem 0;
 }
 #get-started .container {
+  background: var(--color-background-002);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-bottom: 1.5rem;
 }
 @media (min-width: 992px) {
   #get-started .container {
@@ -2024,11 +2050,11 @@ footer .container span {
     font-family: var(--color-standard);
     font-weight: 800;
     color: var(--color-gray-900);
-    font-size: 48px !important;
+    font-size: 42px !important;
   }
 }
 #get-started .container .get-started-content .title .highlight {
-  color: #6366F1;
+  color: var(--color-theme);
 }
 #get-started .container .get-started-content .cta-button {
   display: inline-block;

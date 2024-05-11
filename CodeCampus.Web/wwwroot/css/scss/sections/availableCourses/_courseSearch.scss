@@ -1,4 +1,5 @@
 ﻿.course-search {
+    background: var(--color-gray-000);
     padding: 1rem;
 
     .container {
@@ -18,7 +19,7 @@
                 text-decoration: none;
                 display: flex;
                 align-items: center;
-                color: $gray-600;
+                color: var(--color-gray-600);
 
                 i {
                     margin-right: 5px
@@ -27,11 +28,11 @@
 
             .breadcrumb-separator {
                 margin: 0 0.5rem;
-                color: $gray-600;
+                color: var(--color-gray-600);
             }
 
             .active {
-                color: $theme;
+                color: var(--color-text-001);
             }
         }
 
@@ -69,10 +70,11 @@
                     justify-content: flex-end;
                 }
 
-                select, .search-input {
+                select {
+                    background-color: var(--color-background-004);
                     width: 100%;
-                    color: $gray-700;
-                    border: 1px solid $gray-400;
+                    color: var(--color-gray-700);
+                    border: 1px solid var(--color-gray-400);
                     padding: 0.5rem;
                     margin-bottom: 0.5rem;
                     border-radius: 0.25rem;
@@ -83,13 +85,30 @@
                     }
                 }
 
-                .search-input::placeholder {
-                    color: $gray-500;
-                }
+                .search-wrapper {
+                    position: relative;
 
-                input {
-                    padding-right: 2.5rem;
-                    background: url('/images/icons/search-icon.svg') no-repeat right 0.75rem center;
+                    @include lg {
+                        width: auto;
+                        margin-right: 1rem;
+                    }
+
+                    .search-input {
+                        background-color: var(--color-background-004);
+                        width: 100%;
+                        color: var(--color-gray-700);
+                        border: 1px solid var(--color-gray-400);
+                        padding: 0.5rem;
+                        margin-bottom: 0.5rem;
+                        border-radius: 0.25rem;
+                    }
+
+                    .search-icon {
+                        position: absolute;
+                        right: 25px;
+                        top: 15px;
+                        pointer-events: none;
+                    }
                 }
             }
         }
