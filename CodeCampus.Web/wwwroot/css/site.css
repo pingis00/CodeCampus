@@ -3065,6 +3065,7 @@ footer .container span {
 
 #signup {
   height: 100%;
+  background-color: var(--color-gray-000);
 }
 #signup .container {
   display: flex;
@@ -3114,11 +3115,10 @@ footer .container span {
 }
 #signup .container form .content #form-terms {
   grid-area: terms;
-  padding: 1rem 0;
+  padding-top: 0.5rem;
 }
 #signup .container form .content #form-submit {
   grid-area: button;
-  padding-bottom: 150px;
 }
 
 #signin {
