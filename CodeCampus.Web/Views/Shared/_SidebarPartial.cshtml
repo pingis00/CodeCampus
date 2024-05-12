@@ -1,10 +1,16 @@
-﻿<aside>
+﻿@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = (themeMode == "dark") ? true : false;
+    ViewData["Title"] = "Header";
+}
+
+<aside>
     <div class="profile-info">
         <div class="image-overlay">
             <img class="user-avatar" src="~/Assets/Images/Common/default-profile-image.svg" alt="profile-image" />
             <div class="change-icon-overlay">
                 <a href="#">
-                    <img src="~/Assets/Icons/ui/refresh-icon.svg" alt="Change avatar" />
+                    <img src="~/Assets/Icons/ui/@(isDark ? "refresh-icon-dark.svg" : "refresh-icon-light.svg")" alt="Change avatar" />
                 </a>
             </div>
         </div>
