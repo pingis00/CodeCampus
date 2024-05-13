@@ -1,12 +1,5 @@
-﻿
-.course-card {
-    background: var(--color-background-002);
-    padding-bottom: 20px;
-
-    @include lg {
-        margin-bottom: 0;
-    }
-
+﻿.course-card {
+    
     .image-container {
         position: relative;
 

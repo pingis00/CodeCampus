@@ -735,15 +735,14 @@ form span.field-validation-error::after {
 }
 
 header {
+  background: var(--color-gray-000);
   padding: 15px 0;
-  background-color: var(--color-gray-000);
-  transition: background-color 0.3s ease;
 }
 header .container {
   display: grid;
   align-items: center;
   grid-template-columns: 1fr auto;
-  grid-template-areas: "logo mobile" "menu menu" "buttons buttons";
+  grid-template-areas: "logo mobile" "menu menu" "switch switch" "buttons buttons";
   gap: 10px;
 }
 @media (min-width: 992px) {
@@ -765,11 +764,6 @@ header .container #logo {
 header .container #menu {
   grid-area: menu;
 }
-@media (min-width: 1200px) {
-  header .container #menu {
-    display: block;
-  }
-}
 header .container #menu nav {
   display: flex;
   flex-direction: column;
@@ -786,12 +780,8 @@ header .container #menu nav .menu-link {
 }
 header .container .btn-switch {
   grid-area: switch;
-  display: none;
-}
-@media (min-width: 992px) {
-  header .container .btn-switch {
-    display: block;
-  }
+  justify-content: center;
+  margin: 10px 0;
 }
 header .container .btn-switch label {
   color: var(--color-gray-700);
@@ -809,14 +799,22 @@ header .container #account-buttons {
     flex-direction: row;
   }
 }
-header .container #account-buttons .user-avatar {
+header .container #account-buttons .image-overlay {
+  background: var(--color-background-008);
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header .container #account-buttons .image-overlay .user-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
   object-fit: cover;
   object-position: center;
-  border: 2px solid #ffffff;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease-in-out;
 }
 header .container .btn-mobileMenu {
   grid-area: mobile;
@@ -830,6 +828,18 @@ header .container .btn-mobileMenu {
 }
 header .container .hide {
   display: none !important;
+}
+
+.full-screen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.no-scroll {
+  overflow: hidden;
 }
 
 footer {
@@ -1766,15 +1776,6 @@ footer .container span {
   text-decoration: none;
 }
 
-.course-card {
-  background: var(--color-background-002);
-  padding-bottom: 20px;
-}
-@media (min-width: 992px) {
-  .course-card {
-    margin-bottom: 0;
-  }
-}
 .course-card .image-container {
   position: relative;
 }
@@ -3239,7 +3240,6 @@ footer .container span {
   width: 110px;
   height: 110px;
   margin: auto;
-  border: 2px solid transparent;
   background: var(--color-background-008);
   border-radius: 50%;
 }
@@ -3301,58 +3301,61 @@ footer .container span {
   }
 }
 #account aside nav a .active-icon {
-  color: #FFFFFF;
+  color: var(--color-white);
 }
 #account aside nav a .inactive-icon {
-  color: #9397AD;
+  color: var(--color-gray-600);
 }
 
+.details-section {
+  background-color: var(--color-gray-000);
+}
 @media (min-width: 992px) {
-  #account {
+  .details-section .container #account {
     display: grid;
     grid-template-columns: 2fr 5fr;
     gap: 150px;
-    margin-bottom: 70px;
   }
 }
-#account .details {
-  margin-top: 50px;
+.details-section .container #account .details {
+  margin-top: 30px;
+  padding-bottom: 70px;
   width: 100%;
 }
-#account .details .basic-info form {
+.details-section .container #account .details .basic-info form {
   padding: 1rem;
 }
-#account .details .basic-info form h5 {
-  color: #6366F1;
+.details-section .container #account .details .basic-info form h5 {
+  color: var(--color-theme);
 }
 @media (min-width: 768px) {
-  #account .details .basic-info form .content {
+  .details-section .container #account .details .basic-info form .content {
     display: grid;
     gap: 1rem 2rem;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "firstname lastname" "email phone" "bio bio" "buttons buttons";
   }
 }
-#account .details .basic-info form .content #form-firstname {
+.details-section .container #account .details .basic-info form .content #form-firstname {
   grid-area: firstname;
 }
-#account .details .basic-info form .content #form-lastname {
+.details-section .container #account .details .basic-info form .content #form-lastname {
   grid-area: lastname;
 }
-#account .details .basic-info form .content #form-email {
+.details-section .container #account .details .basic-info form .content #form-email {
   grid-area: email;
 }
-#account .details .basic-info form .content #form-phone {
+.details-section .container #account .details .basic-info form .content #form-phone {
   grid-area: phone;
 }
-#account .details .basic-info form .content #form-bio {
+.details-section .container #account .details .basic-info form .content #form-bio {
   grid-area: bio;
 }
-#account .details .basic-info form .content #form-bio span {
-  color: #B4B7C9;
+.details-section .container #account .details .basic-info form .content #form-bio span {
+  color: var(--color-gray-500);
   font-weight: 400;
 }
-#account .details .basic-info form .content .form-buttons {
+.details-section .container #account .details .basic-info form .content .form-buttons {
   grid-area: buttons;
   padding-top: 20px;
   width: 100%;
@@ -3360,45 +3363,53 @@ footer .container span {
   flex-direction: column;
 }
 @media (min-width: 768px) {
-  #account .details .basic-info form .content .form-buttons {
+  .details-section .container #account .details .basic-info form .content .form-buttons {
     flex-direction: row;
     gap: 20px;
   }
 }
-#account .details .address-info {
-  margin-top: 30px;
-}
-#account .details .address-info form {
-  padding: 1rem;
-}
-#account .details .address-info form h5 {
-  color: #6366F1;
+.details-section .container #account .details .basic-info form .content .form-buttons .btn-gray {
+  margin-bottom: 10px;
 }
 @media (min-width: 768px) {
-  #account .details .address-info form .content {
+  .details-section .container #account .details .basic-info form .content .form-buttons .btn-gray {
+    margin-bottom: 0;
+  }
+}
+.details-section .container #account .details .address-info {
+  margin-top: 30px;
+}
+.details-section .container #account .details .address-info form {
+  padding: 1rem;
+}
+.details-section .container #account .details .address-info form h5 {
+  color: var(--color-theme);
+}
+@media (min-width: 768px) {
+  .details-section .container #account .details .address-info form .content {
     display: grid;
     gap: 1rem 2rem;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "addressline_1 addressline_1" "addressline_2 addressline_2" "postalcode city" "buttons buttons";
   }
 }
-#account .details .address-info form .content #form-addressline_1 {
+.details-section .container #account .details .address-info form .content #form-addressline_1 {
   grid-area: addressline_1;
 }
-#account .details .address-info form .content #form-addressline_2 {
+.details-section .container #account .details .address-info form .content #form-addressline_2 {
   grid-area: addressline_2;
 }
-#account .details .address-info form .content #form-addressline_2 span {
-  color: #B4B7C9;
+.details-section .container #account .details .address-info form .content #form-addressline_2 span {
+  color: var(--color-gray-500);
   font-weight: 400;
 }
-#account .details .address-info form .content #form-postalcode {
+.details-section .container #account .details .address-info form .content #form-postalcode {
   grid-area: postalcode;
 }
-#account .details .address-info form .content #form-city {
+.details-section .container #account .details .address-info form .content #form-city {
   grid-area: city;
 }
-#account .details .address-info form .content .form-buttons {
+.details-section .container #account .details .address-info form .content .form-buttons {
   grid-area: buttons;
   padding-top: 20px;
   width: 100%;
@@ -3406,51 +3417,62 @@ footer .container span {
   flex-direction: column;
 }
 @media (min-width: 768px) {
-  #account .details .address-info form .content .form-buttons {
+  .details-section .container #account .details .address-info form .content .form-buttons {
     flex-direction: row;
     gap: 20px;
   }
 }
+.details-section .container #account .details .address-info form .content .form-buttons .btn-gray {
+  margin-bottom: 10px;
+}
+@media (min-width: 768px) {
+  .details-section .container #account .details .address-info form .content .form-buttons .btn-gray {
+    margin-bottom: 0;
+  }
+}
 
+.security-section {
+  background-color: var(--color-gray-000);
+}
 @media (min-width: 992px) {
-  #account {
+  .security-section .container #account {
     display: grid;
     grid-template-columns: 2fr 5fr;
     gap: 150px;
-    margin-bottom: 70px;
   }
 }
-#account .details {
-  margin-top: 50px;
+.security-section .container #account .details {
+  margin-top: 30px;
+  padding-bottom: 70px;
   width: 100%;
 }
-#account .details .security-info form {
+.security-section .container #account .details .security-info form {
   padding: 1rem;
 }
-#account .details .security-info form h5 {
-  color: #6366F1;
+.security-section .container #account .details .security-info form h5 {
+  color: var(--color-theme);
 }
 @media (min-width: 768px) {
-  #account .details .security-info form .content {
+  .security-section .container #account .details .security-info form .content {
     display: grid;
     gap: 1rem 2rem;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "currentpassword empty" "newpassword confirm" "buttons buttons";
   }
 }
-#account .details .security-info form .content .input-group {
+.security-section .container #account .details .security-info form .content .input-group {
   margin-bottom: 20px;
 }
-#account .details .security-info form .content #form-current_password {
+.security-section .container #account .details .security-info form .content #form-current_password {
   grid-area: currentpassword;
 }
-#account .details .security-info form .content #form-new_password {
+.security-section .container #account .details .security-info form .content #form-new_password {
   grid-area: newpassword;
 }
-#account .details .security-info form .content #form-confirm {
+.security-section .container #account .details .security-info form .content #form-confirm {
   grid-area: confirm;
 }
-#account .details .security-info form .content .form-buttons {
+.security-section .container #account .details .security-info form .content .form-buttons {
   grid-area: buttons;
   padding-top: 20px;
   width: 100%;
@@ -3458,51 +3480,74 @@ footer .container span {
   flex-direction: column;
 }
 @media (min-width: 768px) {
-  #account .details .security-info form .content .form-buttons {
+  .security-section .container #account .details .security-info form .content .form-buttons {
     flex-direction: row;
     gap: 20px;
   }
 }
-#account .details .security-info form .content .form-buttons button {
+.security-section .container #account .details .security-info form .content .form-buttons button {
   margin-bottom: 10px;
 }
 @media (min-width: 768px) {
-  #account .details .security-info form .content .form-buttons button {
+  .security-section .container #account .details .security-info form .content .form-buttons button {
     margin-bottom: 0;
   }
 }
-#account .details .security-info .delete-account {
+.security-section .container #account .details .security-info .delete-account {
   padding: 1rem;
   margin-top: 2rem;
 }
-#account .details .security-info .delete-account h5 {
-  color: #6366F1;
+.security-section .container #account .details .security-info .delete-account h5 {
+  color: var(--color-theme);
   margin-bottom: 1rem;
 }
-#account .details .security-info .delete-account p {
+.security-section .container #account .details .security-info .delete-account p {
   margin-bottom: 1rem;
 }
-#account .details .security-info .delete-account .delete-form {
+.security-section .container #account .details .security-info .delete-account .delete-form {
   display: inline-block;
   padding: 0;
 }
-.container #account .saved-item-card .saved-item-header {
+.saved-course-section {
+  background-color: var(--color-gray-000);
+  height: 100%;
+}
+@media (min-width: 992px) {
+  .saved-course-section .container #account {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    gap: 150px;
+  }
+}
+.saved-course-section .container #account .saved-item-card {
+  margin-top: 30px;
+}
+.saved-course-section .container #account .saved-item-card .saved-item-header {
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-bottom: 50px;
+  padding-bottom: 50px;
 }
 @media (min-width: 992px) {
-  .container #account .saved-item-card .saved-item-header {
+  .saved-course-section .container #account .saved-item-card .saved-item-header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     text-align: left;
-    margin-bottom: 20px;
   }
 }
-.container #account .saved-item-card .saved-item-header .btn {
+.saved-course-section .container #account .saved-item-card .saved-item-header h2 {
+  color: var(--color-gray-000);
+}
+.saved-course-section .container #account .saved-item-card .saved-item-header .btn {
+  border: 1px solid var(--color-danger);
+  color: var(--color-danger);
+  font-weight: 600;
   flex-shrink: 0;
   flex-grow: 0;
   flex-basis: auto;
+  transition: 0.3s ease-in-out;
+}
+.saved-course-section .container #account .saved-item-card .saved-item-header .btn:hover {
+  background: var(--color-gray-300);
 }

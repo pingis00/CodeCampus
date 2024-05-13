@@ -30,7 +30,7 @@
             </nav>
         </div>
 
-        <div class="btn-switch">
+        <div class="btn-switch hide">
             <label>Light</label>
             <label class="switch" for="switch-mode">
                 <input type="checkbox" id="switch-mode" checked="@isDark" />
@@ -44,7 +44,9 @@
             @if (_signInManger.IsSignedIn(User))
             {
                 <a asp-controller="Account" asp-action="Details">
-                    <img class="user-avatar" src="~/Assets/Images/Common/default-profile-image.svg" alt="profile-image" />
+                    <div class="image-overlay">
+                        <img class="user-avatar" src="~/Assets/Images/Common/default-profile-image.svg" alt="profile-image" />
+                    </div>
                 </a>
                 <a class="btn-theme" asp-controller="Auth" asp-action="SignOut">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i><span>Sign Out</span>
