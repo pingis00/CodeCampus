@@ -1,9 +1,11 @@
 ﻿.error-page {
+    background: var(--color-gray-000);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    height: 100%;
 
     .container {
         max-width: 500px;
@@ -22,10 +24,9 @@
         }
 
         p {
-            margin-bottom: 30px;
-
+            
             @include lg {
-                margin-bottom: 30px;
+                
                 @include text-xl;
             }
         }
@@ -34,8 +35,6 @@
             display: inline-flex;
             align-items: center;
 
-            .icon {
-            }
         }
     }
 }
