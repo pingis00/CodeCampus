@@ -878,11 +878,13 @@ footer .container span {
 }
 
 .error-page {
+  background: var(--color-gray-000);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  height: 100%;
 }
 .error-page .container {
   max-width: 500px;
@@ -905,12 +907,8 @@ footer .container span {
   color: var(--color-gray-900);
   font-size: 48px !important;
 }
-.error-page .container p {
-  margin-bottom: 30px;
-}
 @media (min-width: 992px) {
   .error-page .container p {
-    margin-bottom: 30px;
     line-height: 160%;
     font-weight: 400;
     color: var(--color-gray-700);
@@ -922,6 +920,7 @@ footer .container span {
   display: inline-flex;
   align-items: center;
 }
+
 .showcase {
   position: relative;
   background-color: var(--color-gray-000);
@@ -3508,6 +3507,7 @@ footer .container span {
   display: inline-block;
   padding: 0;
 }
+
 .saved-course-section {
   background-color: var(--color-gray-000);
   height: 100%;
