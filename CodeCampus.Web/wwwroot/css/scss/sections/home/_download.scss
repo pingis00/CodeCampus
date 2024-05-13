@@ -1,22 +1,12 @@
 ﻿.download-section {
+    background: var(--color-background-002);
     text-align: center;
-    padding-top: 30px;
-    padding-bottom: 20px;
-    background: $gray-100;
-
-
-    @include lg {
-        padding-top: 50px;
-        padding-bottom: 40px;
-    }
-
-    @include xl {
-        padding-top: 50px;
-        padding-bottom: 40px;
-    }
 
     .container {
         width: 100%;
+        background: var(--color-background-005);
+        padding: 50px 0;
+        border-radius: 5px;
 
         @include lg {
             display: flex;

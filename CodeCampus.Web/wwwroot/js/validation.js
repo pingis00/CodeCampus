@@ -102,20 +102,18 @@
                             case 'postalcode':
                                 postalcodeValidator(e.target)
                                 break;
+                         
                         }
                     })
                 }
             }
         })
     })
-    console.log("DOMContentLoaded");
 
     const cancelSecurityButton = document.getElementById('cancelSecurity');
-    console.log(cancelSecurityButton); 
 
     if (cancelSecurityButton) {
         cancelSecurityButton.addEventListener('click', function () {
-            console.log("Cancel clicked on Security Form");
             resetForm('#securityForm');
         });
     } else {

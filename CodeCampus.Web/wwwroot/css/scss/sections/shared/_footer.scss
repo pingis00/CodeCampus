@@ -1,7 +1,9 @@
 footer {
-    padding: 20px 15px;
+    background-color: var(--color-gray-000);
+    transition: background-color 0.3s ease;
+    padding: 3rem 0;
     @include text-s;
-    color: $gray-600;
+
 
     .container {
         width: 100%;

@@ -1,12 +1,16 @@
 ﻿@inject SignInManager<UserEntity> _signInManger
 
 @{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = (themeMode == "dark") ? true : false;
     ViewData["Title"] = "Header";
 }
 
-<header>
+<header class="@((ViewContext.RouteData.Values["Controller"]!.ToString() == "Contact") ? "contact-header" : "")">
     <div class="container">
-        <a id="logo" asp-controller="Home" asp-action="Index"><img src="~/Assets/Images/Common/Silicon_Logotype_Light_Mode.svg" alt=""></a>
+        <a id="logo" asp-controller="Home" asp-action="Index">
+            <img src="~/Assets/Images/Common/@(isDark ? "Silicon_Logotype_Dark_Mode.svg" : "Silicon_Logotype_Light_Mode.svg")" alt="">
+        </a>
 
         <div id="menu" class="hide">
             <nav>
@@ -26,10 +30,10 @@
             </nav>
         </div>
 
-        <div class="btn-switch">
+        <div class="btn-switch hide">
             <label>Light</label>
             <label class="switch" for="switch-mode">
-                <input type="checkbox" id="switch-mode" />
+                <input type="checkbox" id="switch-mode" checked="@isDark" />
                 <span class="slider round"></span>
             </label>
             <label>Dark</label>
@@ -40,7 +44,9 @@
             @if (_signInManger.IsSignedIn(User))
             {
                 <a asp-controller="Account" asp-action="Details">
-                    <img class="user-avatar" src="~/Assets/Images/Common/default-profile-image.svg" alt="profile-image" />
+                    <div class="image-overlay">
+                        <img class="user-avatar" src="~/Assets/Images/Common/default-profile-image.svg" alt="profile-image" />
+                    </div>
                 </a>
                 <a class="btn-theme" asp-controller="Auth" asp-action="SignOut">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i><span>Sign Out</span>

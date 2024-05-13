@@ -1,5 +1,5 @@
 ﻿.newsletter-section {
-    background: $gray-100;
+    background: var(--color-background-002);
     padding-top: 30px;
     padding-bottom: 30px;
 
@@ -7,8 +7,6 @@
         padding-top: 50px;
         padding-bottom: 50px;
     }
-
-
 
     .container {
         @include lg {
@@ -107,10 +105,8 @@
 
                 .checkbox {
 
-                    input {
-                    }
-
-                    label {
+                    input[type="checkbox"]:checked {
+                        accent-color: var(--color-theme);
                     }
                 }
             }
@@ -133,8 +129,6 @@
                     width: 100%;
                     margin-bottom: 20px;
 
-
-
                     .email-icon {
                         position: absolute;
                         left: 10px;
@@ -142,10 +136,8 @@
                         transform: translateY(-50%);
                     }
 
-                    .text-danger {
-                    }
-
                     input[type="email"] {
+                        
                         padding: 10px 10px 10px 40px;
                     }
                 }

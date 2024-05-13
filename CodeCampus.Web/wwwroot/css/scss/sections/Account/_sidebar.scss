@@ -1,8 +1,9 @@
 ﻿#account {
+    background-color: var(--color-gray-000);
 
     aside {
         @include lg {
-            border-right: 1px solid $gray-300;
+            border-right: 1px solid var(--color-gray-300);
             padding-right: 20px;
         }
 
@@ -18,7 +19,8 @@
                 width: 110px;
                 height: 110px;
                 margin: auto;
-                border: 2px solid transparent;
+                background: var(--color-background-008);
+                border-radius: 50%;
 
                 .user-avatar {
                     width: 100%;
@@ -47,9 +49,11 @@
 
                 &:hover {
                     border-color: #ffffff;
+                    transition: 0.3s ease-in-out;
 
                     .user-avatar {
                         opacity: 0.6;
+                        transition: 0.3s ease-in-out;
                     }
 
                     .change-icon-overlay {
@@ -81,11 +85,11 @@
                 }
 
                 .active-icon {
-                    color: $white;
+                    color: var(--color-white);
                 }
 
                 .inactive-icon {
-                    color: $gray-600;
+                    color: var(--color-gray-600);
                 }
             }
         }

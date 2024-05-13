@@ -1,127 +1,148 @@
-﻿#account {
+﻿.details-section {
+    background-color: var(--color-gray-000);
 
-    @include lg {
-        display: grid;
-        grid-template-columns: 2fr 5fr;
-        gap: 150px;
-        margin-bottom: 70px;
-    }
+    .container {
 
-    .details {
-        margin-top: 50px;
-        width: 100%;
+        #account {
 
-        .basic-info {
-
-            form {
-                padding: 1rem;
-
-                h5 {
-                    color: $theme;
-                }
-
-                .content {
-                    .input-group {
-                    }
-
-                    @include md {
-                        display: grid;
-                        gap: 1rem 2rem;
-                        grid-template-columns: 1fr 1fr;
-                        grid-template-areas: "firstname lastname" "email phone" "bio bio" "buttons buttons";
-                    }
-
-                    #form-firstname {
-                        grid-area: firstname;
-                    }
-
-                    #form-lastname {
-                        grid-area: lastname;
-                    }
-
-                    #form-email {
-                        grid-area: email;
-                    }
-
-                    #form-phone {
-                        grid-area: phone;
-                    }
-
-                    #form-bio {
-                        grid-area: bio;
-
-                        span {
-                            color: $gray-500;
-                            font-weight: 400;
-                        }
-                    }
-
-                    .form-buttons {
-                        grid-area: buttons;
-                        padding-top: 20px;
-                        width: 100%;
-                        display: flex;
-                        flex-direction: column;
-
-                        @include md {
-                            flex-direction: row;
-                            gap: 20px;
-                        }
-                    }
-                }
+            @include lg {
+                display: grid;
+                grid-template-columns: 2fr 5fr;
+                gap: 150px;
             }
-        }
 
-        .address-info {
-            margin-top: 30px;
+            .details {
+                margin-top: 30px;
+                padding-bottom: 70px;
+                width: 100%;
 
-            form {
-                padding: 1rem;
+                .basic-info {
 
-                h5 {
-                    color: $theme;
-                }
+                    form {
+                        padding: 1rem;
 
-                .content {
+                        h5 {
+                            color: var(--color-theme);
+                        }
 
-                    @include md {
-                        display: grid;
-                        gap: 1rem 2rem;
-                        grid-template-columns: 1fr 1fr;
-                        grid-template-areas: "addressline_1 addressline_1" "addressline_2 addressline_2" "postalcode city" "buttons buttons";
-                    }
+                        .content {
 
-                    #form-addressline_1 {
-                        grid-area: addressline_1;
-                    }
+                            @include md {
+                                display: grid;
+                                gap: 1rem 2rem;
+                                grid-template-columns: 1fr 1fr;
+                                grid-template-areas: "firstname lastname" "email phone" "bio bio" "buttons buttons";
+                            }
 
-                    #form-addressline_2 {
-                        grid-area: addressline_2;
+                            #form-firstname {
+                                grid-area: firstname;
+                            }
 
-                        span {
-                            color: $gray-500;
-                            font-weight: 400;
+                            #form-lastname {
+                                grid-area: lastname;
+                            }
+
+                            #form-email {
+                                grid-area: email;
+                            }
+
+                            #form-phone {
+                                grid-area: phone;
+                            }
+
+                            #form-bio {
+                                grid-area: bio;
+
+                                span {
+                                    color: var(--color-gray-500);
+                                    font-weight: 400;
+                                }
+                            }
+
+                            .form-buttons {
+                                grid-area: buttons;
+                                padding-top: 20px;
+                                width: 100%;
+                                display: flex;
+                                flex-direction: column;
+
+                                @include md {
+                                    flex-direction: row;
+                                    gap: 20px;
+                                }
+
+                                .btn-gray {
+                                    margin-bottom: 10px;
+
+                                    @include md {
+                                        margin-bottom: 0;
+                                    }
+                                }
+                            }
                         }
                     }
+                }
 
-                    #form-postalcode {
-                        grid-area: postalcode;
-                    }
+                .address-info {
+                    margin-top: 30px;
 
-                    #form-city {
-                        grid-area: city;
-                    }
+                    form {
+                        padding: 1rem;
 
-                    .form-buttons {
-                        grid-area: buttons;
-                        padding-top: 20px;
-                        width: 100%;
-                        display: flex;
-                        flex-direction: column;
+                        h5 {
+                            color: var(--color-theme);
+                        }
 
-                        @include md {
-                            flex-direction: row;
-                            gap: 20px;
+                        .content {
+
+                            @include md {
+                                display: grid;
+                                gap: 1rem 2rem;
+                                grid-template-columns: 1fr 1fr;
+                                grid-template-areas: "addressline_1 addressline_1" "addressline_2 addressline_2" "postalcode city" "buttons buttons";
+                            }
+
+                            #form-addressline_1 {
+                                grid-area: addressline_1;
+                            }
+
+                            #form-addressline_2 {
+                                grid-area: addressline_2;
+
+                                span {
+                                    color: var(--color-gray-500);
+                                    font-weight: 400;
+                                }
+                            }
+
+                            #form-postalcode {
+                                grid-area: postalcode;
+                            }
+
+                            #form-city {
+                                grid-area: city;
+                            }
+
+                            .form-buttons {
+                                grid-area: buttons;
+                                padding-top: 20px;
+                                width: 100%;
+                                display: flex;
+                                flex-direction: column;
+
+                                @include md {
+                                    flex-direction: row;
+                                    gap: 20px;
+                                }
+
+                                .btn-gray {
+                                    margin-bottom: 10px;
+
+                                    @include md {
+                                        margin-bottom: 0;
+                                    }
+                                }
+                            }
                         }
                     }
                 }

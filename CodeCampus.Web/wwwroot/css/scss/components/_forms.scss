@@ -12,6 +12,7 @@
     }
 
     .checkbox {
+
         span {
             display: block;
 
@@ -20,7 +21,7 @@
                 top: 0;
                 right: 0;
                 @include text-s;
-                color: $danger;
+                color: var(--color-danger);
             }
         }
     }
@@ -41,11 +42,11 @@
 
                 &.input-validation-error {
                     position: relative;
-                    box-shadow: 0 0 0 0.063rem $danger;
-                    color: $danger;
+                    box-shadow: 0 0 0 0.063rem var(--color-danger);
+                    color: var(--color-danger);
 
                     &::placeholder {
-                        color: $danger;
+                        color: var(--color-danger);
                     }
                 }
             }
@@ -61,7 +62,7 @@
 
             &.field-validation-error {
                 @include text-s;
-                color: $danger;
+                color: var(--color-danger);
 
                 &::after {
                     display: none;
@@ -75,35 +76,37 @@
         font-weight: 700;
     }
 
-    input {
+    input, select, textarea {
+        background-color: var(--color-background-004);
+        color: var(--color-gray-500);
         padding: 1rem;
         border-radius: 0.5rem !important;
-        border: 0.063rem solid $gray-400;
+        border: 0.063rem solid var(--color-gray-400);
 
         &::placeholder {
-            opacity: 0.4;
+            opacity: 0.8;
         }
 
         &.input-validation-error {
             position: relative;
-            border: 0.063rem solid $danger !important;
-            color: $danger;
+            border: 0.063rem solid var(--color-danger) !important;
+            color: var(--color-danger) !important;
 
             &::placeholder {
-                color: $danger;
+                color: var(--color-danger);
             }
         }
 
         &:focus {
             outline: none;
-            border: 0.063rem solid $gray-600;
+            border: 0.063rem solid var(--color-gray-600);
         }
     }
 
     textarea {
         padding: 1rem;
         border-radius: 0.5rem !important;
-        border: 0.063rem solid $gray-400;
+        border: 0.063rem solid var(--color-gray-400);
         resize: none;
 
         &::placeholder {
@@ -111,11 +114,11 @@
         }
 
         &.input-validation-error {
-            border: 0.063rem solid $danger !important;
-            color: $danger;
+            border: 0.063rem solid var(--color-danger) !important;
+            color: var(--color-danger);
 
             &::placeholder {
-                color: $danger;
+                color: var(--color-danger);
             }
         }
     }
@@ -125,7 +128,7 @@
         &.field-validation-error {
             position: absolute;
             @include text-s;
-            color: $danger !important;
+            color: var(--color-danger) !important;
             top: 90%;
             right: 0;
 

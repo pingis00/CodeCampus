@@ -25,13 +25,13 @@ public class SignUpModel
     public string Email { get; set; } = null!;
 
     [DataType(DataType.Password)]
-    [Display(Name = "Password", Prompt = "Enter your password", Order = 3)]
+    [Display(Name = "Password", Prompt = "********", Order = 3)]
     [Required(ErrorMessage = "Password is required")]
     [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$", ErrorMessage = "Enter a valid password")]
     public string Password { get; set; } = null!;
 
     [DataType(DataType.Password)]
-    [Display(Name = "Confirm password", Prompt = "Confirm your password", Order = 4)]
+    [Display(Name = "Confirm password", Prompt = "********", Order = 4)]
     [Required(ErrorMessage = "Password must be confirmed")]
     [Compare(nameof(Password), ErrorMessage = "Confirm password must be match password")]
     public string ConfirmPassword { get; set; } = null!;

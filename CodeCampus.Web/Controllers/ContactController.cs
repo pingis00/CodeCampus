@@ -20,7 +20,7 @@ public class ContactController(IConfiguration configuration) : Controller
     {
         if (ModelState.IsValid)
         {
-            return RedirectToAction("ThankYou");
+            return RedirectToAction("Home", "Index");
         }
 
         return View("Contact", viewModel);

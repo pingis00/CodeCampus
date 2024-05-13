@@ -1,5 +1,6 @@
 ﻿#signup {
     height: 100%;
+    background-color: var(--color-gray-000);
 
     .container {
         display: flex;
@@ -51,12 +52,12 @@
 
                 #form-terms {
                     grid-area: terms;
-                    padding: 1rem 0;
+                    padding-top: 0.5rem;
                 }
 
                 #form-submit {
                     grid-area: button;
-                    padding-bottom: 150px;
+
                 }
             }
         }

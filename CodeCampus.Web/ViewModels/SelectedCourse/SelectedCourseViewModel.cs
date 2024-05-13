@@ -69,23 +69,23 @@ public class SelectedCourseViewModel
             Icon =
             [
             new IconComponent {
-                Icon = new ImageComponent { ImageUrl = "/Assets/Icons/SelectedCourse/video-icon.svg", AltText = "" },
+                Icon = new ImageComponent { ImageUrl = "/Assets/Images/SelectedCourse/video-icon.svg", AltText = "" },
                 Description = "148 hours on-demand video"
             },
             new IconComponent {
-                Icon = new ImageComponent { ImageUrl = "/Assets/Icons/SelectedCourse/file-icon.svg", AltText = "" },
+                Icon = new ImageComponent { ImageUrl = "/Assets/Images/SelectedCourse/file-icon.svg", AltText = "" },
                 Description = "18 articles"
             },
             new IconComponent {
-                Icon = new ImageComponent { ImageUrl = "/Assets/Icons/SelectedCourse/download-icon.svg", AltText = "" },
+                Icon = new ImageComponent { ImageUrl = "/Assets/Images/SelectedCourse/download-icon.svg", AltText = "" },
                 Description = "25 downloadable resources"
             },
             new IconComponent {
-                Icon = new ImageComponent { ImageUrl = "/Assets/Icons/SelectedCourse/infinite-icon.svg", AltText = "" },
+                Icon = new ImageComponent { ImageUrl = "/Assets/Images/SelectedCourse/infinite-icon.svg", AltText = "" },
                 Description = "Full lifetime access"
             },
             new IconComponent {
-                Icon = new ImageComponent { ImageUrl = "/Assets/Icons/SelectedCourse/trophy-icon.svg", AltText = "" },
+                Icon = new ImageComponent { ImageUrl = "/Assets/Images/SelectedCourse/trophy-icon.svg", AltText = "" },
                 Description = "Certificate of completion"
             }
             ]
