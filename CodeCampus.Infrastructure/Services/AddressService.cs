@@ -1,5 +1,7 @@
 ﻿using CodeCampus.Infrastructure.Entities;
 using CodeCampus.Infrastructure.Factories;
+using CodeCampus.Infrastructure.Interfaces.Repositories;
+using CodeCampus.Infrastructure.Interfaces.Services;
 using CodeCampus.Infrastructure.Models;
 using CodeCampus.Infrastructure.Repositories;
 using CodeCampus.Infrastructure.Responses;
@@ -8,9 +10,9 @@ using Microsoft.Extensions.Logging;
 
 namespace CodeCampus.Infrastructure.Services;
 
-public class AddressService(AddressRepository addressRepository, UserManager<UserEntity> userManager, ILogger<AddressService> logger)
+public class AddressService(IAddressRepository addressRepository, UserManager<UserEntity> userManager, ILogger<AddressService> logger) : IAddressService
 {
-    private readonly AddressRepository _addressRepository = addressRepository;
+    private readonly IAddressRepository _addressRepository = addressRepository;
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly ILogger<AddressService> _logger = logger;
 

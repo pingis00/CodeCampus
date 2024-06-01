@@ -1,5 +1,9 @@
 using CodeCampus.Infrastructure.Contexts;
 using CodeCampus.Infrastructure.Entities;
+using CodeCampus.Infrastructure.Interfaces.Repositories;
+using CodeCampus.Infrastructure.Interfaces.Services;
+using CodeCampus.Infrastructure.Repositories;
+using CodeCampus.Infrastructure.Services;
 using CodeCampus_WebApi.Configurations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +31,16 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddIdentity<UserEntity, IdentityRole>()
     .AddEntityFrameworkStores<DataContext>()
     .AddDefaultTokenProviders();
+builder.Services.RegisterServices(builder.Configuration);
+
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddScoped<UserManager<UserEntity>>();
+builder.Services.AddScoped<SignInManager<UserEntity>>();
+
+builder.Services.AddScoped<ISubscribeService, SubscribeService>();
+
+builder.Services.AddScoped<ISubscribeRepository, SubscribeRepository>();
 
 var app = builder.Build();
 

@@ -1,15 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CodeCampus.Web.ViewModels.Home;
+namespace CodeCampus.Infrastructure.DTOs;
 
-public class NewsletterViewModel
+public class SubscribeRequest
 {
-    [DataType(DataType.EmailAddress)]
-    [Display(Name = "Email address", Prompt = "Your email")]
-    [Required(ErrorMessage = "Email is required")]
-    [RegularExpression("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", ErrorMessage = "Enter a valid email")]
+    [Required(ErrorMessage = "Email is required.")]
+    [EmailAddress(ErrorMessage = "Invalid Email Address.")]
     public string Email { get; set; } = null!;
-
     public bool DailyNewsLetter { get; set; }
     public bool AdvertisingUpdates { get; set; }
     public bool EventUpdates { get; set; }

@@ -204,23 +204,6 @@ public class HomeIndexViewModel
         ]
     };
 
-    public NewsletterViewModel Newsletter { get; set; } = new NewsletterViewModel
-    {
-        Id = "Newsletter",
-        Title = "Don't Want to Miss Anything?",
-        Image = new ImageComponent { ImageUrl = "Assets/Images/Homepage/cycling-arrow.svg", AltText = "Stylized cyclic arrow forming a loop" },
-        SubTitle = "Sign up for Newsletters",
-        NewsletterOptions =
-        [
-            new NewsletterOption { DisplayName = "Daily Newsletter", IsChecked = false },
-            new NewsletterOption { DisplayName = "Advertising Updates", IsChecked = false },
-            new NewsletterOption { DisplayName = "Week in Review", IsChecked = false },
-            new NewsletterOption { DisplayName = "Event Updates", IsChecked = false },
-            new NewsletterOption { DisplayName = "Startups Weekly", IsChecked = false },
-            new NewsletterOption { DisplayName = "Podcasts", IsChecked = false },
-
-        ],
-        NewsletterSignup = new NewsletterSignupModel()
-
-    };
+    public NewsletterViewModel Newsletter { get; set; } = new NewsletterViewModel();
+   
 }

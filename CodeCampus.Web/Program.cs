@@ -4,9 +4,22 @@ using CodeCampus.Infrastructure.Entities;
 using CodeCampus.Infrastructure.Helpers.MiddleWares;
 using CodeCampus.Infrastructure.Repositories;
 using CodeCampus.Infrastructure.Services;
+using CodeCampus.Web.Configurations;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
+
 var services = builder.Services;
 var configuration = builder.Configuration;
 
@@ -14,16 +27,25 @@ services.AddControllersWithViews();
 services.AddRouting(x => x.LowercaseUrls = true);
 
 services.AddDbContext<DataContext>(x => x.UseSqlServer(configuration.GetConnectionString("SqlServer")));
-services.AddScoped<AddressRepository>();
-services.AddScoped<AddressService>();
+
+services.AddHttpContextAccessor();
+services.AddHttpClient();
+builder.Services.RegisterServices(builder.Configuration);
+
 
 services.AddDefaultIdentity<UserEntity>(x =>
 {
-    x.User.RequireUniqueEmail = true;
     x.SignIn.RequireConfirmedAccount = false;
+    x.Password.RequireDigit = true;
     x.Password.RequiredLength = 8;
+    x.Password.RequireNonAlphanumeric = false;
+    x.Password.RequireUppercase = true;
+    x.Password.RequireLowercase = true;
+    x.User.RequireUniqueEmail = true;
 })
-.AddEntityFrameworkStores<DataContext>();
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<DataContext>();
+
 services.ConfigureApplicationCookie(x =>
 {
     x.LoginPath = "/signin";
@@ -60,6 +82,18 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseUserSessionValidation();
 app.UseAuthorization();
+
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+    string[] roles = ["Admin"];
+    foreach (var role in roles)
+        if (!await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+        }
+}
 
 app.MapControllerRoute(
     name: "default",

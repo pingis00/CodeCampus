@@ -1,38 +1,64 @@
 ﻿@model NewsletterViewModel
 
-<section id="@Model.Id" class="newsletter-section">
+<section id="newsletter" class="newsletter-section">
     <div class="container">
         <div class="newsletter-header">
-            <h1>@Model.Title <img src="@Model.Image.ImageUrl" alt="@Model.Image.AltText" /></h1>
+            <h1>Don't Want to Miss Anything? <img src="Assets/Images/Homepage/cycling-arrow.svg" alt="Stylized cyclic arrow forming a loop" /></h1>
         </div>
-        <div class="newsletter-info">
-            <h5>@Model.SubTitle</h5>
-            <div class="checkbox-group">
-                @foreach (var option in Model.NewsletterOptions)
-                {
+
+        <form id="newsletterForm" method="post" asp-controller="Home" asp-action="Index" class="newsletter-content" novalidate>
+            <div class="newsletter-info">
+                <h5>Sign up for Newsletters</h5>
+                <div class="checkbox-group">
                     <div class="checkbox">
-                        <input type="checkbox" asp-for="@option.IsChecked" id="@option.DisplayName" />
-                        <label asp-for="@option.IsChecked">@option.DisplayName</label>
+                        <input type="checkbox" asp-for="DailyNewsLetter" />
+                        <label asp-for="DailyNewsLetter">DailyNewsletter</label>
                     </div>
-                }
+                    <div class="checkbox">
+                        <input type="checkbox" asp-for="AdvertisingUpdates" />
+                        <label asp-for="AdvertisingUpdates">Advertising Updates</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" asp-for="EventUpdates" />
+                        <label asp-for="EventUpdates">Event Updates</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" asp-for="WeekInReview" />
+                        <label asp-for="WeekInReview">Week in Review</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" asp-for="StartupsWeekly" />
+                        <label asp-for="StartupsWeekly">Startups Weekly</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" asp-for="Podcasts" />
+                        <label asp-for="Podcasts">Podcasts</label>
+                    </div>
+                </div>
             </div>
-        </div>
-        <form method="post" asp-controller="Home" asp-action="Subscribe" class="newsletter-content" novalidate>            
             <div class="content">
                 <div id="form-email" class="input-group">
                     <img src="~/Assets/Icons/ui/envelope-icon.svg" alt="Email Icon" class="email-icon" />
-                    <span asp-validation-for="NewsletterSignup.Email" class="text-danger"></span>
-                    <input asp-for="NewsletterSignup.Email" />            
+                    <span asp-validation-for="Email" class="text-danger hidden"></span>
+                    <input asp-for="Email" />
                 </div>
-                <button type="submit" class="btn-theme-s subscribe-button">Subscribe *</button> 
-            </div>   
+                <button type="submit" class="btn-theme-s subscribe-button">Subscribe *</button>
+            </div>
         </form>
-
         <div class="terms-and-privacy">
             <p>
                 *Yes, I agree to the <a asp-controller="About" asp-action="Terms">terms</a> and <a asp-controller="About" asp-action="PrivacyPolicy">privacy policy</a>.
             </p>
         </div>
+        <div id="newsletter-message-container" class="alert">
+            @if (ViewBag.Message != null)
+            {
+                    <div>
+                    @ViewBag.Message
+                    </div>
+            }
+        </div>
     </div>
 </section>
+
 @await Html.PartialAsync("_ValidationScriptPartial")

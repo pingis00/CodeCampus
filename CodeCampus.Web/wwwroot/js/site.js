@@ -19,7 +19,7 @@ const checkScreenSize = () => {
         body.classList.remove('no-scroll');
         document.getElementById('menu').classList.remove('hide');
         document.getElementById('account-buttons').classList.remove('hide');
-        
+
     } else {
         if (!document.getElementById('menu').classList.contains('hide')) {
             document.getElementById('menu').classList.add('hide');
@@ -80,3 +80,58 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     });
 });
+
+function handleFormSubmit(formId, messageContainerId) {
+    const form = document.getElementById(formId);
+    const messageContainer = document.getElementById(messageContainerId);
+
+    if (!form || !messageContainer) {
+        console.error(`Form or message container not found for ID: ${formId} / ${messageContainerId}`);
+        return;
+    }
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: form.method,
+            body: formData,
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(`Response for ${formId}: `, data);
+                displayMessage(messageContainer, data, form);
+            })
+            .catch(error => {
+                console.error(`Error for ${formId}: `, error);
+            });
+    });
+}
+
+function displayMessage(messageContainer, data, form) {
+    messageContainer.innerHTML = data.message;
+    messageContainer.classList.add('fade-out');
+    messageContainer.classList.remove('hide');
+
+    if (data.success) {
+        messageContainer.classList.add('alert-success');
+        messageContainer.classList.remove('alert-danger');
+        form.reset();
+    } else {
+        messageContainer.classList.add('alert-danger');
+        messageContainer.classList.remove('alert-success');
+    }
+
+    setTimeout(() => {
+        messageContainer.classList.add('hide');
+    }, 3000);
+
+    messageContainer.addEventListener('transitionend', () => {
+        messageContainer.innerHTML = '';
+        messageContainer.classList.remove('alert-danger', 'alert-success', 'fade-out', 'hide');
+    }, { once: true });
+}
+
+handleFormSubmit('newsletterForm', 'newsletter-message-container');
+handleFormSubmit('contactForm', 'contact-message-container');
