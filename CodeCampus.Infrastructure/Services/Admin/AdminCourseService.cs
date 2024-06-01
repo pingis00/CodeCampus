@@ -6,22 +6,24 @@ using CodeCampus.Infrastructure.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
 namespace CodeCampus.Infrastructure.Services.Admin;
 
-public class AdminCourseService(IConfiguration configuration, ILogger<AdminCourseService> logger, HttpClientHelper httpClientHelper) : IAdminCourseService
+public class AdminCourseService(IConfiguration configuration, ILogger<AdminCourseService> logger, HttpClientHelper httpClientHelper, IHttpClientFactory httpClientFactory) : IAdminCourseService
 {
     private readonly IConfiguration _configuration = configuration;
     private readonly ILogger<AdminCourseService> _logger = logger;
     private readonly HttpClientHelper _httpClientHelper = httpClientHelper;
+    private readonly IHttpClientFactory _httpClientFactory = httpClientFactory;
 
     public async Task<ResponseResult> AddAdminCourseAsync(CourseRequestDto courseDto, IFormFile? courseImageFile)
     {
         try
         {
-            var httpClient = _httpClientHelper.CreateHttpClientWithToken();
+            using var httpClient = _httpClientFactory.CreateClient();
             var apiKey = _configuration["AdminApiKey"];
             httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
 
@@ -50,7 +52,7 @@ public class AdminCourseService(IConfiguration configuration, ILogger<AdminCours
                 formData.Add(fileContent, "courseImageFile", courseImageFile.FileName);
             }
 
-            var response = await httpClient.PostAsync("https://localhost:7043/api/courses/admin", formData);
+            var response = await httpClient.PostAsync("https://localhost:7297/api/courses/admin", formData);
 
             if (response.IsSuccessStatusCode)
             {
@@ -79,11 +81,11 @@ public class AdminCourseService(IConfiguration configuration, ILogger<AdminCours
     {
         try
         {
-            var httpClient = _httpClientHelper.CreateHttpClientWithToken();
+            using var httpClient = _httpClientFactory.CreateClient();
             var apiKey = _configuration["AdminApiKey"];
             httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
 
-            var response = await httpClient.DeleteAsync($"https://localhost:7043/api/courses/admin/{id}");
+            var response = await httpClient.DeleteAsync($"https://localhost:7297/api/courses/admin/{id}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -112,11 +114,11 @@ public class AdminCourseService(IConfiguration configuration, ILogger<AdminCours
     {
         try
         {
-            var httpClient = _httpClientHelper.CreateHttpClientWithToken();
+            using var httpClient = _httpClientFactory.CreateClient();
             var apiKey = _configuration["AdminApiKey"];
             httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
 
-            var response = await httpClient.GetAsync("https://localhost:7043/api/courses/admin");
+            var response = await httpClient.GetAsync("https://localhost:7297/api/courses/admin");
 
             if (response.IsSuccessStatusCode)
             {
@@ -141,11 +143,11 @@ public class AdminCourseService(IConfiguration configuration, ILogger<AdminCours
     {
         try
         {
-            var httpClient = _httpClientHelper.CreateHttpClientWithToken();
+            using var httpClient = _httpClientFactory.CreateClient();
             var apiKey = _configuration["AdminApiKey"];
             httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
 
-            var response = await httpClient.GetAsync($"https://localhost:7043/api/courses/admin/{id}");
+            var response = await httpClient.GetAsync($"https://localhost:7297/api/courses/admin/{id}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -171,7 +173,7 @@ public class AdminCourseService(IConfiguration configuration, ILogger<AdminCours
     {
         try
         {
-            var httpClient = _httpClientHelper.CreateHttpClientWithToken();
+            using var httpClient = _httpClientFactory.CreateClient();
             var apiKey = _configuration["AdminApiKey"];
             httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
 
@@ -195,11 +197,11 @@ public class AdminCourseService(IConfiguration configuration, ILogger<AdminCours
             if (courseImageFile != null)
             {
                 var fileContent = new StreamContent(courseImageFile.OpenReadStream());
-                fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(courseImageFile.ContentType);
+                fileContent.Headers.ContentType = new MediaTypeHeaderValue(courseImageFile.ContentType);
                 formData.Add(fileContent, "courseImageFile", courseImageFile.FileName);
             }
 
-            var response = await httpClient.PutAsync($"https://localhost:7043/api/courses/admin/{id}", formData);
+            var response = await httpClient.PutAsync($"https://localhost:7297/api/courses/admin/{id}", formData);
 
             if (response.IsSuccessStatusCode)
             {

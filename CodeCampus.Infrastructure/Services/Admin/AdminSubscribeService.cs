@@ -22,7 +22,7 @@ public class AdminSubscribeService(IHttpClientFactory httpClientFactory, IConfig
             var apiKey = _configuration["AdminApiKey"];
             httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
 
-            var response = await httpClient.GetAsync("https://localhost:7043/api/subscribe");
+            var response = await httpClient.GetAsync("https://localhost:7297/api/subscribe");
 
             if (response.IsSuccessStatusCode)
             {
@@ -52,7 +52,7 @@ public class AdminSubscribeService(IHttpClientFactory httpClientFactory, IConfig
             var apiKey = _configuration["AdminApiKey"];
             httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
 
-            var response = await httpClient.GetAsync($"https://localhost:7043/api/subscribe/{id}");
+            var response = await httpClient.GetAsync($"https://localhost:7297/api/subscribe/{id}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -82,7 +82,7 @@ public class AdminSubscribeService(IHttpClientFactory httpClientFactory, IConfig
             var apiKey = _configuration["AdminApiKey"];
             httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
 
-            var response = await httpClient.DeleteAsync($"https://localhost:7043/api/subscribe/{id}");
+            var response = await httpClient.DeleteAsync($"https://localhost:7297/api/subscribe/{id}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -103,3 +103,4 @@ public class AdminSubscribeService(IHttpClientFactory httpClientFactory, IConfig
         }
     }
 }
+

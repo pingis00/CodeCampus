@@ -12,13 +12,16 @@ public class HomeController(IConfiguration configuration, HttpClient httpClient,
     private readonly HttpClient _httpClient = httpClient;
     private readonly ILogger<HomeController> _logger = logger;
 
+
     public IActionResult Index()
     {
         var viewModel = new HomeIndexViewModel();
+        ViewBag.Message = TempData["AccountDeletedMessage"];
 
         return View(viewModel);
     }
 
+    [Route("/error")]
     public IActionResult Error(int statusCode)
     {
         if (statusCode == 404)
@@ -26,6 +29,12 @@ public class HomeController(IConfiguration configuration, HttpClient httpClient,
             return View("_404Partial");
         }
         return View("error");
+    }
+
+    [Route("/denied")]
+    public IActionResult AccessDenied()
+    {
+        return View("_AccessDenied");
     }
 
     [HttpPost]
@@ -37,10 +46,11 @@ public class HomeController(IConfiguration configuration, HttpClient httpClient,
         }
         try
         {
+            var apiKey = _configuration["ApiKey"];
             var content = new StringContent(JsonSerializer.Serialize(viewModel), Encoding.UTF8, "application/json");
+            _httpClient.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
 
-
-            var response = await _httpClient.PostAsync("https://localhost:7297/api/subscribe", content);
+            var response = await _httpClient.PostAsync("https://localhost:7043/api/subscribe", content);
 
             if (response.IsSuccessStatusCode)
             {

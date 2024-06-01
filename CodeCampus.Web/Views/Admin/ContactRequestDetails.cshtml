@@ -1,0 +1,41 @@
+﻿@model ContactRequestViewModel
+
+@{
+    ViewData["Title"] = "Contact Request Details";
+}
+
+<section class="contact-request-details">
+    <div class="container">
+        <div class="text-center">
+            <h1>Contact Request Details</h1>
+            <p class="lead">Detailed information about the contact request.</p>
+        </div>
+        <div class="request-info">
+            <div class="labels">
+                <dt>Full Name</dt>
+                <dt>Email</dt>
+                <dt>Service</dt>
+                <dt>Message</dt>
+                <dt>Created At</dt>
+            </div>
+            <div class="values">
+                <dd>@Model.FullName</dd>
+                <dd class="email-limit">@Model.Email</dd>
+                <dd>@Model.Service</dd>
+                <dd>@Model.Message</dd>
+                <dd>@Model.CreatedAt.ToString("g")</dd>
+            </div>
+        </div>
+        <div class="btn-container">
+            <a asp-controller="Admin" asp-action="ContactRequests" class="btn btn-theme">Back to List</a>
+            <form asp-controller="Admin" asp-action="DeleteContactRequest" method="post" onsubmit="return confirm('Are you sure you want to delete this contact request?')";>
+                <input type="hidden" name="id" value="@Model.Id" />
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @await Html.PartialAsync("_ToastMessages")
+}

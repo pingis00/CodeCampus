@@ -22,7 +22,7 @@ public class AdminContactService(IHttpClientFactory httpClientFactory, IConfigur
             var apiKey = _configuration["AdminApiKey"];
             httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
 
-            var response = await httpClient.GetAsync("https://localhost:7043/api/contact");
+            var response = await httpClient.GetAsync("https://localhost:7297/api/contact");
 
             if (response.IsSuccessStatusCode)
             {
@@ -52,7 +52,7 @@ public class AdminContactService(IHttpClientFactory httpClientFactory, IConfigur
             var apiKey = _configuration["AdminApiKey"];
             httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
 
-            var response = await httpClient.GetAsync($"https://localhost:7043/api/contact/{id}");
+            var response = await httpClient.GetAsync($"https://localhost:7297/api/contact/{id}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -82,7 +82,7 @@ public class AdminContactService(IHttpClientFactory httpClientFactory, IConfigur
             var apiKey = _configuration["AdminApiKey"];
             httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
 
-            var response = await httpClient.DeleteAsync($"https://localhost:7043/api/contact/{id}");
+            var response = await httpClient.DeleteAsync($"https://localhost:7297/api/contact/{id}");
 
             if (response.IsSuccessStatusCode)
             {

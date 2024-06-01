@@ -28,7 +28,7 @@
 
     .checkbox-group {
         position: relative;
-        height: 50px;
+
 
         .input-group {
             display: flex;
@@ -68,6 +68,15 @@
                     display: none;
                 }
             }
+
+            &.field-validation-valid {
+                @include text-s;
+                color: var(--color-success);
+
+                &::after {
+                    display: none;
+                }
+            }
         }
     }
 
@@ -94,6 +103,16 @@
 
             &::placeholder {
                 color: var(--color-danger);
+            }
+        }
+
+        &.input-validation-success {
+            position: relative;
+            border: 0.063rem solid var(--color-success) !important;
+            color: var(--color-success) !important;
+
+            &::placeholder {
+                color: var(--color-success);
             }
         }
 

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CodeCampus.Web.ViewModels.Admin.CourseCreateViewModel>
+
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<section class="courses">
+    <div class="container">
+        <div class="text-center">
+            <h1>Courses</h1>
+            <p class="lead">Here you can view all courses.</p>
+        </div>
+        <div class="button-group">
+            <a asp-controller="Admin" asp-action="Index" class="btn btn-secondary">Back to Admin Portal</a>
+            <a asp-controller="Admin" asp-action="AddCourse" class="btn btn-theme">Add Course</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="col-title" scope="col">Title</th>
+                        <th class="col-author" scope="col">Author</th>
+                        <th class="col-price" scope="col">Price</th>
+                        <th class="col-category" scope="col">Category</th>
+                        <th class="col-actions" scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var course in Model)
+                    {
+                        <tr>
+                            <td class="col-title text-limit" data-label="Title">@course.CourseRequest.Title</td>
+                            <td class="col-author text-limit" data-label="Author">@course.CourseRequest.Author</td>
+                            <td class="col-price text-limit" data-label="Price">@course.CourseRequest.Price</td>
+                            <td class="col-category " data-label="Category">@course.CourseRequest.CategoryName</td>
+                            <td class="col-actions" data-label="Actions">
+                                <a asp-controller="Admin" asp-action="CourseDetails" asp-route-id="@course.Id" class="btn btn-theme details-button">Details</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @await Html.PartialAsync("_ToastMessages")
+}
+

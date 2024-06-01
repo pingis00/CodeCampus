@@ -1,5 +1,6 @@
 ﻿using CodeCampus.Infrastructure.DTOs;
 using CodeCampus.Web.Models.Components;
+using CodeCampus.Web.ViewModels.Admin;
 using CodeCampus.Web.ViewModels.AvailableCourses;
 using CodeCampus.Web.ViewModels.SelectedCourse;
 
@@ -7,145 +8,145 @@ namespace CodeCampus.Web.Helpers;
 
 public static class AdminMappingFactory
 {
-    //public static CourseCreateViewModel MapToCreateViewModel(CourseGetRequestDto dto)
-    //{
-    //    return new CourseCreateViewModel
-    //    {
-    //        Id = dto.Id,
-    //        CategoryId = dto.CategoryId,
-    //        CourseRequest = new CourseRequestDto
-    //        {
-    //            CourseImage = dto.CourseImage,
-    //            Title = dto.Title,
-    //            Author = dto.Author,
-    //            Price = dto.Price,
-    //            DiscountPrice = dto.DiscountPrice,
-    //            Hours = dto.Hours,
-    //            LikesInProcent = dto.LikesInProcent,
-    //            LikesInNumbers = dto.LikesInNumbers,
-    //            IsBestSeller = dto.IsBestSeller,
-    //            CategoryName = dto.Category,
-    //        }
-    //    };
-    //}
+    public static CourseCreateViewModel MapToCreateViewModel(CourseGetRequestDto dto)
+    {
+        return new CourseCreateViewModel
+        {
+            Id = dto.Id,
+            CategoryId = dto.CategoryId,
+            CourseRequest = new CourseRequestDto
+            {
+                CourseImage = dto.CourseImage,
+                Title = dto.Title,
+                Author = dto.Author,
+                Price = dto.Price,
+                DiscountPrice = dto.DiscountPrice,
+                Hours = dto.Hours,
+                LikesInProcent = dto.LikesInProcent,
+                LikesInNumbers = dto.LikesInNumbers,
+                IsBestSeller = dto.IsBestSeller,
+                CategoryName = dto.Category,
+            }
+        };
+    }
 
-    //public static CourseRequestDto MapToCreateDto(CourseCreateViewModel viewModel)
-    //{
-    //    return new CourseRequestDto
-    //    {
-    //        CourseImage = viewModel.CourseRequest.CourseImage,
-    //        Title = viewModel.CourseRequest.Title,
-    //        Author = viewModel.CourseRequest.Author,
-    //        Price = viewModel.CourseRequest.Price,
-    //        DiscountPrice = viewModel.CourseRequest.DiscountPrice,
-    //        Hours = viewModel.CourseRequest.Hours,
-    //        LikesInProcent = viewModel.CourseRequest.LikesInProcent,
-    //        LikesInNumbers = viewModel.CourseRequest.LikesInNumbers,
-    //        IsBestSeller = viewModel.CourseRequest.IsBestSeller,
-    //        CategoryName = viewModel.CourseRequest.CategoryName,
-    //    };
-    //}
+    public static CourseRequestDto MapToCreateDto(CourseCreateViewModel viewModel)
+    {
+        return new CourseRequestDto
+        {
+            CourseImage = viewModel.CourseRequest.CourseImage,
+            Title = viewModel.CourseRequest.Title,
+            Author = viewModel.CourseRequest.Author,
+            Price = viewModel.CourseRequest.Price,
+            DiscountPrice = viewModel.CourseRequest.DiscountPrice,
+            Hours = viewModel.CourseRequest.Hours,
+            LikesInProcent = viewModel.CourseRequest.LikesInProcent,
+            LikesInNumbers = viewModel.CourseRequest.LikesInNumbers,
+            IsBestSeller = viewModel.CourseRequest.IsBestSeller,
+            CategoryName = viewModel.CourseRequest.CategoryName,
+        };
+    }
 
-    //public static CourseUpdateRequestDto MapToUpdateDto(CourseUpdateViewModel viewModel)
-    //{
-    //    return new CourseUpdateRequestDto
-    //    {
-    //        CourseImage = viewModel.CourseUpdate.CourseImage,
-    //        Title = viewModel.CourseUpdate.Title,
-    //        Author = viewModel.CourseUpdate.Author,
-    //        Price = viewModel.CourseUpdate.Price,
-    //        DiscountPrice = viewModel.CourseUpdate.DiscountPrice,
-    //        Hours = viewModel.CourseUpdate.Hours,
-    //        LikesInProcent = viewModel.CourseUpdate.LikesInProcent,
-    //        LikesInNumbers = viewModel.CourseUpdate.LikesInNumbers,
-    //        IsBestSeller = viewModel.CourseUpdate.IsBestSeller,
-    //        CategoryName = viewModel.CourseUpdate.CategoryName
-    //    };
-    //}
+    public static CourseUpdateRequestDto MapToUpdateDto(CourseUpdateViewModel viewModel)
+    {
+        return new CourseUpdateRequestDto
+        {
+            CourseImage = viewModel.CourseUpdate.CourseImage,
+            Title = viewModel.CourseUpdate.Title,
+            Author = viewModel.CourseUpdate.Author,
+            Price = viewModel.CourseUpdate.Price,
+            DiscountPrice = viewModel.CourseUpdate.DiscountPrice,
+            Hours = viewModel.CourseUpdate.Hours,
+            LikesInProcent = viewModel.CourseUpdate.LikesInProcent,
+            LikesInNumbers = viewModel.CourseUpdate.LikesInNumbers,
+            IsBestSeller = viewModel.CourseUpdate.IsBestSeller,
+            CategoryName = viewModel.CourseUpdate.CategoryName
+        };
+    }
 
-    //public static CourseUpdateViewModel MapToUpdateViewModel(CourseGetRequestDto dto)
-    //{
-    //    return new CourseUpdateViewModel
-    //    {
-    //        Id = dto.Id,
-    //        CategoryId = dto.CategoryId,
+    public static CourseUpdateViewModel MapToUpdateViewModel(CourseGetRequestDto dto)
+    {
+        return new CourseUpdateViewModel
+        {
+            Id = dto.Id,
+            CategoryId = dto.CategoryId,
 
-    //        CourseUpdate = new CourseUpdateRequestDto
-    //        {
-    //            Title = dto.Title,
-    //            Author = dto.Author,
-    //            Price = dto.Price,
-    //            DiscountPrice = dto.DiscountPrice,
-    //            Hours = dto.Hours,
-    //            LikesInProcent = dto.LikesInProcent,
-    //            LikesInNumbers = dto.LikesInNumbers,
-    //            IsBestSeller = dto.IsBestSeller,
-    //            CategoryName = dto.Category              
-    //        }
-    //    };
-    //}
+            CourseUpdate = new CourseUpdateRequestDto
+            {
+                Title = dto.Title,
+                Author = dto.Author,
+                Price = dto.Price,
+                DiscountPrice = dto.DiscountPrice,
+                Hours = dto.Hours,
+                LikesInProcent = dto.LikesInProcent,
+                LikesInNumbers = dto.LikesInNumbers,
+                IsBestSeller = dto.IsBestSeller,
+                CategoryName = dto.Category
+            }
+        };
+    }
 
-    //public static ContactRequestViewModel MapToViewModel(ContactRequestDto dto)
-    //{
-    //    return new ContactRequestViewModel
-    //    {
-    //        Id = dto.Id,
-    //        FullName = dto.FullName,
-    //        Email = dto.Email,
-    //        Service = dto.Service,
-    //        Message = dto.Message,
-    //        CreatedAt = dto.CreatedAt
-    //    };
-    //}
+    public static ContactRequestViewModel MapToViewModel(ContactRequestDto dto)
+    {
+        return new ContactRequestViewModel
+        {
+            Id = dto.Id,
+            FullName = dto.FullName,
+            Email = dto.Email,
+            Service = dto.Service,
+            Message = dto.Message,
+            CreatedAt = dto.CreatedAt
+        };
+    }
 
-    //public static ContactRequestDto MapToDto(ContactRequestViewModel viewModel)
-    //{
-    //    return new ContactRequestDto
-    //    {
-    //        Id = viewModel.Id,
-    //        FullName = viewModel.FullName,
-    //        Email = viewModel.Email,
-    //        Service = viewModel.Service!,
-    //        Message = viewModel.Message,
-    //        CreatedAt = viewModel.CreatedAt
-    //    };
-    //}
+    public static ContactRequestDto MapToDto(ContactRequestViewModel viewModel)
+    {
+        return new ContactRequestDto
+        {
+            Id = viewModel.Id,
+            FullName = viewModel.FullName,
+            Email = viewModel.Email,
+            Service = viewModel.Service!,
+            Message = viewModel.Message,
+            CreatedAt = viewModel.CreatedAt
+        };
+    }
 
-    //public static SubscriberViewModel MapToViewModel(SubscriberDto dto)
-    //{
-    //    return new SubscriberViewModel
-    //    {
-    //        Id = dto.Id,
-    //        Email = dto.Email,
-    //        DailyNewsLetter = dto.DailyNewsLetter,
-    //        AdvertisingUpdates = dto.AdvertisingUpdates,
-    //        EventUpdates = dto.EventUpdates,
-    //        WeekInReview = dto.WeekInReview,
-    //        StartupsWeekly = dto.StartupsWeekly,
-    //        Podcasts = dto.Podcasts,
-    //        CreatedAt = dto.CreatedAt,
-    //        IsRegisteredUser = dto.IsRegisteredUser,
-    //        FullName = dto.FullName
-    //    };
-    //}
+    public static SubscriberViewModel MapToViewModel(SubscriberDto dto)
+    {
+        return new SubscriberViewModel
+        {
+            Id = dto.Id,
+            Email = dto.Email,
+            DailyNewsLetter = dto.DailyNewsLetter,
+            AdvertisingUpdates = dto.AdvertisingUpdates,
+            EventUpdates = dto.EventUpdates,
+            WeekInReview = dto.WeekInReview,
+            StartupsWeekly = dto.StartupsWeekly,
+            Podcasts = dto.Podcasts,
+            CreatedAt = dto.CreatedAt,
+            IsRegisteredUser = dto.IsRegisteredUser,
+            FullName = dto.FullName
+        };
+    }
 
-    //public static SubscriberDto MapToDto(SubscriberViewModel viewModel)
-    //{
-    //    return new SubscriberDto
-    //    {
-    //        Id = viewModel.Id,
-    //        Email = viewModel.Email,
-    //        DailyNewsLetter = viewModel.DailyNewsLetter,
-    //        AdvertisingUpdates = viewModel.AdvertisingUpdates,
-    //        EventUpdates = viewModel.EventUpdates,
-    //        WeekInReview = viewModel.WeekInReview,
-    //        StartupsWeekly = viewModel.StartupsWeekly,
-    //        Podcasts = viewModel.Podcasts,
-    //        CreatedAt = viewModel.CreatedAt,
-    //        IsRegisteredUser = viewModel.IsRegisteredUser,
-    //        FullName = viewModel.FullName
-    //    };
-    //}
+    public static SubscriberDto MapToDto(SubscriberViewModel viewModel)
+    {
+        return new SubscriberDto
+        {
+            Id = viewModel.Id,
+            Email = viewModel.Email,
+            DailyNewsLetter = viewModel.DailyNewsLetter,
+            AdvertisingUpdates = viewModel.AdvertisingUpdates,
+            EventUpdates = viewModel.EventUpdates,
+            WeekInReview = viewModel.WeekInReview,
+            StartupsWeekly = viewModel.StartupsWeekly,
+            Podcasts = viewModel.Podcasts,
+            CreatedAt = viewModel.CreatedAt,
+            IsRegisteredUser = viewModel.IsRegisteredUser,
+            FullName = viewModel.FullName
+        };
+    }
 
     public static CourseComponent MapToCourseComponent(UserCourseDto dto)
     {
@@ -169,58 +170,58 @@ public static class AdminMappingFactory
         };
     }
 
-    //public static CourseViewModel MapToViewModel(CourseDto dto)
-    //{
-    //    return new CourseViewModel
-    //    {
-    //        Id = dto.Id,
-    //        Title = dto.Title,
-    //        Author = dto.Author,
-    //        Price = dto.Price,
-    //        DiscountPrice = dto.DiscountPrice,
-    //        Hours = dto.Hours,
-    //        LikesInProcent = dto.LikesInProcent,
-    //        LikesInNumbers = dto.LikesInNumbers,
-    //        IsBestSeller = dto.IsBestSeller,
-    //        Category = dto.CategoryName!,
-    //        CourseImage = new ImageComponent
-    //        {
-    //            ImageUrl = dto.CourseImage,
-    //            AltText = dto.Title
-    //        }
-    //    };
-    //}
+    public static CourseViewModel MapToViewModel(CourseDto dto)
+    {
+        return new CourseViewModel
+        {
+            Id = dto.Id,
+            Title = dto.Title,
+            Author = dto.Author,
+            Price = dto.Price,
+            DiscountPrice = dto.DiscountPrice,
+            Hours = dto.Hours,
+            LikesInProcent = dto.LikesInProcent,
+            LikesInNumbers = dto.LikesInNumbers,
+            IsBestSeller = dto.IsBestSeller,
+            Category = dto.CategoryName!,
+            CourseImage = new ImageComponent
+            {
+                ImageUrl = dto.CourseImage,
+                AltText = dto.Title
+            }
+        };
+    }
 
-    //public static CourseComponent MapToCourseComponent(CourseViewModel viewModel)
-    //{
-    //    return new CourseComponent
-    //    {
-    //        Id = viewModel.Id,
-    //        CourseImage = new ImageComponent
-    //        {
-    //            ImageUrl = viewModel.CourseImage!.ImageUrl,
-    //            AltText = viewModel.CourseImage.AltText
-    //        },
-    //        Title = viewModel.Title,
-    //        CourseAuthor = viewModel.Author,
-    //        CoursePrice = viewModel.Price.ToString(),
-    //        CourseDiscountPrice = viewModel.DiscountPrice?.ToString(),
-    //        CourseHours = viewModel.Hours.ToString(),
-    //        LikesInProcent = viewModel.LikesInProcent.ToString(),
-    //        LikesInNumbers = viewModel.LikesInNumbers.ToString(),
-    //        IsBestSeller = viewModel.IsBestSeller,
-    //        CategoryName = viewModel.Category
-    //    };
-    //}
+    public static CourseComponent MapToCourseComponent(CourseViewModel viewModel)
+    {
+        return new CourseComponent
+        {
+            Id = viewModel.Id,
+            CourseImage = new ImageComponent
+            {
+                ImageUrl = viewModel.CourseImage!.ImageUrl,
+                AltText = viewModel.CourseImage.AltText
+            },
+            Title = viewModel.Title,
+            CourseAuthor = viewModel.Author,
+            CoursePrice = viewModel.Price.ToString(),
+            CourseDiscountPrice = viewModel.DiscountPrice?.ToString(),
+            CourseHours = viewModel.Hours.ToString(),
+            LikesInProcent = viewModel.LikesInProcent.ToString(),
+            LikesInNumbers = viewModel.LikesInNumbers.ToString(),
+            IsBestSeller = viewModel.IsBestSeller,
+            CategoryName = viewModel.Category
+        };
+    }
 
-    //public static CategoryViewModel MapToViewModel(CategoryDto dto)
-    //{
-    //    return new CategoryViewModel
-    //    {
-    //        Id = dto.Id,
-    //        CategoryName = dto.CategoryName
-    //    };
-    //}
+    public static CategoryViewModel MapToViewModel(CategoryDto dto)
+    {
+        return new CategoryViewModel
+        {
+            Id = dto.Id,
+            CategoryName = dto.CategoryName
+        };
+    }
 
     public static CourseIntroViewModel MapToCourseIntroViewModel(CourseGetRequestDto dto)
     {

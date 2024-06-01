@@ -2,6 +2,8 @@
 using CodeCampus.Infrastructure.Entities;
 using CodeCampus.Infrastructure.Factories;
 using CodeCampus.Infrastructure.Interfaces.Services;
+using CodeCampus.Infrastructure.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ResponseStatusCode = CodeCampus.Infrastructure.Responses.StatusCode;
 
@@ -133,6 +135,61 @@ public class CoursesController(ICourseService courseService, ILogger<CoursesCont
         catch (Exception ex)
         {
             _logger.LogError(ex, "An error occurred while deleting the course.");
+            return StatusCode(500, "Internal server error. Please try again later.");
+        }
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAllCourses(string? category, string? searchQuery)
+    {
+        try
+        {
+            var result = await _courseService.GetAllCoursesAsync();
+            if (result.Status != ResponseStatusCode.OK)
+            {
+                return StatusCode((int)result.Status, result.Message);
+            }
+
+            var courses = result.ContentResult as List<Course>;
+
+            if (courses == null)
+            {
+                _logger.LogError("Failed to cast courses to List<Course>");
+                return StatusCode(500, "Internal server error. Please try again later.");
+            }
+
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                courses = courses.Where(c => c.Title.Contains(searchQuery, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(category) && category != "all")
+            {
+                courses = courses.Where(c => c.Category!.Equals(category, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+
+            var courseDtos = courses.Select(c => new CourseDto
+            {
+                Id = c.Id,
+                Title = c.Title,
+                Author = c.Author,
+                Price = c.Price,
+                DiscountPrice = c.DiscountPrice,
+                Hours = c.Hours,
+                LikesInProcent = c.LikesInProcent,
+                LikesInNumbers = c.LikesInNumbers,
+                IsBestSeller = c.IsBestSeller,
+                CategoryName = c.Category,
+                CourseImage = c.CourseImage,
+            }).ToList();
+
+            _logger.LogInformation("Final CourseDtos to be returned: {@CourseDtos}", courseDtos);
+            return Ok(courseDtos);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while retrieving courses.");
             return StatusCode(500, "Internal server error. Please try again later.");
         }
     }
