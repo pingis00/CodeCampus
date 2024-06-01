@@ -8,4 +8,6 @@
 @using CodeCampus.Infrastructure.Entities
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.Http
-
+@using CodeCampus.Web.Models.Components
+@inject SignInManager<UserEntity> _signInManger
+@inject UserManager<UserEntity> _userManager

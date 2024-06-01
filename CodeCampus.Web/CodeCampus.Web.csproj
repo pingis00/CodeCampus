@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
+    <None Include="Views\Contact\Sections\ContactForm.cshtml" />
     <None Include="wwwroot\css\scss\sections\home\_download.scss" />
     <None Include="wwwroot\css\scss\sections\home\_features.scss" />
     <None Include="wwwroot\css\scss\sections\home\_IntegrationTools.scss" />

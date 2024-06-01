@@ -5,7 +5,7 @@
     var isDark = (themeMode == "dark") ? true : false;
 }
 
-<section class="contact">
+<section id="contact" class="contact">
     <div class="container">
         <div class="breadcrumb">
             <a href="@Model.HomeLink">
@@ -31,37 +31,15 @@
             }
         </div>
         <div class="content">
-
-            <form method="post" asp-controller="Contact" asp-action="SubmitContactForm">
-                <h2>@Model.Title</h2>
-
-                <div id="full-name" class="input-group">
-                    <label asp-for="ContactForm.FullName"></label>
-                    <span asp-validation-for="ContactForm.FullName"></span>
-                    <input asp-for="ContactForm.FullName" />
-                </div>
-                <div id="email" class="input-group">
-                    <label asp-for="ContactForm.Email"></label>
-                    <span asp-validation-for="ContactForm.Email"></span>
-                    <input asp-for="ContactForm.Email" />
-                </div>
-                <div id="service" class="input-group">
-                    <label asp-for="ContactForm.Service">Service <span>(optional)</span></label>
-                    <select asp-for="ContactForm.Service" asp-items="Model.AvailableServices" class="service">
-                        <option value="" class="text">Choose the service you are interested in</option>
-                    </select>
-                </div>
-                <div id="message" class="input-group">
-                    <label asp-for="ContactForm.Message"></label>
-                    <span asp-validation-for="ContactForm.Message"></span>
-                    <textarea asp-for="ContactForm.Message"></textarea>
-                </div>
-                <a class="btn-theme-s" asp-controller="@Model.Link.ControllerName" asp-action="@Model.Link.ActionName">@Model.Link.Text</a>
-            </form>
+            @await Html.PartialAsync("~/Views/Contact/Sections/ContactForm.cshtml", new ContactFormViewModel())
 
         </div>
     </div>
     <div id="map" style="height: 400px; width: 100%;"></div>
 
 </section>
-@await Html.PartialAsync("_ValidationScriptPartial")
+
+
+@section Scripts {
+    @await Html.PartialAsync("_ToastMessages")
+}

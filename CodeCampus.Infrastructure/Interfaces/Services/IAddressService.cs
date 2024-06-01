@@ -9,3 +9,4 @@ public interface IAddressService
     Task<AddressEntity> GetUserAddressAsync(string userId);
     Task<ResponseResult> CreateOrUpdateAddressAsync(UserEntity user, AccountDetailsAddressInfoModel addressModel);
 }
+

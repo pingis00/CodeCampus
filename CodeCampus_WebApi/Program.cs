@@ -35,13 +35,6 @@ builder.Services.RegisterServices(builder.Configuration);
 
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddScoped<UserManager<UserEntity>>();
-builder.Services.AddScoped<SignInManager<UserEntity>>();
-
-builder.Services.AddScoped<ISubscribeService, SubscribeService>();
-
-builder.Services.AddScoped<ISubscribeRepository, SubscribeRepository>();
-
 var app = builder.Build();
 
 app.UseSwagger();
