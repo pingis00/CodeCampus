@@ -7,18 +7,49 @@
                 <i class="fa-light fa-house"></i> Home
             </a>
             <span class="breadcrumb-separator">»</span>
-            <span class="active">@Model.CoursesText</span>
+            <span class="active">Courses</span>
         </div>
         <div class="course-header">
             <h1>@Model.Title</h1>
             <div class="search-controls">
-                <select asp-for="SelectedCategory" asp-items="@(new SelectList(Model.Categories))"></select>
-                <div class="search-wrapper">
-                    <input type="search" class="search-input" asp-for="SearchQuery" placeholder="Search courses">
-                    <i class="fa-light fa-magnifying-glass search-icon"></i>
-                </div>
+                <form asp-controller="AvailableCourses" asp-action="Index" method="get">
+                    <div class="category-wrapper">
+                        <select name="category" onchange="this.form.submit()">
+                            <option value="all" selected="@Model.SelectedCategory == " all"">All categories</option>
+                            @if (Model.Categories != null)
+                            {
+                                foreach (var category in Model.Categories)
+                                {
+                                    <option value="@category.CategoryName" selected="@(Model.SelectedCategory == category.CategoryName)">@category.CategoryName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <div class="search-wrapper">
+                        <input id="searchQuery" type="search" class="search-input" name="searchQuery" value="@Model.SearchQuery" placeholder="Search courses">
+                        <i class="fa-light fa-magnifying-glass search-icon"></i>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-
 </section>
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("Category selected: ", "@Model.SelectedCategory");
+            console.log("Search query: ", "@Model.SearchQuery");
+            console.log("Categories: ", @Html.Raw(Json.Serialize(Model.Categories)));
+        });
+
+        document.getElementById("searchQuery").addEventListener("input", function () {
+            console.log("Search query changed: ", this.value);
+        });
+
+        document.querySelector("select[name='category']").addEventListener("change", function () {
+            console.log("Category changed: ", this.value);
+            this.form.submit();
+        });
+    </script>
+}

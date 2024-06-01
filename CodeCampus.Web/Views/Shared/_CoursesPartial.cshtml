@@ -1,28 +1,59 @@
-﻿@model SavedCoursesViewModel
+﻿@model List<CourseComponent>
 
-@foreach (var course in Model.Courses)
+@{
+    bool showDeleteButton = false;
+    if (ViewData["ShowDeleteButton"] != null)
+    {
+        bool.TryParse(ViewData["ShowDeleteButton"]!.ToString(), out showDeleteButton);
+    }
+}
+
+@foreach (var course in Model)
 {
     <div class="course-card">
         <div class="image-container">
-            <img class="course-image" src="@course.CourseImage.ImageUrl" alt="@course.CourseImage.AltText" />
-            <button class="remove-course-icon-btn" data-tooltip="Remove">
+            @if (course.IsBestSeller)
+            {
+                <div class="best-seller-label">Best Seller</div>
+            }
+            <img class="course-image" src="~/Assets/uploads/courseimages/@course.CourseImage.ImageUrl" alt="@course.CourseImage.AltText" />
+            <a href="@Url.Action("Index", "SelectedCourse", new { id = course.Id })" class="add-course-icon-btn" data-tooltip="View Course Details">
                 <span class="fa-stack">
                     <i class="fas fa-circle fa-stack-2x"></i>
                     <i class="fas fa-bookmark fa-stack-1x"></i>
                 </span>
-            </button>
+            </a>
         </div>
         <div class="course-info">
             <h5>@course.Title</h5>
             <p class="author">@course.CourseAuthor</p>
-            <p class="price">@course.CoursePrice</p>
+            @if (course.CourseDiscountPrice != null)
+            {
+                <p class="price">
+                    <span class="dollar-sign discount">$</span><span class="discount-price">@course.CourseDiscountPrice</span>
+                    <span class="dollar-sign original">$</span><span class="original-price">@course.CoursePrice</span>
+                </p>
+            }
+            else
+            {
+                <p class="price"><span class="dollar-sign">$</span>@course.CoursePrice</p>
+            }
             <div class="course-meta">
                 <span class="hours">
-                    <img src="/Assets/Icons/ui/course-clock-icon.svg" alt="Course Duration Icon" />@course.CourseHours
+                    <img src="/Assets/Icons/ui/course-clock-icon.svg" alt="Course Duration Icon" />@course.CourseHours hours
                 </span>
                 <span class="likes">
-                    <img src="/Assets/Icons/ui/thumbsup-icon.svg" alt="Likes Icon" />
+                    <img src="/Assets/Icons/ui/thumbsup-icon.svg" alt="Likes Icon" />@course.LikesInProcent% (@course.LikesInNumbers k)
                 </span>
+                @if (showDeleteButton)
+                {
+                    <span class="unsubscribe">
+                        <form asp-action="UnsubscribeCourse" asp-controller="Account" method="post" onsubmit="return confirm('Are you sure you want to unsubscribe from the course?');">
+                            <input type="hidden" name="courseId" value="@course.Id" />
+                            <button type="submit" class="btn btn-danger btn-sm">Unsubscribe</button>
+                        </form>
+                    </span>
+                }
             </div>
         </div>
     </div>

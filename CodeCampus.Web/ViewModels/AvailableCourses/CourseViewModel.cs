@@ -16,5 +16,5 @@ public class CourseViewModel
     public bool IsBestSeller { get; set; }
     public int CategoryId { get; set; }
     public string Category { get; set; } = null!;
-    
+
 }

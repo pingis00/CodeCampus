@@ -17,6 +17,7 @@ public static class ServiceConfiguration
         services.AddScoped<IContactRepository, ContactRepository>();
         services.AddScoped<ICourseRepository, CourseRepository>();
         services.AddTransient<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IUserCourseRepository, UserCourseRepository>();
 
 
 
@@ -28,6 +29,7 @@ public static class ServiceConfiguration
         services.AddScoped<IAdminCourseService, AdminCourseService>();
         services.AddScoped<IAdminContactService, AdminContactService>();
         services.AddScoped<IAdminSubscribeService, AdminSubscribeService>();
+        services.AddScoped<IUserCourseService, UserCourseService>();
         services.AddScoped<HttpClientHelper>();
 
         services.AddTransient<IFileUploadService, FileUploadService>();

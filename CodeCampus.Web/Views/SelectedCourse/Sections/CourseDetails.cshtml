@@ -46,10 +46,22 @@
                     }
                 </ul>
                 <div class="price-info">
-                    <span class="sale-price">@Model.Includes.SalePrice</span>
-                    <span class="original-price">@Model.Includes.OriginalPrice</span>
+                    @if (!string.IsNullOrEmpty(Model.Includes.SalePrice))
+                    {
+                        <p class="price">
+                            <span class="dollar-sign sale">$</span><span class="sale-price">@Model.Includes.SalePrice</span>
+                            <span class="dollar-sign original">$</span><span class="original-price">@Model.Includes.OriginalPrice</span>
+                        </p>
+                    }
+                    else
+                    {
+                        <p class="price"><span class="dollar-sign">$</span>@Model.Includes.OriginalPrice</p>
+                    }
                 </div>
-                <a href="*" class="btn-join-course btn-theme">@Model.Includes.JoinCourseButton.Text</a>
+                <form asp-controller="SelectedCourse" asp-action="JoinCourse" method="post" onsubmit="return confirm('Are you sure you want to join this course?');">
+                    <input type="hidden" name="courseId" value="@Model.Id" />
+                    <button type="submit" class="btn-join-course btn-theme">@Model.Includes.JoinCourseButton.Text</button>
+                </form>
             </div>
         </aside>
     </div>

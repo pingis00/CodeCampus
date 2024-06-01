@@ -7,10 +7,11 @@ using System.Security.Claims;
 
 namespace CodeCampus.Web.Controllers;
 
-public class AuthController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager) : Controller
+public class AuthController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, ILogger<AuthController> logger) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
+    private readonly ILogger<AuthController> _logger = logger;
 
     [HttpGet]
     [Route("/signup")]
@@ -50,16 +51,17 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
                 var result = await _userManager.CreateAsync(userEntity, viewModel.Form.Password);
                 if (result.Succeeded)
                 {
+                    TempData["Message"] = "Account created successfully. Please sign in.";
+                    TempData["MessageType"] = "success";
                     return RedirectToAction("SignIn", "Auth");
                 }
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Error during sign-up.");
                 ModelState.AddModelError("", $"Unexpected error occurred: {ex.Message}");
-                return View(viewModel);
+                ViewData["ErrorMessage"] = $"Unexpected error occurred: {ex.Message}";
             }
-
-            
         }
         return View(viewModel);
     }
@@ -67,7 +69,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     [Route("/signin")]
     public IActionResult SignIn(string returnUrl)
     {
-        if (_signInManager.IsSignedIn(User)) 
+        if (_signInManager.IsSignedIn(User))
             return RedirectToAction("Details", "Account");
 
         ViewData["ReturnUrl"] = returnUrl ?? Url.Content("~/");
@@ -87,26 +89,35 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
             return View(viewModel);
         }
 
+        if (!ModelState.IsValid)
+        {
+            return View(viewModel);
+        }
+
         try
         {
-            if (ModelState.IsValid)
+            var result = await _signInManager.PasswordSignInAsync(viewModel.Form.Email, viewModel.Form.Password, viewModel.Form.RememberMe, false);
+            if (result.Succeeded)
             {
-                var result = await _signInManager.PasswordSignInAsync(viewModel.Form.Email, viewModel.Form.Password, viewModel.Form.RememberMe, false);
-                if (result.Succeeded)
-                {
-                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                        return Redirect(returnUrl);
+                var user = await _userManager.FindByEmailAsync(viewModel.Form.Email);               
 
-                    return RedirectToAction("Details", "Account");
-                }
+                if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    return Redirect(returnUrl);
+
+                return RedirectToAction("Details", "Account");
             }
+
             ModelState.AddModelError("IncorrectValues", "Incorrect email or password");
+            TempData["Message"] = "Incorrect email or password";
+            TempData["MessageType"] = "error";
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, "Sign in failed.");
             ModelState.AddModelError("", $"Sign in failed: {ex.Message}");
+            ViewData["ErrorMessage"] = $"Sign in failed: {ex.Message}";
         }
-  
+
         ViewData["ErrorMessage"] = "Incorrect email or password";
         return View(viewModel);
     }
@@ -116,10 +127,11 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     public new async Task<IActionResult> SignOut()
     {
         await _signInManager.SignOutAsync();
+        TempData["Message"] = "You have been signed out.";
+        TempData["MessageType"] = "success";
         return RedirectToAction("Index", "Home");
     }
 
-    //External Account Facebook
     [HttpGet]
     public IActionResult Facebook()
     {
@@ -130,52 +142,61 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     [HttpGet]
     public async Task<IActionResult> FacebookCallback()
     {
-        var info = await _signInManager.GetExternalLoginInfoAsync();
-        if (info != null)
+        try
         {
-            var userEntity = new UserEntity
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+            if (info != null)
             {
-                FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName)!,
-                LastName = info.Principal.FindFirstValue(ClaimTypes.Surname)!,
-                Email = info.Principal.FindFirstValue(ClaimTypes.Email)!,
-                UserName = info.Principal.FindFirstValue(ClaimTypes.Email)!,
-                IsExternalAccount = true
-            };
-
-            var user = await _userManager.FindByEmailAsync(userEntity.Email);
-            if (user == null)
-            {
-                var result = await _userManager.CreateAsync(userEntity);
-                if (result.Succeeded)
+                var userEntity = new UserEntity
                 {
-                    user = await _userManager.FindByEmailAsync(userEntity.Email);
+                    FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName)!,
+                    LastName = info.Principal.FindFirstValue(ClaimTypes.Surname)!,
+                    Email = info.Principal.FindFirstValue(ClaimTypes.Email)!,
+                    UserName = info.Principal.FindFirstValue(ClaimTypes.Email)!,
+                    IsExternalAccount = true
+                };
+
+                var user = await _userManager.FindByEmailAsync(userEntity.Email);
+                if (user == null)
+                {
+                    var result = await _userManager.CreateAsync(userEntity);
+                    if (result.Succeeded)
+                    {
+                        user = await _userManager.FindByEmailAsync(userEntity.Email);
+                    }
+                }
+
+                if (user != null)
+                {
+                    if (user.FirstName != userEntity.FirstName || user.LastName != userEntity.LastName || user.Email != userEntity.Email)
+                    {
+                        user.FirstName = userEntity.FirstName;
+                        user.LastName = userEntity.LastName;
+                        user.Email = userEntity.Email;
+
+                        await _userManager.UpdateAsync(user);
+                    }
+
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    if (HttpContext.User != null)
+                        return RedirectToAction("Details", "Account");
                 }
             }
 
-            if (user != null)
-            {
-                if (user.FirstName != userEntity.FirstName || user.LastName != userEntity.LastName || user.Email != userEntity.Email)
-                {
-                    user.FirstName = userEntity.FirstName;
-                    user.LastName = userEntity.LastName;
-                    user.Email = userEntity.Email;
-
-                    await _userManager.UpdateAsync(user);
-                }
-
-                await _signInManager.SignInAsync(user, isPersistent: false);
-
-                if (HttpContext.User != null)
-                    return RedirectToAction("Details", "Account");
-            }
+            TempData["Message"] = "Failed to authenticate with Facebook.";
+            TempData["MessageType"] = "error";
+            return RedirectToAction("SignIn", "Auth");
         }
-
-        ModelState.AddModelError("InvalidFacebookAuthentication", "Failed to authenticate with facebook");
-        ViewData["ErrorMessage"] = "Failed to authenticate with facebook";
-        return RedirectToAction("SignIn", "Auth");
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Facebook authentication failed.");
+            TempData["Message"] = "Facebook authentication failed.";
+            TempData["MessageType"] = "error";
+            return RedirectToAction("SignIn", "Auth");
+        }
     }
 
-    //External Account Google
     [HttpGet]
     public IActionResult Google()
     {
@@ -186,48 +207,58 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     [HttpGet]
     public async Task<IActionResult> GoogleCallback()
     {
-        var info = await _signInManager.GetExternalLoginInfoAsync();
-        if (info != null)
+        try
         {
-            var userEntity = new UserEntity
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+            if (info != null)
             {
-                FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName)!,
-                LastName = info.Principal.FindFirstValue(ClaimTypes.Surname)!,
-                Email = info.Principal.FindFirstValue(ClaimTypes.Email)!,
-                UserName = info.Principal.FindFirstValue(ClaimTypes.Email)!,
-                IsExternalAccount = true
-            };
-
-            var user = await _userManager.FindByEmailAsync(userEntity.Email);
-            if (user == null)
-            {
-                var result = await _userManager.CreateAsync(userEntity);
-                if (result.Succeeded)
+                var userEntity = new UserEntity
                 {
-                    user = await _userManager.FindByEmailAsync(userEntity.Email);
+                    FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName)!,
+                    LastName = info.Principal.FindFirstValue(ClaimTypes.Surname)!,
+                    Email = info.Principal.FindFirstValue(ClaimTypes.Email)!,
+                    UserName = info.Principal.FindFirstValue(ClaimTypes.Email)!,
+                    IsExternalAccount = true
+                };
+
+                var user = await _userManager.FindByEmailAsync(userEntity.Email);
+                if (user == null)
+                {
+                    var result = await _userManager.CreateAsync(userEntity);
+                    if (result.Succeeded)
+                    {
+                        user = await _userManager.FindByEmailAsync(userEntity.Email);
+                    }
+                }
+
+                if (user != null)
+                {
+                    if (user.FirstName != userEntity.FirstName || user.LastName != userEntity.LastName || user.Email != userEntity.Email)
+                    {
+                        user.FirstName = userEntity.FirstName;
+                        user.LastName = userEntity.LastName;
+                        user.Email = userEntity.Email;
+
+                        await _userManager.UpdateAsync(user);
+                    }
+
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    if (HttpContext.User != null)
+                        return RedirectToAction("Details", "Account");
                 }
             }
 
-            if (user != null)
-            {
-                if (user.FirstName != userEntity.FirstName || user.LastName != userEntity.LastName || user.Email != userEntity.Email)
-                {
-                    user.FirstName = userEntity.FirstName;
-                    user.LastName = userEntity.LastName;
-                    user.Email = userEntity.Email;
-
-                    await _userManager.UpdateAsync(user);
-                }
-
-                await _signInManager.SignInAsync(user, isPersistent: false);
-
-                if (HttpContext.User != null)
-                    return RedirectToAction("Details", "Account");
-            }
+            TempData["Message"] = "Failed to authenticate with Google.";
+            TempData["MessageType"] = "error";
+            return RedirectToAction("SignIn", "Auth");
         }
-
-        ModelState.AddModelError("InvalidGoogleAuthentication", "Failed to authenticate with google");
-        ViewData["ErrorMessage"] = "Failed to authenticate with google";
-        return RedirectToAction("SignIn", "Auth");
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Google authentication failed.");
+            TempData["Message"] = "Google authentication failed.";
+            TempData["MessageType"] = "error";
+            return RedirectToAction("SignIn", "Auth");
+        }
     }
 }

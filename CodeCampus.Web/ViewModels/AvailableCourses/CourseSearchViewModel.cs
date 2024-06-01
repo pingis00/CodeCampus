@@ -6,7 +6,7 @@ public class CourseSearchViewModel
     public string HomeLink { get; set; } = null!;
     public string CoursesText { get; set; } = null!;
     public string Title { get; set; } = null!;
-    public List<string> Categories { get; set; } = [];
+    public List<CategoryViewModel> Categories { get; set; } = [];
     public string SelectedCategory { get; set; } = null!;
     public string SearchQuery { get; set; } = null!;
 }

@@ -1,36 +1,43 @@
 ﻿@{
+    var user = await _userManager.GetUserAsync(User);
     var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
     var isDark = (themeMode == "dark") ? true : false;
     ViewData["Title"] = "Header";
 }
 
-<aside>
-    <div class="profile-info">
-        <div class="image-overlay">
-            <img class="user-avatar" src="~/Assets/Images/Common/default-profile-image.svg" alt="profile-image" />
-            <div class="change-icon-overlay">
-                <a href="#">
-                    <img src="~/Assets/Icons/ui/@(isDark ? "refresh-icon-dark.svg" : "refresh-icon-light.svg")" alt="Change avatar" />
-                </a>
+@if (user != null)
+{
+    <aside>
+        <div class="profile-info">
+            <div class="image-overlay">
+                <img class="user-avatar" src="@(user.ProfileImage != null ? "/Assets/uploads/" + user.ProfileImage : "/Assets/uploads/default-profile-image.svg")" alt="profile-image" />
+                <div class="change-icon-overlay">
+                    <form enctype="multipart/form-data" method="post" asp-action="UploadImage" asp-controller="Account">
+                        <input id="fileUploader" type="file" name="file" hidden />
+                        <label for="fileUploader">
+                            <img src="~/Assets/Icons/ui/@(isDark ? "refresh-icon-dark.svg" : "refresh-icon-light.svg")" alt="Change avatar" />
+                        </label>
+                    </form>
+                </div>
             </div>
-        </div>
-        
-        <h5>Andreas Persson</h5>
-        <p>pingis00@hotmail.com</p>
-    </div>
 
-    <nav>
-        <a class="btn @(ViewBag.ActiveLink == "Details" ? "btn-theme-s" : "btn-transparent")" asp-controller="Account" asp-action="Details">
-            <i class="fa-regular fa-gear @(ViewBag.ActiveLink == "Details" ? "active-icon" : "inactive-icon")"></i> Account Details
-        </a>
-        <a class="btn @(ViewBag.ActiveLink == "Security" ? "btn-theme-s" : "btn-transparent")" asp-controller="Account" asp-action="AccountSecurity">
-            <i class="fa-regular fa-lock @(ViewBag.ActiveLink == "Security" ? "active-icon" : "inactive-icon")"></i> Security
-        </a>
-        <a class="btn @(ViewBag.ActiveLink == "SavedCourses" ? "btn-theme-s" : "btn-transparent")" asp-controller="Account" asp-action="SavedCourses">
-            <i class="fa-regular fa-bookmark @(ViewBag.ActiveLink == "SavedCourses" ? "active-icon" : "inactive-icon")"></i> Saved Courses
-        </a>
-        <a class="btn-transparent" asp-controller="Auth" asp-action="SignOut">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
-        </a>
-    </nav>
-</aside>
+            <h5>@user.FirstName @user.LastName</h5>
+            <p>@user.Email</p>
+        </div>
+
+        <nav>
+            <a class="btn @(ViewBag.ActiveLink == "Details" ? "btn-theme-s" : "btn-transparent")" asp-controller="Account" asp-action="Details">
+                <i class="fa-regular fa-gear @(ViewBag.ActiveLink == "Details" ? "active-icon" : "inactive-icon")"></i> Account Details
+            </a>
+            <a class="btn @(ViewBag.ActiveLink == "Security" ? "btn-theme-s" : "btn-transparent")" asp-controller="Account" asp-action="AccountSecurity">
+                <i class="fa-regular fa-lock @(ViewBag.ActiveLink == "Security" ? "active-icon" : "inactive-icon")"></i> Security
+            </a>
+            <a class="btn @(ViewBag.ActiveLink == "SavedCourses" ? "btn-theme-s" : "btn-transparent")" asp-controller="Account" asp-action="SavedCourses">
+                <i class="fa-regular fa-bookmark @(ViewBag.ActiveLink == "SavedCourses" ? "active-icon" : "inactive-icon")"></i> Saved Courses
+            </a>
+            <a class="btn-transparent" asp-controller="Auth" asp-action="SignOut">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+            </a>
+        </nav>
+    </aside>
+}

@@ -14,3 +14,4 @@ public class SiteSettings : Controller
         return Ok();
     }
 }
+

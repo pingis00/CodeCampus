@@ -9,3 +9,4 @@ public class ImageComponent
     public string? AltText { get; set; }
     public string? DarkModeImageUrl { get; set; }
 }
+
