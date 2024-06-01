@@ -58,4 +58,13 @@ public class ResponseFactory
             Status = StatusCode.EXISTS
         };
     }
+
+    public static ResponseResult Unauthorized(string? message = null)
+    {
+        return new ResponseResult
+        {
+            Message = message ?? "Unauthorized",
+            Status = StatusCode.UNAUTHORIZED
+        };
+    }
 }
