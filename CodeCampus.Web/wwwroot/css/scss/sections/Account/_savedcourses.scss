@@ -22,26 +22,33 @@
 
                     @include lg {
                         flex-direction: row;
-                        justify-content: space-between;
                         align-items: center;
                         text-align: left;
+                        justify-content: space-between;
                     }
 
                     h2 {
-                        color: var(--color-gray-000);
+                        color: var(--color-gray-900);
+                        flex: 2;
+
+                        @include xl {
+                            flex: 3;
+                        }
                     }
 
-                    .btn {
-                        border: 1px solid var(--color-danger);
-                        color: var(--color-danger);
-                        font-weight: 600;
-                        flex-shrink: 0;
-                        flex-grow: 0;
-                        flex-basis: auto;
-                        transition: 0.3s ease-in-out;
+                    form {
+                        flex: 1;
 
-                        &:hover {
-                            background: var(--color-gray-300);
+
+                        .btn {
+                            border: 1px solid var(--color-danger);
+                            color: var(--color-danger);
+                            font-weight: 600;
+                            transition: 0.3s ease-in-out;
+
+                            &:hover {
+                                background: var(--color-gray-300);
+                            }
                         }
                     }
                 }

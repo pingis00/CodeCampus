@@ -1,0 +1,21 @@
+﻿@model AccountDeleteViewModel
+
+<div class="delete-account">
+    <h5>Delete account</h5>
+    <p>
+        When you delete your account, your public profile will be deactivated immediately. If you change
+        your mind before the 14 days are up, sign in with your email and password, and we’ll send you a link to reactivate your account.
+    </p>
+    <form class="delete-form" method="post" asp-controller="Account" asp-action="DeleteAccount" onsubmit="return confirm('Are you sure you want to delete you account?')">
+        <div id="form-terms" class="checkbox">
+            <div class="checkbox-group">
+                <div class="input-group">
+                    <input asp-for="DeleteAccount" type="checkbox" />
+                    <label asp-for="DeleteAccount">Yes, I want to delete my account.</label>
+                </div>
+                <span asp-validation-for="DeleteAccount"></span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+</div>
