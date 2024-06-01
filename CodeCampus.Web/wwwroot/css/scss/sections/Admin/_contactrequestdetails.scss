@@ -1,0 +1,55 @@
+﻿.contact-request-details {
+    background-color: var(--color-gray-000);
+    height: 100%;
+
+    .container {
+
+        .text-center {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .request-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding-bottom: 2rem;
+
+            .labels, .values {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0;
+                margin: 0;
+            }
+
+            dt, dd {
+                padding: 0;
+                margin: 0;
+                line-height: 1.5;
+            }
+        }
+
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+
+            @include md {
+                flex-direction: row;
+            }
+
+            a {
+            }
+
+            form {
+                width: auto;
+
+                button {
+                    width: auto;
+                }
+            }
+        }
+    }
+}

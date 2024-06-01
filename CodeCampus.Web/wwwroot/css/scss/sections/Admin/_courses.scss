@@ -1,0 +1,108 @@
+﻿.courses {
+    background-color: var(--color-gray-000);
+    height: 100%;
+
+    .container {
+
+        @include lg {
+            padding-top: 1rem;
+        }
+
+        .text-center {
+            margin-bottom: 2rem;
+            text-align: center;
+
+            @include lg {
+                margin-bottom: 4rem;
+            }
+        }
+
+        .button-group {
+            margin-bottom: 1rem;
+
+            @include sm {
+                display: flex;
+                justify-content: center;
+            }
+
+            @include lg {
+                justify-content: flex-start;
+            }
+
+            .btn {
+                display: block;
+            }
+
+            .btn-secondary {
+                margin-bottom: 1rem;
+
+                @include sm {
+                    margin-bottom: 0;
+                    margin-right: 1rem;
+                }
+            }
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+
+            .table {
+                width: 100%;
+                margin-bottom: 1rem;
+                border-collapse: collapse;
+                border-spacing: 0;
+
+                th, td {
+                    background-color: var(--color-gray-000);
+                    color: var(--color-text-001);
+                    padding: 0.75rem;
+                    vertical-align: top;
+                    border-top: 1px solid var(--color-gray-900);
+                }
+
+                thead th {
+                    vertical-align: bottom;
+                    border-bottom: 2px solid var(--color-gray-900);
+                }
+
+                tbody + tbody {
+                    border-top: 2px solid var(--color-gray-900);
+                }
+
+                th {
+                    text-align: left;
+                    color: var(--color-gray-900);
+                }
+
+                .col-author {
+                    display: none;
+
+                    @include lg {
+                        display: table-cell;
+                    }
+                }
+
+                .col-price {
+                    display: none;
+
+
+                    @include lg {
+                        display: table-cell;
+                    }
+                }
+
+                .col-category {
+                    display: none;
+
+                    @include md {
+                        display: table-cell;
+                    }
+                }
+
+                .details-button {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}

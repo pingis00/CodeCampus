@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Admin Portal";
+}
+
+<section class="admin-portal">
+    <div class="container">
+        <div class="header-section">
+            <h1 class="main-title">@ViewData["Title"]</h1>
+            <p class="subtitle">Welcome to the admin portal. Here you can manage courses, subscribers, and contact requests efficiently.</p>
+        </div>
+        <div class="cards-row">
+            <div class="cards-column">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Manage Courses</h5>
+                        <p class="card-text">View, create, update, and delete courses.</p>
+                        <a class="btn btn-theme" asp-action="Courses" asp-controller="Admin">Go to Courses</a>
+                    </div>
+                </div>
+            </div>
+            <div class="cards-column">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Manage Subscribers</h5>
+                        <p class="card-text">View and manage newsletter subscribers.</p>
+                        <a class="btn btn-theme" asp-action="Subscribers" asp-controller="Admin">Go to Subscribers</a>
+                    </div>
+                </div>
+            </div>
+            <div class="cards-column">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Manage Contact Requests</h5>
+                        <p class="card-text">View and manage contact requests from users.</p>
+                        <a class="btn btn-theme" asp-action="ContactRequests" asp-controller="Admin">Go to Contact Requests</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

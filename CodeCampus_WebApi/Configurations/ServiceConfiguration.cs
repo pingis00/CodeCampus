@@ -14,10 +14,24 @@ public static class ServiceConfiguration
         services.AddScoped<UserManager<UserEntity>>();
         services.AddScoped<SignInManager<UserEntity>>();
 
-        services.AddScoped<IContactService, ContactService>();
-        services.AddScoped<ISubscribeService, SubscribeService>();
-
         services.AddScoped<IContactRepository, ContactRepository>();
         services.AddScoped<ISubscribeRepository, SubscribeRepository>();
+        services.AddScoped<ICourseRepository, CourseRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+        services.AddScoped<IContactService, ContactService>();
+        services.AddScoped<ISubscribeService, SubscribeService>();
+        services.AddScoped<ICourseService, CourseService>();
+
+        services.AddTransient<IFileUploadService, FileUploadService>();
+        services.AddTransient<ICategoryService, CategoryService>();
+
+
+
+
+        services.AddHttpClient<IApiCourseService, ApiCourseService>(client =>
+        {
+            client.BaseAddress = new Uri("https://localhost:7297/");
+        });
     }
 }

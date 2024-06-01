@@ -1,0 +1,64 @@
+﻿.update-course {
+    background-color: var(--color-gray-000);
+
+    .container {
+        padding-top: 1rem;
+
+        .text-center {
+            margin-bottom: 2rem;
+        }
+
+        form {
+
+            @include lg {
+                max-width: 70%;
+                margin: 0 auto;
+            }
+
+            @include xl {
+                max-width: 65%;
+            }
+
+            .content {
+
+                .input-group {
+                    margin-bottom: 1rem;
+
+                    .control-label {
+                        font-weight: bold;
+                    }
+
+                    .form-control {
+                        width: 100%;
+                        padding: 1rem;
+                        font-size: 1rem;
+                        border: 1px solid var(--color-gray-900);
+                    }
+
+                    .text-danger {
+                        color: var(--color-danger);
+                    }
+                }
+
+                button {
+                    width: 100%;
+
+                    @include md {
+                        display: inline-block;
+                        width: auto;
+                    }
+                }
+
+                .btn-theme {
+                    margin-bottom: 0.5rem;
+
+                    @include md {
+                        display: inline-block;
+                        margin-bottom: 0;
+                        margin-right: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+}

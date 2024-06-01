@@ -1,0 +1,49 @@
+﻿@model SubscriberViewModel
+
+@{
+    ViewData["Title"] = "Subscriber Details";
+}
+
+<section class="subscriber-details">
+    <div class="container">
+        <div class="text-center">
+            <h1>Subscriber Details</h1>
+            <p class="lead">Detailed information about the subscriber.</p>
+        </div>
+        <div class="subscriber-info">
+            <div class="labels">
+                <dt>Email</dt>
+                <dt>Daily Newsletter</dt>
+                <dt>Advertising Updates</dt>
+                <dt>Event Updates</dt>
+                <dt>Week In Review</dt>
+                <dt>Startups Weekly</dt>
+                <dt>Podcasts</dt>
+                <dt>Created At</dt>
+                <dt>Is Registered User</dt>
+            </div>
+            <div class="values">
+                <dd class="email-limit">@Model.Email</dd>
+                <dd>@Model.DailyNewsLetter</dd>
+                <dd>@Model.AdvertisingUpdates</dd>
+                <dd>@Model.EventUpdates</dd>
+                <dd>@Model.WeekInReview</dd>
+                <dd>@Model.StartupsWeekly</dd>
+                <dd>@Model.Podcasts</dd>
+                <dd>@Model.CreatedAt.ToString("g")</dd>
+                <dd>@Model.IsRegisteredUser</dd>
+            </div>
+        </div>
+        <div class="btn-container">
+            <a asp-controller="Admin" asp-action="Subscribers" class="btn btn-theme">Back to List</a>
+            <form asp-controller="Admin" asp-action="DeleteSubscriber" method="post" onsubmit="return confirm('Are you sure you want to delete this subscriber?');">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @await Html.PartialAsync("_ToastMessages")
+}

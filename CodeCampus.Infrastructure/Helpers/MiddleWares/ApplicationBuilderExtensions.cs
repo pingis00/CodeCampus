@@ -9,3 +9,4 @@ public static class ApplicationBuilderExtensions
         return builder.UseMiddleware<UserSessionValidation>();
     }
 }
+

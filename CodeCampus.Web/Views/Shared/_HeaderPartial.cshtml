@@ -1,6 +1,5 @@
-﻿@inject SignInManager<UserEntity> _signInManger
-
-@{
+﻿@{
+    var user = await _userManager.GetUserAsync(User);
     var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
     var isDark = (themeMode == "dark") ? true : false;
     ViewData["Title"] = "Header";
@@ -19,6 +18,7 @@
                 @if (_signInManger.IsSignedIn(User))
                 {
                     <a class="menu-link" asp-action="Index" asp-controller="AvailableCourses">Courses</a>
+
                 }
                 else
                 {
@@ -26,6 +26,10 @@
 
                 }
                 <a class="menu-link" asp-controller="Contact" asp-action="Contact">Contact</a>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a class="menu-link" asp-controller="Admin" asp-action="Index">Admin Portal</a>
+                }
 
             </nav>
         </div>
@@ -41,14 +45,14 @@
 
         <div id="account-buttons" class="hide">
 
-            @if (_signInManger.IsSignedIn(User))
+            @if (_signInManger.IsSignedIn(User) && user != null)
             {
                 <a asp-controller="Account" asp-action="Details">
                     <div class="image-overlay">
-                        <img class="user-avatar" src="~/Assets/Images/Common/default-profile-image.svg" alt="profile-image" />
+                        <img class="user-avatar" src="@(user.ProfileImage != null ? "/Assets/uploads/" + user.ProfileImage : "/Assets/uploads/default-profile-image.svg")" alt="profile-image" />
                     </div>
                 </a>
-                <a class="btn-theme" asp-controller="Auth" asp-action="SignOut">
+                <a class="@((ViewContext.RouteData.Values["Controller"]!.ToString() == "Account") ? "d-none" : "btn-theme")" asp-controller="Auth" asp-action="SignOut">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i><span>Sign Out</span>
                 </a>
             }

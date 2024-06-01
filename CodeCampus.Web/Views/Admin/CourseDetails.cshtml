@@ -1,0 +1,62 @@
+﻿@model CodeCampus.Web.ViewModels.Admin.CourseCreateViewModel
+
+@{
+    ViewData["Title"] = "Course Details";
+}
+
+<section class="course_details">
+    
+    <div class="container">
+        <div class="course-header">
+            <h1>Course Details</h1>
+            <p class="lead">Detailed information about the course.</p>
+        </div>
+        
+        <div class="course-content">
+            <dl class="course-info">
+                <dt class="course-label">Course Image</dt>
+                <dd class="course-value"><img src="@Model.CourseRequest.CourseImage" alt="@Model.CourseRequest.Title" class="course-image"></dd>
+
+                <dt class="course-label">Title</dt>
+                <dd class="course-value">@Model.CourseRequest.Title</dd>
+
+                <dt class="course-label">Author</dt>
+                <dd class="course-value">@Model.CourseRequest.Author</dd>
+
+                <dt class="course-label">Price</dt>
+                <dd class="course-value">@Model.CourseRequest.Price</dd>
+
+                <dt class="course-label">Discount Price</dt>
+                <dd class="course-value">@Model.CourseRequest.DiscountPrice</dd>
+
+                <dt class="course-label">Hours</dt>
+                <dd class="course-value">@Model.CourseRequest.Hours</dd>
+
+                <dt class="course-label">Likes (%)</dt>
+                <dd class="course-value">@Model.CourseRequest.LikesInProcent</dd>
+
+                <dt class="course-label">Likes (Number)</dt>
+                <dd class="course-value">@Model.CourseRequest.LikesInNumbers</dd>
+
+                <dt class="course-label">Best Seller</dt>
+                <dd class="course-value">@Model.CourseRequest.IsBestSeller</dd>
+
+                <dt class="course-label">Category</dt>
+                <dd class="course-value">@Model.CourseRequest.CategoryName</dd>
+            </dl>
+            <div class="btn-container">
+                <a asp-controller="Admin" asp-action="Courses" class="btn btn-theme">Back to List</a>
+                <a asp-controller="Admin" asp-action="UpdateCourse" asp-route-id="@Model.Id" class="btn btn-warning">Update</a>
+
+                <form asp-controller="Admin" asp-action="DeleteCourse" method="post" onsubmit="return confirm('Are you sure you want to delete this course?');">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @await Html.PartialAsync("_ToastMessages")
+}

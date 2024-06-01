@@ -1,0 +1,92 @@
+﻿.admin-portal {
+    background-color: var(--color-gray-000);
+    height: 100%;
+
+    .container {
+        padding-top: 3rem;
+    }
+
+    .header-section {
+        text-align: center;
+        margin-bottom: 4rem;
+
+        .main-title {
+
+            @include lg {
+            }
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--color-gray-700);
+
+            @include lg {
+            }
+        }
+    }
+
+    .cards-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    .cards-column {
+        position: relative;
+        width: 100%;
+        padding-right: 5px;
+        padding-left: 5px;
+        margin-bottom: 1.5rem;
+
+        @include lg {
+            flex: 0 0 33.33333%;
+            max-width: 33.33333%;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+
+        @include xl {
+            padding-right: 20px;
+            padding-left: 20px;
+        }
+    }
+
+    .card {
+        background: var(--color-background-002);
+        border: 1px solid var(--color-gray-300);
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+
+        @include xl {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+
+            .card-title {
+                font-size: 1.25rem;
+                color: var(--color-gray-900);
+                margin-bottom: 0.75rem;
+            }
+
+            .card-text {
+                font-size: 1rem;
+                color: var(--color-gray-600);
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}

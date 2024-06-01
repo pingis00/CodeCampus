@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CodeCampus.Web.ViewModels.Admin.SubscriberViewModel>
+
+@{
+    ViewData["Title"] = "Subscribers";
+}
+
+<section class="subscribers">
+    <div class="container">
+        <div class="text-center">
+            <h1>Subscribers</h1>
+            <p class="lead">Here you can view all subscribers.</p>
+        </div>
+
+        <div class="table-responsive">
+            <div class="button-group">
+                <a asp-controller="Admin" asp-action="Index" class="btn btn-theme">Back to Admin Portal</a>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Email</th>
+                        <th scope="col" class="col-daily-newsletter">Daily Newsletter</th>
+                        <th scope="col" class="col-advertising-updates">Advertising Updates</th>
+                        <th scope="col" class="col-event-updates">Event Updates</th>
+                        <th scope="col" class="col-week-in-review">Week In Review</th>
+                        <th scope="col" class="col-startups-weekly">Startups Weekly</th>
+                        <th scope="col" class="col-podcasts">Podcasts</th>
+                        <th scope="col" class="col-is-registered-user">Is Registered User</th>
+                        <th scope="col" class="col-action">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var subscriber in Model)
+                    {
+                        <tr>
+                            <td class="col-email">
+                                @subscriber.Email
+                                <a asp-controller="Admin" asp-action="SubscriberDetails" asp-route-id="@subscriber.Id" class="btn btn-theme details-btn">Details</a>
+                            </td>
+                            <td class="col-daily-newsletter">@subscriber.DailyNewsLetter</td>
+                            <td class="col-advertising-updates">@subscriber.AdvertisingUpdates</td>
+                            <td class="col-event-updates">@subscriber.EventUpdates</td>
+                            <td class="col-week-in-review">@subscriber.WeekInReview</td>
+                            <td class="col-startups-weekly">@subscriber.StartupsWeekly</td>
+                            <td class="col-podcasts">@subscriber.Podcasts</td>
+                            <td class="col-is-registered-user">@(@subscriber.IsRegisteredUser ? "Yes" : "No")</td>
+                            <td>
+                                <a asp-controller="Admin" asp-action="SubscriberDetails" asp-route-id="@subscriber.Id" class="btn btn-theme details-btn-2">Details</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @await Html.PartialAsync("_ToastMessages")
+}

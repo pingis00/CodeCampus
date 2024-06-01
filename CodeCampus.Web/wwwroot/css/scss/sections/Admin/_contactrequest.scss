@@ -1,0 +1,124 @@
+﻿.contact-requests {
+    background-color: var(--color-gray-000);
+    height: 100%;
+
+    .container {
+        padding-top: 5rem;
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-subtitle {
+                font-size: 1.25rem;
+            }
+        }
+
+        .contact-requests-content {
+            display: flex;
+            flex-direction: column;
+
+            .back-button-row {
+                margin-bottom: 3rem;
+
+                .back-button-column {
+                    width: 100%;
+                    text-align: center;
+
+                    .btn-theme {
+                        display: inline-block;
+                    }
+                }
+            }
+
+            .table-responsive {
+                overflow-x: auto;
+
+                @include md {
+                    width: 90%;
+                    margin: 0 auto;
+                }
+
+                @include lg {
+                    width: 70%;
+                }
+
+                @include xxl {
+                    width: 100%;
+                }
+
+                .contact-requests-table {
+                    width: 100%;
+                    margin-bottom: 1rem;
+                    border-collapse: collapse;
+                    border-spacing: 0;
+
+                    th, td {
+                        background-color: var(--color-gray-000);
+                        color: var(--color-text-001);
+                        padding: 0.75rem;
+                        vertical-align: top;
+                        border-top: 1px solid var(--color-gray-900);
+
+                        @include md {
+                            border-top: 1px solid var(--color-gray-900);
+                        }
+                    }
+
+                    thead th {
+                        vertical-align: bottom;
+                        border-bottom: 2px solid var(--color-gray-900);
+                    }
+
+                    th {
+                        text-align: left;
+                        color: var(--color-gray-900);
+                    }
+
+                    .col-full-name,
+                    .col-service,
+                    .col-created,
+                    .col-message,
+                    .col-action {
+                        display: none;
+                    }
+
+                    @include md {
+                        .col-action {
+                            display: table-cell;
+                        }
+                    }
+
+                    @include xxl {
+                        .col-full-name,
+                        .col-service,
+                        .col-created,
+                        .col-message {
+                            display: table-cell;
+                        }
+                    }
+
+                    .col-email {
+                        .details-btn {
+                            @include md {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    .details-btn-2 {
+                        display: none;
+
+                        @include md {
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ContactRequestViewModel>
+
+@{
+    ViewData["Title"] = "Contact Requests";
+}
+
+<section class="contact-requests">
+    <div class="container">
+        <div class="section-header">
+            <h1>Contact Requests</h1>
+            <p class="section-subtitle">Here you can view all contact requests.</p>
+        </div>
+        <div class="contact-requests-content">
+            <div class="back-button-row">
+                <div class="back-button-column">
+                    <a asp-controller="Admin" asp-action="Index" class="btn btn-theme">Back to Admin Portal</a>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="contact-requests-table">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="col-email">Email</th>
+                            <th scope="col" class="col-full-name">Full Name</th>
+                            <th scope="col" class="col-service">Service</th>
+                            <th scope="col" class="col-created">Created At</th>
+                            <th scope="col" class="col-message">Message</th>
+                            <th scope="col" class="col-action">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var contact in Model)
+                        {
+                            <tr>
+                                <td class="col-email">
+                                    @contact.Email>
+                                    <a asp-controller="Admin" asp-action="ContactRequestDetails" asp-route-id="@contact.Id" class="btn btn-theme details-btn">Details</a>
+                                </td>
+                                <td class="col-full-name">@contact.FullName</td>                               
+                                <td class="col-service">@contact.Service</td>
+                                <td class="col-created">@contact.CreatedAt.ToString("g")</td>
+                                <td class="col-message">
+                                    @if (contact.Message.Length > 40)
+                                    {
+                                        @contact.Message.Substring(0, 40)
+                                        <a asp-controller="Admin" asp-action="ContactRequestDetails" asp-route-id="@contact.Id">...Read more</a>
+                                    }
+                                    else
+                                    {
+                                        @contact.Message
+                                    }
+                                </td>
+                                <td>
+                                    <a asp-controller="Admin" asp-action="ContactRequestDetails" asp-route-id="@contact.Id" class="btn btn-theme details-btn-2">Details</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @await Html.PartialAsync("_ToastMessages")
+}

@@ -18,6 +18,8 @@
 
   <ItemGroup>
     <Folder Include="Views\Courses\" />
+    <Folder Include="wwwroot\Assets\uploads\courseimages\" />
+    <Folder Include="wwwroot\Assets\uploads\profileimages\" />
   </ItemGroup>
 
   <ItemGroup>

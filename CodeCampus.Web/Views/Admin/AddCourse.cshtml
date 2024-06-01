@@ -1,0 +1,81 @@
+﻿@model CourseCreateViewModel
+
+@{
+    ViewData["Title"] = "Add Course";
+}
+
+<section class="add-course">
+    <div class="container">
+        <div class="text-center">
+            <h1>Add Course</h1>
+            <p class="lead">Fill in the details to add a new course.</p>
+        </div>
+        <form asp-action="AddCourse" asp-controller="Admin" method="post" enctype="multipart/form-data" novalidate>
+            <div class="content">
+                <div class="input-group">
+                    <label for="CourseRequest.CourseImageFile" class="control-label">Course Image</label>
+                    <input type="file" class="form-control" id="CourseImageFile" name="CourseImageFile" />
+                    <span asp-validation-for="CourseRequest.CourseImage"></span>
+                </div>
+                <div class="input-group">
+                    <label asp-for="CourseRequest.Title" class="control-label"></label>
+                    <input asp-for="CourseRequest.Title" class="form-control" />
+                    <span asp-validation-for="CourseRequest.Title"></span>
+                </div>
+                <div class="input-group">
+                    <label asp-for="CourseRequest.Author" class="control-label"></label>
+                    <input asp-for="CourseRequest.Author" class="form-control" />
+                    <span asp-validation-for="CourseRequest.Author"></span>
+                </div>
+                <div class="input-group">
+                    <label asp-for="CourseRequest.Price" class="control-label"></label>
+                    <input asp-for="CourseRequest.Price" class="form-control" />
+                    <span asp-validation-for="CourseRequest.Price"></span>
+                </div>
+                <div class="input-group">
+                    <label asp-for="CourseRequest.DiscountPrice" class="control-label"></label>
+                    <input asp-for="CourseRequest.DiscountPrice" class="form-control" />
+                    <span asp-validation-for="CourseRequest.DiscountPrice"></span>
+                </div>
+                <div class="input-group">
+                    <label asp-for="CourseRequest.Hours" class="control-label"></label>
+                    <input asp-for="CourseRequest.Hours" class="form-control" />
+                    <span asp-validation-for="CourseRequest.Hours"></span>
+                </div>
+                <div class="input-group">
+                    <label asp-for="CourseRequest.LikesInProcent" class="control-label"></label>
+                    <input asp-for="CourseRequest.LikesInProcent" class="form-control" />
+                    <span asp-validation-for="CourseRequest.LikesInProcent"></span>
+                </div>
+                <div class="input-group">
+                    <label asp-for="CourseRequest.LikesInNumbers" class="control-label"></label>
+                    <input asp-for="CourseRequest.LikesInNumbers" class="form-control" />
+                    <span asp-validation-for="CourseRequest.LikesInNumbers"></span>
+                </div>
+                <div class="input-group">
+                    <label asp-for="CourseRequest.IsBestSeller" class="control-label"></label>
+                    <select asp-for="CourseRequest.IsBestSeller" asp-items="Model.YesOrNo" class="form-control">
+                        <option value="" class="text">Is it a best seller?</option>
+                    </select>
+                    <span asp-validation-for="CourseRequest.IsBestSeller"></span>
+                </div>
+                <div class="input-group">
+                    <label asp-for="CourseRequest.CategoryName" class="control-label"></label>
+                    <input asp-for="CourseRequest.CategoryName" class="form-control" />
+                    <span asp-validation-for="CourseRequest.CategoryName"></span>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="btn btn-theme">Add Course</button>
+                    <a asp-controller="Admin" asp-action="Courses" class="btn btn-secondary">Back to Courses</a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</section>
+
+@await Html.PartialAsync("_ValidationScriptPartial")
+
+@section Scripts {
+    @await Html.PartialAsync("_ToastMessages")
+}

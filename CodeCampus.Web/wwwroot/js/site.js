@@ -76,10 +76,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (res.ok)
                     window.location.reload()
                 else
-                    console.log('something')
+                    console.log('failed')
             });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    handleProfileImageUpload()
+})
+
+function handleProfileImageUpload() {
+    try {
+        let fileUploader = document.getElementById('fileUploader')
+
+        if (fileUploader != undefined) {
+            fileUploader.addEventListener('change', function () {
+                if (this.files.length > 0)
+                    this.form.submit()
+            })
+        }
+    }
+    catch { }
+}
 
 function handleFormSubmit(formId, messageContainerId) {
     const form = document.getElementById(formId);
@@ -135,3 +153,58 @@ function displayMessage(messageContainer, data, form) {
 
 handleFormSubmit('newsletterForm', 'newsletter-message-container');
 handleFormSubmit('contactForm', 'contact-message-container');
+
+document.addEventListener("DOMContentLoaded", function () {
+    const limitText = (selector, maxLength) => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(el => {
+            const originalText = el.getAttribute('data-original-text') || el.textContent;
+            el.setAttribute('data-original-text', originalText);
+            if (originalText.length > maxLength) {
+                el.textContent = originalText.substring(0, maxLength) + '...';
+            } else {
+                el.textContent = originalText;
+            }
+        });
+    };
+
+    const applyTextLimit = () => {
+        let maxLength = 35;
+
+        if (window.matchMedia("(min-width: 576px)").matches) {
+            maxLength = 70;
+        }
+
+        limitText('.text-limit', maxLength);
+    };
+
+    const applyEmailLimit = () => {
+        let maxLength = 12;
+
+        if (window.matchMedia("(min-width: 410px)").matches) {
+            maxLength = 20;
+        }
+
+        if (window.matchMedia("(min-width: 576px)").matches) {
+            maxLength = 35;
+        }
+
+        if (window.matchMedia("(min-width: 768px)").matches) {
+            maxLength = 50;
+        }
+
+        if (window.matchMedia("(min-width: 992px)").matches) {
+            maxLength = 75;
+        }
+
+        limitText('.email-limit', maxLength);
+    };
+
+    applyTextLimit();
+    applyEmailLimit();
+
+    window.addEventListener('resize', () => {
+        applyTextLimit();
+        applyEmailLimit();
+    });;
+});

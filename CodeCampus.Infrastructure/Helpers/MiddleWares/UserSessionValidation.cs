@@ -1,31 +1,41 @@
 ﻿using CodeCampus.Infrastructure.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 
 namespace CodeCampus.Infrastructure.Helpers.MiddleWares;
 
-public class UserSessionValidation(RequestDelegate next)
+public class UserSessionValidation(RequestDelegate next, ILogger<UserSessionValidation> logger)
 {
     private readonly RequestDelegate _next = next;
+    private readonly ILogger<UserSessionValidation> _logger = logger;
 
     private static bool IsAjaxRequest(HttpRequest request) => request.Headers.XRequestedWith == "XMLHttpRequest";
 
     public async Task InvokeAsync(HttpContext context, UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager)
     {
-        if (context.User.Identity!.IsAuthenticated)
+        try
         {
-            var user = await userManager.GetUserAsync(context.User);
-            if (user == null)
+            if (context.User.Identity!.IsAuthenticated)
             {
-                await signInManager.SignOutAsync();
-
-                if (!IsAjaxRequest(context.Request) && context.Request.Method.Equals("GET", StringComparison.OrdinalIgnoreCase))
+                var user = await userManager.GetUserAsync(context.User);
+                if (user == null)
                 {
-                    var signInPath = "/signin";
-                    context.Response.Redirect(signInPath);
-                    return;
+                    _logger.LogWarning("User not found, signing out.");
+                    await signInManager.SignOutAsync();
+
+                    if (!IsAjaxRequest(context.Request) && context.Request.Method.Equals("GET", StringComparison.OrdinalIgnoreCase))
+                    {
+                        context.Response.Redirect("/signin");
+                        return;
+                    }
                 }
             }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred during user session validation.");
+            throw;
         }
 
         await _next(context);
