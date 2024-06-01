@@ -1,5 +1,6 @@
 ﻿using CodeCampus.Infrastructure.DTOs;
 using CodeCampus.Infrastructure.Interfaces.Services;
+using CodeCampus_WebApi.Attrubutes;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using ResponseStatusCode = CodeCampus.Infrastructure.Responses.StatusCode;
@@ -14,6 +15,7 @@ public class SubscribeController(ILogger<SubscribeController> logger, ISubscribe
     private readonly ILogger<SubscribeController> _logger = logger;
 
     [HttpPost]
+    [ApiKey(requireAdmin: false)]
     public async Task<IActionResult> SubscribeEmail([FromBody] SubscribeRequest request)
     {
         if (!ModelState.IsValid)
@@ -42,6 +44,7 @@ public class SubscribeController(ILogger<SubscribeController> logger, ISubscribe
     }
 
     [HttpGet]
+    [ApiKey(requireAdmin: true)]
     public async Task<IActionResult> GetAllSubscribers()
     {
         try
@@ -60,6 +63,7 @@ public class SubscribeController(ILogger<SubscribeController> logger, ISubscribe
         }
     }
     [HttpGet("{id}")]
+    [ApiKey(requireAdmin: true)]
     public async Task<IActionResult> GetSubscriberById(int id)
     {
         try
@@ -79,6 +83,7 @@ public class SubscribeController(ILogger<SubscribeController> logger, ISubscribe
     }
 
     [HttpDelete("{id}")]
+    [ApiKey(requireAdmin: true)]
 
     public async Task<IActionResult> UnSubscribeEmail(int id)
     {

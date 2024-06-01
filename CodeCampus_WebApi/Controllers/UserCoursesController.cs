@@ -1,4 +1,5 @@
 ﻿using CodeCampus.Infrastructure.Interfaces.Services;
+using CodeCampus_WebApi.Attrubutes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CodeCampus_WebApi.Controllers;
@@ -11,6 +12,7 @@ public class UserCoursesController(IUserCourseService userCourseService, ILogger
     private readonly ILogger<CoursesController> _logger = logger;
 
     [HttpPost("add")]
+    [ApiKey(requireAdmin: false)]
     public async Task<IActionResult> AddUserCourse(string userId, int courseId)
     {
         try
@@ -26,6 +28,7 @@ public class UserCoursesController(IUserCourseService userCourseService, ILogger
     }
 
     [HttpGet("user/{userId}")]
+    [ApiKey(requireAdmin: false)]
     public async Task<IActionResult> GetUserCourses(string userId)
     {
         try
@@ -46,6 +49,7 @@ public class UserCoursesController(IUserCourseService userCourseService, ILogger
     }
 
     [HttpDelete("remove")]
+    [ApiKey(requireAdmin: false)]
     public async Task<IActionResult> RemoveUserCourse(string userId, int courseId)
     {
         try
@@ -61,6 +65,7 @@ public class UserCoursesController(IUserCourseService userCourseService, ILogger
     }
 
     [HttpDelete("user/{userId}/remove-all")]
+    [ApiKey(requireAdmin: false)]
     public async Task<IActionResult> RemoveAllUserCourses(string userId)
     {
         try

@@ -1,6 +1,7 @@
 ﻿using CodeCampus.Infrastructure.DTOs;
 using CodeCampus.Infrastructure.Entities;
 using CodeCampus.Infrastructure.Interfaces.Services;
+using CodeCampus_WebApi.Attrubutes;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ResponseStatusCode = CodeCampus.Infrastructure.Responses.StatusCode;
@@ -16,6 +17,7 @@ namespace CodeCampus_WebApi.Controllers
         private readonly ILogger<ContactController> _logger = logger;
 
         [HttpPost]
+        [ApiKey(requireAdmin: false)]
         public async Task<IActionResult> ContactRequest([FromBody] ContactRequestDto request)
         {
             if (!ModelState.IsValid)
@@ -36,6 +38,7 @@ namespace CodeCampus_WebApi.Controllers
         }
 
         [HttpGet]
+        [ApiKey(requireAdmin: true)]
         public async Task<IActionResult> GetAllContacts()
         {
             try
@@ -55,6 +58,7 @@ namespace CodeCampus_WebApi.Controllers
         }
 
         [HttpGet("{id}")]
+        [ApiKey(requireAdmin: true)]
         public async Task<IActionResult> GetContactById(int id)
         {
             try
@@ -74,6 +78,7 @@ namespace CodeCampus_WebApi.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ApiKey(requireAdmin: true)]
         public async Task<IActionResult> DeleteContactRequest(int id)
         {
             try
