@@ -17,12 +17,12 @@ public class ContactFormModel
     public string Email { get; set; } = null!;
 
     [Display(Name = "Service", Prompt = "Choose the service you are interested in", Order = 2)]
-    public string? Service { get; set; }
+    [Required(ErrorMessage = "Service selection is required")]
+    public string Service { get; set; } = null!;
 
     [Display(Name = "Message", Prompt = "Enter your message here...", Order = 3)]
     [DataType(DataType.MultilineText)]
     [Required(ErrorMessage = "Message is required")]
     [MinLength(10, ErrorMessage = "At least 10 characters required")]
-
-    public string? Message { get; set; }
+    public string Message { get; set; } = null!;
 }

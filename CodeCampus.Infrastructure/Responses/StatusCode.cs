@@ -6,6 +6,8 @@ public enum StatusCode
     ERROR = 400,
     ACCESS_DENIED = 403,
     NOT_FOUND = 404,
-    EXISTS = 409
+    EXISTS = 409,
+    UNAUTHORIZED = 401,
+    INTERNAL_SERVER_ERROR = 500
 }
 

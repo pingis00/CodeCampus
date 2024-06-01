@@ -26,6 +26,7 @@ public class AccountDetailsBasicInfoModel
 
     [Display(Name = "Phone", Prompt = "Enter your phone", Order = 3)]
     [DataType(DataType.PhoneNumber)]
+    [Required(ErrorMessage = "Phonenumber is required")]
     [RegularExpression(@"^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$", ErrorMessage = "Your phonenumber is invalid")]
     public string? PhoneNumber { get; set; }
 
