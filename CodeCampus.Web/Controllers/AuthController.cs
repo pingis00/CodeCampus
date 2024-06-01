@@ -1,17 +1,21 @@
 ﻿using CodeCampus.Infrastructure.Entities;
+using CodeCampus.Infrastructure.Interfaces.Services.Admin;
+using CodeCampus.Infrastructure.Services.Admin;
 using CodeCampus.Web.ViewModels.Auth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
+
 namespace CodeCampus.Web.Controllers;
 
-public class AuthController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, ILogger<AuthController> logger) : Controller
+public class AuthController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, ILogger<AuthController> logger, ITokenService tokenService) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
     private readonly ILogger<AuthController> _logger = logger;
+    private readonly ITokenService _tokenService = tokenService;
 
     [HttpGet]
     [Route("/signup")]
@@ -99,7 +103,19 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
             var result = await _signInManager.PasswordSignInAsync(viewModel.Form.Email, viewModel.Form.Password, viewModel.Form.RememberMe, false);
             if (result.Succeeded)
             {
-                var user = await _userManager.FindByEmailAsync(viewModel.Form.Email);               
+                var user = await _userManager.FindByEmailAsync(viewModel.Form.Email);
+
+                if (user != null && await _userManager.IsInRoleAsync(user, "Admin"))
+                {
+                    var token = await _tokenService.GenerateToken(user);
+
+                    Response.Cookies.Append("access_token", token, new CookieOptions
+                    {
+                        HttpOnly = true,
+                        Secure = true,
+                        SameSite = SameSiteMode.Strict
+                    });
+                }
 
                 if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                     return Redirect(returnUrl);
@@ -262,3 +278,4 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
         }
     }
 }
+

@@ -11,7 +11,7 @@ using ResponseStatusCode = CodeCampus.Infrastructure.Responses.StatusCode;
 
 namespace CodeCampus_WebApi.Controllers;
 
-
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [Route("api/[controller]")]
 [ApiController]
 public class CoursesController(ICourseService courseService, ILogger<CoursesController> logger, IFileUploadService fileUploader) : ControllerBase
@@ -20,6 +20,7 @@ public class CoursesController(ICourseService courseService, ILogger<CoursesCont
     private readonly IFileUploadService _fileUploader = fileUploader;
     private readonly ILogger<CoursesController> _logger = logger;
 
+    [Authorize(Policy = "AdminPolicy")]
     [HttpPost("admin")]
     [ApiKey(requireAdmin: true)]
     public async Task<IActionResult> CreateCourseAdmin([FromForm] CourseRequestDto request, IFormFile? courseImageFile)
@@ -52,6 +53,7 @@ public class CoursesController(ICourseService courseService, ILogger<CoursesCont
         }
     }
 
+    [Authorize(Policy = "AdminPolicy")]
     [HttpGet("admin/{id}")]
     [ApiKey(requireAdmin: true)]
     public async Task<IActionResult> GetOneCourseAdmin(int id)
@@ -72,6 +74,7 @@ public class CoursesController(ICourseService courseService, ILogger<CoursesCont
         }
     }
 
+    [Authorize(Policy = "AdminPolicy")]
     [HttpGet("admin")]
     [ApiKey(requireAdmin: true)]
     public async Task<IActionResult> GetAllCoursesAdmin()
@@ -92,6 +95,7 @@ public class CoursesController(ICourseService courseService, ILogger<CoursesCont
         }
     }
 
+    [Authorize(Policy = "AdminPolicy")]
     [HttpPut("admin/{id}")]
     [ApiKey(requireAdmin: true)]
     public async Task<IActionResult> UpdateCourseAdmin(int id, [FromForm] CourseUpdateRequestDto request, IFormFile? courseImageFile)
@@ -127,6 +131,7 @@ public class CoursesController(ICourseService courseService, ILogger<CoursesCont
         }
     }
 
+    [Authorize(Policy = "AdminPolicy")]
     [HttpDelete("admin/{id}")]
     [ApiKey(requireAdmin: true)]
     public async Task<IActionResult> DeleteCourseAdmin(int id)
@@ -147,6 +152,7 @@ public class CoursesController(ICourseService courseService, ILogger<CoursesCont
         }
     }
 
+    [AllowAnonymous]
     [HttpGet]
     [ApiKey(requireAdmin: false)]
     public async Task<IActionResult> GetAllCourses(string? category, string? searchQuery)
@@ -203,6 +209,7 @@ public class CoursesController(ICourseService courseService, ILogger<CoursesCont
         }
     }
 
+    [AllowAnonymous]
     [HttpGet("{id}")]
     [ApiKey(requireAdmin: false)]
     public async Task<IActionResult> GetOneCourse(int id)
