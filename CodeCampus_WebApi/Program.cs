@@ -1,9 +1,5 @@
 using CodeCampus.Infrastructure.Contexts;
 using CodeCampus.Infrastructure.Entities;
-using CodeCampus.Infrastructure.Interfaces.Repositories;
-using CodeCampus.Infrastructure.Interfaces.Services;
-using CodeCampus.Infrastructure.Repositories;
-using CodeCampus.Infrastructure.Services;
 using CodeCampus_WebApi.Configurations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
