@@ -1598,6 +1598,9 @@ footer .container span {
     padding-bottom: 50px;
   }
 }
+.newsletter-section .container {
+  position: relative;
+}
 @media (min-width: 992px) {
   .newsletter-section .container {
     padding-left: 80px;
@@ -1668,24 +1671,24 @@ footer .container span {
     width: 65px;
   }
 }
-.newsletter-section .container .newsletter-info {
+.newsletter-section .container form .newsletter-info {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 @media (min-width: 576px) {
-  .newsletter-section .container .newsletter-info {
+  .newsletter-section .container form .newsletter-info {
     display: block;
   }
 }
 @media (min-width: 992px) {
-  .newsletter-section .container .newsletter-info {
+  .newsletter-section .container form .newsletter-info {
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
   }
 }
-.newsletter-section .container .newsletter-info h5 {
+.newsletter-section .container form .newsletter-info h5 {
   text-align: center;
   line-height: 160%;
   font-weight: 400;
@@ -1696,7 +1699,7 @@ footer .container span {
   font-size: 16px !important;
 }
 @media (min-width: 576px) {
-  .newsletter-section .container .newsletter-info h5 {
+  .newsletter-section .container form .newsletter-info h5 {
     line-height: 160%;
     font-weight: 400;
     color: var(--color-gray-700);
@@ -1707,33 +1710,33 @@ footer .container span {
   }
 }
 @media (min-width: 992px) {
-  .newsletter-section .container .newsletter-info h5 {
+  .newsletter-section .container form .newsletter-info h5 {
     width: 70%;
     text-align: left;
   }
 }
-.newsletter-section .container .newsletter-info .checkbox-group {
+.newsletter-section .container form .newsletter-info .checkbox-group {
   display: grid;
   grid-template-columns: 1fr;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 @media (min-width: 576px) {
-  .newsletter-section .container .newsletter-info .checkbox-group {
+  .newsletter-section .container form .newsletter-info .checkbox-group {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (min-width: 768px) {
-  .newsletter-section .container .newsletter-info .checkbox-group {
+  .newsletter-section .container form .newsletter-info .checkbox-group {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 @media (min-width: 992px) {
-  .newsletter-section .container .newsletter-info .checkbox-group {
+  .newsletter-section .container form .newsletter-info .checkbox-group {
     margin-bottom: 40px;
   }
 }
-.newsletter-section .container .newsletter-info .checkbox-group .checkbox input[type=checkbox]:checked {
+.newsletter-section .container form .newsletter-info .checkbox-group .checkbox input[type=checkbox]:checked {
   accent-color: var(--color-theme);
 }
 .newsletter-section .container form .content {
@@ -1754,11 +1757,12 @@ footer .container span {
 .newsletter-section .container form .content .input-group .email-icon {
   position: absolute;
   left: 10px;
-  top: 50%;
+  top: 45%;
   transform: translateY(-50%);
 }
 .newsletter-section .container form .content .input-group input[type=email] {
   padding: 10px 10px 10px 40px;
+  width: 100%;
 }
 .newsletter-section .container form .content .subscribe-button {
   margin-bottom: 20px;
@@ -1773,6 +1777,19 @@ footer .container span {
 }
 .newsletter-section .container .terms-and-privacy a {
   text-decoration: none;
+}
+.newsletter-section .container #newsletter-message-container {
+  position: absolute;
+  bottom: -70px;
+  padding: 5px 10px;
+  z-index: 1000;
+}
+.newsletter-section .fade-out {
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+.newsletter-section .fade-out.hide {
+  opacity: 0;
 }
 
 .course-card .image-container {
@@ -3025,6 +3042,7 @@ footer .container span {
   margin-bottom: 1.5rem;
 }
 .contact .container .content form .input-group {
+  position: relative;
   margin-bottom: 1.5rem;
 }
 @media (min-width: 1200px) {
@@ -3063,6 +3081,13 @@ footer .container span {
   .contact #map {
     height: 800px !important;
   }
+}
+.contact .fade-out {
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+.contact .fade-out.hide {
+  opacity: 0;
 }
 
 #signup {

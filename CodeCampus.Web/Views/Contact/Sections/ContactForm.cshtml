@@ -1,0 +1,31 @@
+﻿@model ContactFormViewModel
+
+<form id="contactForm" method="post" asp-controller="Contact" asp-action="Contact" novalidate>
+    <h2>Get In Contact With Us</h2>
+
+    <div id="full-name" class="input-group">
+        <label asp-for="Form.FullName"></label>
+        <span asp-validation-for="Form.FullName" class="hidden"></span>
+        <input asp-for="Form.FullName" />
+    </div>
+    <div id="email" class="input-group">
+        <label asp-for="Form.Email"></label>
+        <span asp-validation-for="Form.Email" class="hidden"></span>
+        <input asp-for="Form.Email" />
+    </div>
+    <div id="service" class="input-group">
+        <label asp-for="Form.Service">Service <span>(optional)</span></label>
+        <span asp-validation-for="Form.Service" class="hidden"></span>
+        <select asp-for="Form.Service" asp-items="Model.AvailableServices" class="service">
+            <option value="" class="text">Choose the service you are interested in</option>
+        </select>
+    </div>
+    <div id="message" class="input-group">
+        <label asp-for="Form.Message"></label>
+        <span asp-validation-for="Form.Message" class="hidden"></span>
+        <textarea asp-for="Form.Message"></textarea>
+    </div>
+    <button type="submit" class="btn-theme-s">Send Contact Request</button>
+</form>
+
+@await Html.PartialAsync("_ValidationScriptPartial")

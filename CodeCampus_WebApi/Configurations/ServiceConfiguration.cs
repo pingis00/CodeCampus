@@ -11,7 +11,13 @@ public static class ServiceConfiguration
 {
     public static void RegisterServices(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddScoped<UserManager<UserEntity>>();
+        services.AddScoped<SignInManager<UserEntity>>();
 
+        services.AddScoped<IContactService, ContactService>();
+        services.AddScoped<ISubscribeService, SubscribeService>();
 
+        services.AddScoped<IContactRepository, ContactRepository>();
+        services.AddScoped<ISubscribeRepository, SubscribeRepository>();
     }
 }

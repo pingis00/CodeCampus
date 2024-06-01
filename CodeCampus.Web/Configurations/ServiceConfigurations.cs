@@ -11,11 +11,13 @@ public static class ServiceConfiguration
     {
         services.AddScoped<IAddressRepository, AddressRepository>();
         services.AddScoped<ISubscribeRepository, SubscribeRepository>();
+        services.AddScoped<IContactRepository, ContactRepository>();
 
 
 
         services.AddScoped<IAddressService, AddressService>();
         services.AddScoped<ISubscribeService, SubscribeService>();
+        services.AddScoped<IContactService, ContactService>();
 
     }
 }

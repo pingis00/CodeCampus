@@ -168,6 +168,7 @@
                 }
 
                 .input-group {
+                    position: relative;
                     margin-bottom: 1.5rem;
 
                     @include xl {
@@ -222,5 +223,14 @@
         @include xl {
             height: 800px !important;
         }
+    }
+
+    .fade-out {
+        opacity: 1;
+        transition: opacity 1s ease-out;
+    }
+
+    .fade-out.hide {
+        opacity: 0;
     }
 }
