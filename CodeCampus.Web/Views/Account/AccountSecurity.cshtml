@@ -7,56 +7,16 @@
 
             <div class="details">
                 <section class="security-info">
-                    <form id="securityForm" method="post" asp-controller="Account" asp-action="AccountSecurity">
+                    @await Html.PartialAsync("ChangePassword", Model.ChangePassword)
+                    @await Html.PartialAsync("DeleteAccount", Model.DeleteAccount)
 
-                        <h2>Security</h2>
-                        <h5>Password</h5>
-
-                        <div class="content">
-                            <div id="form-current_password" class="input-group">
-                                <label asp-for="SecurityInfo.CurrentPassword"></label>
-                                <input asp-for="SecurityInfo.CurrentPassword" />
-                                <span asp-validation-for="SecurityInfo.CurrentPassword"></span>
-                            </div>
-
-                            <div id="form-new_password" class="input-group">
-                                <label asp-for="SecurityInfo.NewPassword"></label>
-                                <input asp-for="SecurityInfo.NewPassword" />
-                                <span asp-validation-for="SecurityInfo.NewPassword"></span>
-                            </div>
-
-                            <div id="form-confirm" class="input-group ">
-                                <label asp-for="SecurityInfo.ConfirmNewPassword"></label>
-                                <input asp-for="SecurityInfo.ConfirmNewPassword" />
-                                <span asp-validation-for="SecurityInfo.ConfirmNewPassword"></span>
-                            </div>
-                            <div class="form-buttons">
-                                <button id="cancelSecurity" class="btn-gray" type="button">Cancel</button>
-                                <button class="btn-theme" type="submit">Change password</button>
-                            </div>
-                        </div>
-                    </form>
-                    <div class="delete-account">
-                        <h5>Delete account</h5>
-                        <p>
-                            When you delete your account, your public profile will be deactivated immediately. If you change
-                            your mind before the 14 days are up, sign in with your email and password, and we’ll send you a link to reactivate your account.
-                        </p>
-                        <form class="delete-form" method="post" asp-controller="Account" asp-action="DeleteAccount">
-                            <div id="form-terms" class="checkbox">
-                                <div class="checkbox-group">
-                                    <div class="input-group">
-                                        <input asp-for="SecurityInfo.DeleteAccount" type="checkbox" />
-                                        <label asp-for="SecurityInfo.DeleteAccount">Yes, I want to delete my account.</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </div>
                 </section>
             </div>
         </section>
     </div>
 </div>
 @await Html.PartialAsync("_ValidationScriptPartial")
+
+@section Scripts {
+    @await Html.PartialAsync("_ToastMessages")
+}

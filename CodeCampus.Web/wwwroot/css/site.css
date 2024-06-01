@@ -3259,15 +3259,11 @@ footer .container span {
   height: 60px;
   border-radius: 50%;
   opacity: 0;
-  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
 }
 #account aside .profile-info .image-overlay .change-icon-overlay img {
-  width: 100%;
-  height: auto;
-}
-#account aside .profile-info .image-overlay:hover {
-  border-color: #ffffff;
-  transition: 0.3s ease-in-out;
+  width: 60px;
+  height: 60px;
 }
 #account aside .profile-info .image-overlay:hover .user-avatar {
   opacity: 0.6;
@@ -3508,6 +3504,9 @@ footer .container span {
   display: inline-block;
   padding: 0;
 }
+.security-section .container #account .details .security-info .delete-account .delete-form .checkbox-group {
+  margin-bottom: 1rem;
+}
 
 .saved-course-section {
   background-color: var(--color-gray-000);
@@ -3532,24 +3531,30 @@ footer .container span {
 @media (min-width: 992px) {
   .saved-course-section .container #account .saved-item-card .saved-item-header {
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
     text-align: left;
+    justify-content: space-between;
   }
 }
 .saved-course-section .container #account .saved-item-card .saved-item-header h2 {
-  color: var(--color-gray-000);
+  color: var(--color-gray-900);
+  flex: 2;
 }
-.saved-course-section .container #account .saved-item-card .saved-item-header .btn {
+@media (min-width: 1200px) {
+  .saved-course-section .container #account .saved-item-card .saved-item-header h2 {
+    flex: 3;
+  }
+}
+.saved-course-section .container #account .saved-item-card .saved-item-header form {
+  flex: 1;
+}
+.saved-course-section .container #account .saved-item-card .saved-item-header form .btn {
   border: 1px solid var(--color-danger);
   color: var(--color-danger);
   font-weight: 600;
-  flex-shrink: 0;
-  flex-grow: 0;
-  flex-basis: auto;
   transition: 0.3s ease-in-out;
 }
-.saved-course-section .container #account .saved-item-card .saved-item-header .btn:hover {
+.saved-course-section .container #account .saved-item-card .saved-item-header form .btn:hover {
   background: var(--color-gray-300);
 }
 

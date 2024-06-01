@@ -4,6 +4,6 @@ namespace CodeCampus.Web.ViewModels.Account;
 
 public class AccountSecurityViewModel
 {
-    public string Title { get; set; } = "Account Security";
-    public AccountSecurityModel SecurityInfo { get; set; } = new AccountSecurityModel();
+    public AccountChangePasswordViewModel ChangePassword { get; set; } = new AccountChangePasswordViewModel();
+    public AccountDeleteViewModel DeleteAccount { get; set; } = new AccountDeleteViewModel();
 }
