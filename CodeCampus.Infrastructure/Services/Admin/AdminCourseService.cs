@@ -23,7 +23,7 @@ public class AdminCourseService(IConfiguration configuration, ILogger<AdminCours
     {
         try
         {
-            using var httpClient = _httpClientFactory.CreateClient();
+            var httpClient = _httpClientHelper.CreateHttpClientWithToken();
             var apiKey = _configuration["AdminApiKey"];
             httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
 
@@ -81,7 +81,7 @@ public class AdminCourseService(IConfiguration configuration, ILogger<AdminCours
     {
         try
         {
-            using var httpClient = _httpClientFactory.CreateClient();
+            var httpClient = _httpClientHelper.CreateHttpClientWithToken();
             var apiKey = _configuration["AdminApiKey"];
             httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
 
@@ -143,7 +143,7 @@ public class AdminCourseService(IConfiguration configuration, ILogger<AdminCours
     {
         try
         {
-            using var httpClient = _httpClientFactory.CreateClient();
+            var httpClient = _httpClientHelper.CreateHttpClientWithToken();
             var apiKey = _configuration["AdminApiKey"];
             httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
 
@@ -173,7 +173,7 @@ public class AdminCourseService(IConfiguration configuration, ILogger<AdminCours
     {
         try
         {
-            using var httpClient = _httpClientFactory.CreateClient();
+            var httpClient = _httpClientHelper.CreateHttpClientWithToken();
             var apiKey = _configuration["AdminApiKey"];
             httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
 
@@ -197,7 +197,7 @@ public class AdminCourseService(IConfiguration configuration, ILogger<AdminCours
             if (courseImageFile != null)
             {
                 var fileContent = new StreamContent(courseImageFile.OpenReadStream());
-                fileContent.Headers.ContentType = new MediaTypeHeaderValue(courseImageFile.ContentType);
+                fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(courseImageFile.ContentType);
                 formData.Add(fileContent, "courseImageFile", courseImageFile.FileName);
             }
 

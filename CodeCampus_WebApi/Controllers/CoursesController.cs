@@ -3,6 +3,7 @@ using CodeCampus.Infrastructure.Entities;
 using CodeCampus.Infrastructure.Factories;
 using CodeCampus.Infrastructure.Interfaces.Services;
 using CodeCampus.Infrastructure.Models;
+using CodeCampus_WebApi.Attrubutes;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,7 @@ public class CoursesController(ICourseService courseService, ILogger<CoursesCont
     private readonly ILogger<CoursesController> _logger = logger;
 
     [HttpPost("admin")]
+    [ApiKey(requireAdmin: true)]
     public async Task<IActionResult> CreateCourseAdmin([FromForm] CourseRequestDto request, IFormFile? courseImageFile)
     {
         if (!ModelState.IsValid)
@@ -51,6 +53,7 @@ public class CoursesController(ICourseService courseService, ILogger<CoursesCont
     }
 
     [HttpGet("admin/{id}")]
+    [ApiKey(requireAdmin: true)]
     public async Task<IActionResult> GetOneCourseAdmin(int id)
     {
         try
@@ -70,6 +73,7 @@ public class CoursesController(ICourseService courseService, ILogger<CoursesCont
     }
 
     [HttpGet("admin")]
+    [ApiKey(requireAdmin: true)]
     public async Task<IActionResult> GetAllCoursesAdmin()
     {
         try
@@ -89,6 +93,7 @@ public class CoursesController(ICourseService courseService, ILogger<CoursesCont
     }
 
     [HttpPut("admin/{id}")]
+    [ApiKey(requireAdmin: true)]
     public async Task<IActionResult> UpdateCourseAdmin(int id, [FromForm] CourseUpdateRequestDto request, IFormFile? courseImageFile)
     {
         if (!ModelState.IsValid)
@@ -123,6 +128,7 @@ public class CoursesController(ICourseService courseService, ILogger<CoursesCont
     }
 
     [HttpDelete("admin/{id}")]
+    [ApiKey(requireAdmin: true)]
     public async Task<IActionResult> DeleteCourseAdmin(int id)
     {
         try
@@ -142,6 +148,7 @@ public class CoursesController(ICourseService courseService, ILogger<CoursesCont
     }
 
     [HttpGet]
+    [ApiKey(requireAdmin: false)]
     public async Task<IActionResult> GetAllCourses(string? category, string? searchQuery)
     {
         try
@@ -197,6 +204,7 @@ public class CoursesController(ICourseService courseService, ILogger<CoursesCont
     }
 
     [HttpGet("{id}")]
+    [ApiKey(requireAdmin: false)]
     public async Task<IActionResult> GetOneCourse(int id)
     {
         try

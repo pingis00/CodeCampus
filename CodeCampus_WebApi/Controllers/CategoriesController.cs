@@ -1,4 +1,5 @@
 ﻿using CodeCampus.Infrastructure.Interfaces.Services;
+using CodeCampus_WebApi.Attrubutes;
 using Microsoft.AspNetCore.Mvc;
 using ResponseStatusCode = CodeCampus.Infrastructure.Responses.StatusCode;
 
@@ -12,6 +13,7 @@ public class CategoriesController(ICategoryService categoryService, ILogger<Cate
     private readonly ILogger<CategoriesController> _logger = logger;
 
     [HttpGet]
+    [ApiKey(requireAdmin: false)]
     public async Task<IActionResult> GetAllCategories()
     {
         try
