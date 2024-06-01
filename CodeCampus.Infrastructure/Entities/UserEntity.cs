@@ -17,4 +17,13 @@ public class UserEntity : IdentityUser
     public AddressEntity? Address { get; set; }
 
     public bool IsExternalAccount { get; set; } = false;
+
+    public string? ProfileImage { get; set; }
+
+    public bool IsSubscribed { get; set; } = false;
+
+    public ICollection<SubscribeEntity> Subscriptions { get; set; } = [];
+
+    public ICollection<UserCourseEntity> UserCourses { get; set; } = [];
 }
+

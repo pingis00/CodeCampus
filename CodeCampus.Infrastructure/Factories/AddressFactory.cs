@@ -1,5 +1,6 @@
 ﻿using CodeCampus.Infrastructure.Entities;
 using CodeCampus.Infrastructure.Models;
+using System.Diagnostics;
 
 namespace CodeCampus.Infrastructure.Factories;
 
@@ -11,7 +12,10 @@ public class AddressFactory
         {
             return new AddressEntity();
         }
-        catch { }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+        }
         return null!;
     }
 
@@ -27,7 +31,10 @@ public class AddressFactory
                 City = city
             };
         }
-        catch { }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+        }
         return null!;
     }
 
@@ -37,14 +44,17 @@ public class AddressFactory
         {
             return new AddressModel
             {
-                Id = entity.UserId,
+                Id = entity.Id,
                 AddressLine_1 = entity.AddressLine_1,
                 AddressLine_2 = entity.AddressLine_2,
                 PostalCode = entity.PostalCode,
                 City = entity.City
             };
         }
-        catch { }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+        }
         return null!;
     }
 }
