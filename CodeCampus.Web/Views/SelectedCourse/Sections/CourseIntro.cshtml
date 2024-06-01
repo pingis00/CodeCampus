@@ -1,7 +1,7 @@
 ﻿@model CourseIntroViewModel
 
 <section id="@Model.Id" class="course-intro">
-    <img class="background-image" src="@Model.BackgroundImage.ImageUrl" alt="@Model.BackgroundImage.AltText"/>
+    <img class="background-image" src="~/Assets/uploads/courseimages/@Model.BackgroundImage.ImageUrl" alt="@Model.BackgroundImage.AltText" />
     <div class="container">
         <nav class="breadcrumb">
             <a class="home-link" href="@Model.HomeLink.Url">

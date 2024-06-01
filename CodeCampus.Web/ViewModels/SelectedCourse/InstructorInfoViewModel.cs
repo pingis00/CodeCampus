@@ -11,3 +11,4 @@ public class InstructorInfoViewModel
     public LinkComponent YoutubeLink { get; set; } = new LinkComponent();
     public LinkComponent FacebookLink { get; set; } = new LinkComponent();
 }
+

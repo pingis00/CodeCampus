@@ -18,15 +18,15 @@ public static class ServiceConfiguration
         services.AddScoped<ISubscribeRepository, SubscribeRepository>();
         services.AddScoped<ICourseRepository, CourseRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IUserCourseRepository, UserCourseRepository>();
 
         services.AddScoped<IContactService, ContactService>();
         services.AddScoped<ISubscribeService, SubscribeService>();
         services.AddScoped<ICourseService, CourseService>();
+        services.AddScoped<IUserCourseService, UserCourseService>();
 
         services.AddTransient<IFileUploadService, FileUploadService>();
         services.AddTransient<ICategoryService, CategoryService>();
-
-
 
 
         services.AddHttpClient<IApiCourseService, ApiCourseService>(client =>

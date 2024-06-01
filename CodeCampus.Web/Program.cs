@@ -2,8 +2,6 @@
 using CodeCampus.Infrastructure.Contexts;
 using CodeCampus.Infrastructure.Entities;
 using CodeCampus.Infrastructure.Helpers.MiddleWares;
-using CodeCampus.Infrastructure.Repositories;
-using CodeCampus.Infrastructure.Services;
 using CodeCampus.Web.Configurations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -75,7 +73,7 @@ var googleMapsApiKey = configuration["GoogleMapsApiKey"];
 
 var app = builder.Build();
 app.UseHsts();
-app.UseStatusCodePagesWithReExecute("/Home/Error", "?statusCode={0}");
+app.UseStatusCodePagesWithReExecute("/error", "?statusCode={0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

@@ -256,10 +256,10 @@ public static class AdminMappingFactory
             Likes = $"{dto.LikesInNumbers}K likes",
             CourseHours = $"{dto.Hours} hours",
             CourseDescription = "Egestas feugiat lorem eu neque suspendisse ullamcorper scelerisque aliquam mauris.",
-            AuthorImage = new ImageComponent 
-            { 
-                ImageUrl = "/Assets/Images/SelectedCourse/author-image-small.svg", 
-                AltText = $"Image of the author {dto.Author}" 
+            AuthorImage = new ImageComponent
+            {
+                ImageUrl = "/Assets/Images/SelectedCourse/author-image-small.svg",
+                AltText = $"Image of the author {dto.Author}"
             },
             AuthorText = "Created by",
             AuthorName = dto.Author

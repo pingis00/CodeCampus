@@ -1768,14 +1768,30 @@ footer .container span {
   opacity: 0;
 }
 
+.course-card {
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: visible;
+  margin-bottom: 1rem;
+}
 .course-card .image-container {
   position: relative;
+}
+.course-card .image-container .best-seller-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: green;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  z-index: 2;
 }
 .course-card .image-container .course-image {
   width: 100%;
   display: block;
 }
-.course-card .image-container .remove-course-icon-btn {
+.course-card .image-container .add-course-icon-btn {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -1784,16 +1800,16 @@ footer .container span {
   cursor: pointer;
   z-index: 2;
 }
-.course-card .image-container .remove-course-icon-btn .fa-stack .fa-circle {
+.course-card .image-container .add-course-icon-btn .fa-stack .fa-circle {
   color: var(--color-white);
 }
-.course-card .image-container .remove-course-icon-btn .fa-stack .fa-bookmark {
+.course-card .image-container .add-course-icon-btn .fa-stack .fa-bookmark {
   color: #33354D;
 }
-.course-card .image-container .remove-course-icon-btn:hover .fa-bookmark {
+.course-card .image-container .add-course-icon-btn:hover .fa-bookmark {
   color: var(--color-theme);
 }
-.course-card .image-container .remove-course-icon-btn:hover::after {
+.course-card .image-container .add-course-icon-btn:hover::after {
   content: attr(data-tooltip);
   position: absolute;
   top: -40px;
@@ -1850,8 +1866,27 @@ footer .container span {
   border-bottom: 1px solid var(--color-gray-300);
   padding-bottom: 10px;
 }
+.course-card .course-info .price .discount-price {
+  color: red;
+  margin-right: 10px;
+}
+.course-card .course-info .price .original-price {
+  text-decoration: line-through;
+  color: var(--color-gray-600);
+  font-weight: 200;
+}
+.course-card .course-info .price .dollar-sign {
+  color: inherit;
+}
+.course-card .course-info .price .original {
+  color: var(--color-gray-600);
+}
+.course-card .course-info .price .discount {
+  color: red;
+}
 .course-card .course-info .course-meta {
   color: var(--color-gray-600);
+  margin-bottom: 1.5rem;
 }
 .course-card .course-info .course-meta span {
   margin-right: 20px;
@@ -1861,6 +1896,9 @@ footer .container span {
 }
 .course-card .course-info .course-meta span img {
   margin-right: 5px;
+}
+.course-card .course-info .course-meta .unsubscribe form {
+  margin-top: 1rem;
 }
 
 @media (min-width: 992px) {
@@ -1925,6 +1963,7 @@ footer .container span {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 1rem;
 }
 @media (min-width: 992px) {
   .course-search .container .course-header {
@@ -1945,55 +1984,67 @@ footer .container span {
   }
 }
 .course-search .container .course-header .search-controls {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
 }
 @media (min-width: 992px) {
   .course-search .container .course-header .search-controls {
     flex-direction: row;
-    flex: 2;
-    align-items: center;
     justify-content: flex-end;
   }
 }
-.course-search .container .course-header .search-controls select {
-  background-color: var(--color-background-004);
+.course-search .container .course-header .search-controls form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
-  color: var(--color-gray-700);
-  border: 1px solid var(--color-gray-400);
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
-  border-radius: 0.25rem;
 }
 @media (min-width: 992px) {
-  .course-search .container .course-header .search-controls select {
-    width: auto;
-    margin-right: 1rem;
+  .course-search .container .course-header .search-controls form {
+    flex-direction: row;
+    justify-content: flex-end;
   }
 }
-.course-search .container .course-header .search-controls .search-wrapper {
+@media (min-width: 992px) {
+  .course-search .container .course-header .search-controls form .category-wrapper {
+    max-width: 48%;
+  }
+}
+.course-search .container .course-header .search-controls form .category-wrapper select {
+  background-color: var(--color-background-004);
+  color: var(--color-gray-700);
+  border: 1px solid var(--color-gray-400);
+  border-radius: 0.25rem;
+  width: 100%;
+  padding: 0.5rem;
+}
+@media (min-width: 992px) {
+  .course-search .container .course-header .search-controls form .category-wrapper select {
+    width: 290px;
+  }
+}
+.course-search .container .course-header .search-controls form .search-wrapper {
   position: relative;
 }
-@media (min-width: 992px) {
-  .course-search .container .course-header .search-controls .search-wrapper {
-    width: auto;
-    margin-right: 1rem;
-  }
-}
-.course-search .container .course-header .search-controls .search-wrapper .search-input {
+.course-search .container .course-header .search-controls form .search-wrapper .search-input {
   background-color: var(--color-background-004);
-  width: 100%;
   color: var(--color-gray-700);
   border: 1px solid var(--color-gray-400);
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
   border-radius: 0.25rem;
+  padding: 0.5rem;
+  width: 100%;
 }
-.course-search .container .course-header .search-controls .search-wrapper .search-icon {
+@media (min-width: 992px) {
+  .course-search .container .course-header .search-controls form .search-wrapper .search-input {
+    width: 300px;
+  }
+}
+.course-search .container .course-header .search-controls form .search-wrapper .search-icon {
   position: absolute;
-  right: 25px;
-  top: 15px;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
   pointer-events: none;
 }
 
@@ -2082,6 +2133,19 @@ footer .container span {
 }
 .course-intro .background-image {
   position: absolute;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.course-intro::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: -1;
 }
 .course-intro .container {
@@ -2585,7 +2649,11 @@ footer .container span {
   padding-bottom: 1rem;
   padding-top: 1rem;
 }
-.course-details .container .sidebar .course-includes .price-info .sale-price {
+.course-details .container .sidebar .course-includes .price-info .price {
+  font-weight: bold;
+  color: var(--color-gray-900);
+}
+.course-details .container .sidebar .course-includes .price-info .price .sale-price {
   line-height: 160%;
   font-weight: 400;
   color: var(--color-gray-700);
@@ -2593,11 +2661,10 @@ footer .container span {
   font-weight: 800;
   color: var(--color-gray-900);
   font-size: 28px !important;
-  font-weight: 900;
   margin-right: 0.5rem;
 }
 @media (min-width: 1200px) {
-  .course-details .container .sidebar .course-includes .price-info .sale-price {
+  .course-details .container .sidebar .course-includes .price-info .price .sale-price {
     line-height: 160%;
     font-weight: 400;
     color: var(--color-gray-700);
@@ -2607,21 +2674,31 @@ footer .container span {
     font-size: 32px !important;
   }
 }
-.course-details .container .sidebar .course-includes .price-info .original-price {
+.course-details .container .sidebar .course-includes .price-info .price .original-price {
   text-decoration: line-through;
   color: var(--color-gray-600) !important;
+  font-weight: 200;
 }
 @media (min-width: 1200px) {
-  .course-details .container .sidebar .course-includes .price-info .original-price {
+  .course-details .container .sidebar .course-includes .price-info .price .original-price {
     line-height: 160%;
     font-weight: 400;
     color: var(--color-gray-700);
     font-family: var(--color-standard);
-    font-size: 18px !important;
+    font-size: 20px !important;
   }
 }
+.course-details .container .sidebar .course-includes .price-info .price .dollar-sign {
+  color: inherit;
+}
+.course-details .container .sidebar .course-includes .price-info .price .original {
+  color: var(--color-gray-600);
+}
+.course-details .container .sidebar .course-includes .price-info .price .discount {
+  color: red;
+}
 @media (min-width: 768px) {
-  .course-details .container .sidebar .course-includes .btn-join-course {
+  .course-details .container .sidebar .btn-join-course {
     display: inline-block;
     padding-top: 13px;
     padding-bottom: 13px;
@@ -2667,6 +2744,7 @@ footer .container span {
 }
 .instructor-section .container .instructor-info {
   position: relative;
+  background: #0B0F19;
   padding: 2rem;
   overflow: hidden;
   border: 2px solid var(--color-background-007);

@@ -297,7 +297,7 @@ public class AccountController(UserManager<UserEntity> userManager, IAddressServ
             var apiKey = _configuration["ApiKey"];
             http.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
 
-            var response = await http.GetAsync($"https://localhost:7043/api/usercourses/user/{userId}");
+            var response = await http.GetAsync($"https://localhost:7297/api/usercourses/user/{userId}");
 
             if (!response.IsSuccessStatusCode)
             {
@@ -353,7 +353,7 @@ public class AccountController(UserManager<UserEntity> userManager, IAddressServ
             var apiKey = _configuration["ApiKey"];
             httpClient.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
 
-            var response = await httpClient.DeleteAsync($"https://localhost:7043/api/usercourses/remove?userId={userId}&courseId={courseId}");
+            var response = await httpClient.DeleteAsync($"https://localhost:7297/api/usercourses/remove?userId={userId}&courseId={courseId}");
 
             if (!response.IsSuccessStatusCode)
             {
@@ -396,7 +396,7 @@ public class AccountController(UserManager<UserEntity> userManager, IAddressServ
             var apiKey = _configuration["ApiKey"];
             httpClient.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
 
-            var response = await httpClient.DeleteAsync($"https://localhost:7043/api/usercourses/user/{userId}/remove-all");
+            var response = await httpClient.DeleteAsync($"https://localhost:7297/api/usercourses/user/{userId}/remove-all");
 
             if (!response.IsSuccessStatusCode)
             {

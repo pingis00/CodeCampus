@@ -32,10 +32,11 @@ public class SubscribeController(ILogger<SubscribeController> logger, ISubscribe
             var userId = User?.Identity?.IsAuthenticated == true ? User.FindFirstValue(ClaimTypes.NameIdentifier) : null;
             await _subscribeService.SubscribeEmailAsync(request, userId);
             return CreatedAtAction(nameof(SubscribeEmail), new { email = request.Email }, "Successfully subscribed.");
+
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "An error occurred while subscribing email: {Email}", request.Email);
+            _logger.LogError(ex, "An error occurred while subscribing email.");
             return StatusCode(500, "Internal server error. Please try again later.");
         }
     }
@@ -58,7 +59,6 @@ public class SubscribeController(ILogger<SubscribeController> logger, ISubscribe
             return StatusCode(500, "Internal server error. Please try again later.");
         }
     }
-
     [HttpGet("{id}")]
     public async Task<IActionResult> GetSubscriberById(int id)
     {
@@ -106,6 +106,5 @@ public class SubscribeController(ILogger<SubscribeController> logger, ISubscribe
             _logger.LogError(ex, "An error occurred while unsubscribing email.");
             return StatusCode(500, "Internal server error. Please try again later.");
         }
-
     }
 }

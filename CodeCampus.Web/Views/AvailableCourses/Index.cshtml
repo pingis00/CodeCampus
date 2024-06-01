@@ -4,7 +4,16 @@
 
 <div class="course-list-page">
     <div class="container">
-        @await Html.PartialAsync("/Views/Shared/_CoursesPartial.cshtml", Model.Courses)
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <div class="alert alert-danger">
+                @Model.ErrorMessage
+            </div>
+        }
+        else
+        {
+            @await Html.PartialAsync("/Views/Shared/_CoursesPartial.cshtml", Model.Courses.Courses)
+        }
     </div>
 </div>
 

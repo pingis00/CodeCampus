@@ -6,20 +6,6 @@
 <section id="signin">
     <div class="container">
         <form method="post" asp-controller="Auth" asp-action="SignIn" asp-route-ReturnUrl="@ViewData["ReturnUrl"]" novalidate>
-            @if (TempData["SuccessMessage"] != null)
-            {
-                <div class="alert alert-success">
-                    @TempData["SuccessMessage"]
-                </div>
-            }
-
-            @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
-            {
-                <div class="alert alert-danger">
-                    @ViewData["ErrorMessage"]
-                </div>
-            }
-
             <h1>Welcome back</h1>
             <p>Don´t have an account yet? <a asp-controller="Auth" asp-action="SignUp">Sign up here</a>.</p>
 
@@ -61,3 +47,7 @@
 </section>
 
 @await Html.PartialAsync("_ValidationScriptPartial")
+
+@section Scripts {
+    @await Html.PartialAsync("_ToastMessages")
+}

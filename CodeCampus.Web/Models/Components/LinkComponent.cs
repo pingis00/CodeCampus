@@ -9,3 +9,4 @@ public class LinkComponent
     public string Text { get; set; } = null!;
     public ImageComponent Icon { get; set; } = new ImageComponent();
 }
+

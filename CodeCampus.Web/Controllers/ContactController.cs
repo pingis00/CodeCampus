@@ -1,6 +1,5 @@
 ﻿using CodeCampus.Web.ViewModels.Contact;
 using Microsoft.AspNetCore.Mvc;
-using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 
@@ -11,7 +10,6 @@ public class ContactController(IConfiguration configuration, HttpClient httpClie
     private readonly IConfiguration _configuration = configuration;
     private readonly HttpClient _httpClient = httpClient;
     private readonly ILogger<ContactController> _logger = logger;
-
 
     [HttpGet]
     public IActionResult Contact()
@@ -39,7 +37,7 @@ public class ContactController(IConfiguration configuration, HttpClient httpClie
 
             _httpClient.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
 
-            var response = await _httpClient.PostAsync("https://localhost:7297/api/contact", content);
+            var response = await _httpClient.PostAsync("https://localhost:7043/api/contact", content);
 
             if (response.IsSuccessStatusCode)
             {

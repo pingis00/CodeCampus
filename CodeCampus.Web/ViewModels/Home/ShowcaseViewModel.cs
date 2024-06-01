@@ -13,3 +13,4 @@ namespace CodeCampus.Web.ViewModels.Home
         public List<ImageComponent>? Brands { get; set; }
     }
 }
+
