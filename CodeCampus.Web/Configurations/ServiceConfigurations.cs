@@ -30,6 +30,7 @@ public static class ServiceConfiguration
         services.AddScoped<IAdminContactService, AdminContactService>();
         services.AddScoped<IAdminSubscribeService, AdminSubscribeService>();
         services.AddScoped<IUserCourseService, UserCourseService>();
+        services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<HttpClientHelper>();
 
         services.AddTransient<IFileUploadService, FileUploadService>();

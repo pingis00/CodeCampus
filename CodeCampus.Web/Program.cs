@@ -1,4 +1,3 @@
-
 using CodeCampus.Infrastructure.Contexts;
 using CodeCampus.Infrastructure.Entities;
 using CodeCampus.Infrastructure.Helpers.MiddleWares;
@@ -6,6 +5,7 @@ using CodeCampus.Web.Configurations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,7 +30,6 @@ services.AddHttpContextAccessor();
 services.AddHttpClient();
 builder.Services.RegisterServices(builder.Configuration);
 
-
 services.AddDefaultIdentity<UserEntity>(x =>
 {
     x.SignIn.RequireConfirmedAccount = false;
@@ -46,11 +45,11 @@ services.AddDefaultIdentity<UserEntity>(x =>
 
 services.ConfigureApplicationCookie(x =>
 {
-    x.LoginPath = "/signin";
-    x.LogoutPath = "/signout";
-    x.AccessDeniedPath = "/Home/AccessDenied";
     x.Cookie.HttpOnly = true;
     x.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    x.LoginPath = "/signin";
+    x.LogoutPath = "/signout";
+    x.AccessDeniedPath = "/denied";
     x.SlidingExpiration = true;
     x.Cookie.SecurePolicy = CookieSecurePolicy.Always;
 });
@@ -73,13 +72,13 @@ var googleMapsApiKey = configuration["GoogleMapsApiKey"];
 
 var app = builder.Build();
 app.UseHsts();
-app.UseStatusCodePagesWithReExecute("/error", "?statusCode={0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseUserSessionValidation();
 app.UseAuthorization();
+app.UseStatusCodePagesWithReExecute("/error", "?statusCode={0}");
 
 using (var scope = app.Services.CreateScope())
 {

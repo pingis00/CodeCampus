@@ -6,18 +6,16 @@ using CodeCampus.Infrastructure.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
 namespace CodeCampus.Infrastructure.Services.Admin;
 
-public class AdminCourseService(IConfiguration configuration, ILogger<AdminCourseService> logger, HttpClientHelper httpClientHelper, IHttpClientFactory httpClientFactory) : IAdminCourseService
+public class AdminCourseService(IConfiguration configuration, ILogger<AdminCourseService> logger, HttpClientHelper httpClientHelper) : IAdminCourseService
 {
     private readonly IConfiguration _configuration = configuration;
     private readonly ILogger<AdminCourseService> _logger = logger;
     private readonly HttpClientHelper _httpClientHelper = httpClientHelper;
-    private readonly IHttpClientFactory _httpClientFactory = httpClientFactory;
 
     public async Task<ResponseResult> AddAdminCourseAsync(CourseRequestDto courseDto, IFormFile? courseImageFile)
     {
@@ -114,7 +112,7 @@ public class AdminCourseService(IConfiguration configuration, ILogger<AdminCours
     {
         try
         {
-            using var httpClient = _httpClientFactory.CreateClient();
+            var httpClient = _httpClientHelper.CreateHttpClientWithToken();
             var apiKey = _configuration["AdminApiKey"];
             httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
 

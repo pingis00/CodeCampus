@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 Log.Logger = new LoggerConfiguration()
@@ -28,6 +30,8 @@ builder.Services.AddIdentity<UserEntity, IdentityRole>()
     .AddEntityFrameworkStores<DataContext>()
     .AddDefaultTokenProviders();
 builder.Services.RegisterServices(builder.Configuration);
+
+builder.Services.ConfigureJwtAuthentication(builder.Configuration);
 
 builder.Services.AddHttpContextAccessor();
 
