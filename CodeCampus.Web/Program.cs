@@ -2,6 +2,7 @@ using CodeCampus.Infrastructure.Contexts;
 using CodeCampus.Infrastructure.Entities;
 using CodeCampus.Infrastructure.Helpers.MiddleWares;
 using CodeCampus.Web.Configurations;
+using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -54,19 +55,24 @@ services.ConfigureApplicationCookie(x =>
     x.Cookie.SecurePolicy = CookieSecurePolicy.Always;
 });
 
+var googleClientId = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_ID");
+var googleClientSecret = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_SECRET");
+var facebookAppId = Environment.GetEnvironmentVariable("FACEBOOK_APP_ID");
+var facebookAppSecret = Environment.GetEnvironmentVariable("FACEBOOK_APP_SECRET");
+
 services.AddAuthentication()
     .AddGoogle(googleOptions =>
     {
-        googleOptions.ClientId = "161635572771-gq43sqj3l5iaqfrfatfvte4dcv3tm9hp.apps.googleusercontent.com";
-        googleOptions.ClientSecret = "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";
+        googleOptions.ClientId = googleClientId!;
+        googleOptions.ClientSecret = googleClientSecret!;
     })
-    .AddFacebook(x =>
-    {
-        x.AppId = "1496868827911909";
-        x.AppSecret = "ec545aa4b8fa5ece5ffe500589aa3a4b";
-        x.Fields.Add("first_name");
-        x.Fields.Add("last_name");
-    });
+.AddFacebook(facebookOptions =>
+{
+    facebookOptions.AppId = facebookAppId!;
+    facebookOptions.AppSecret = facebookAppSecret!;
+    facebookOptions.Fields.Add("first_name");
+    facebookOptions.Fields.Add("last_name");
+});
 
 var googleMapsApiKey = configuration["GoogleMapsApiKey"];
 

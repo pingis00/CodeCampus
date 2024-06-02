@@ -1,6 +1,5 @@
 ﻿using CodeCampus.Infrastructure.Entities;
 using CodeCampus.Infrastructure.Interfaces.Services.Admin;
-using CodeCampus.Infrastructure.Services.Admin;
 using CodeCampus.Web.ViewModels.Auth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
