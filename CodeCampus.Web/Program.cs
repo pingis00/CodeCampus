@@ -2,7 +2,6 @@ using CodeCampus.Infrastructure.Contexts;
 using CodeCampus.Infrastructure.Entities;
 using CodeCampus.Infrastructure.Helpers.MiddleWares;
 using CodeCampus.Web.Configurations;
-using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;

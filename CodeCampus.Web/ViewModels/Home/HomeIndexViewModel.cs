@@ -1,5 +1,4 @@
-﻿using CodeCampus.Infrastructure.Models;
-using CodeCampus.Web.Models.Components;
+﻿using CodeCampus.Web.Models.Components;
 using static CodeCampus.Web.ViewModels.Home.DownloadViewModel;
 
 namespace CodeCampus.Web.ViewModels.Home;
