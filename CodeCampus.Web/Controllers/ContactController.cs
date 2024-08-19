@@ -37,7 +37,7 @@ public class ContactController(IConfiguration configuration, HttpClient httpClie
 
             _httpClient.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
 
-            var response = await _httpClient.PostAsync("https://localhost:7043/api/contact", content);
+            var response = await _httpClient.PostAsync("https://localhost:7297/api/contact", content);
 
             if (response.IsSuccessStatusCode)
             {
