@@ -10,7 +10,7 @@
     <aside>
         <div class="profile-info">
             <div class="image-overlay">
-                <img class="user-avatar" src="@(user.ProfileImage != null ? "/Assets/uploads/" + user.ProfileImage : "/Assets/uploads/default-profile-image.svg")" alt="profile-image" />
+                <img class="user-avatar" src="/Assets/uploads/default-profile-image.svg" />
                 <div class="change-icon-overlay">
                     <form enctype="multipart/form-data" method="post" asp-action="UploadImage" asp-controller="Account">
                         <input id="fileUploader" type="file" name="file" hidden />

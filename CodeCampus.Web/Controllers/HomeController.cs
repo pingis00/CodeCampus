@@ -49,7 +49,7 @@ public class HomeController(IConfiguration configuration, HttpClient httpClient,
             var content = new StringContent(JsonSerializer.Serialize(viewModel), Encoding.UTF8, "application/json");
             _httpClient.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
 
-            var response = await _httpClient.PostAsync("https://localhost:7043/api/subscribe", content);
+            var response = await _httpClient.PostAsync("https://localhost:7297/api/subscribe", content);
 
             if (response.IsSuccessStatusCode)
             {

@@ -24,6 +24,12 @@ var configuration = builder.Configuration;
 services.AddControllersWithViews();
 services.AddRouting(x => x.LowercaseUrls = true);
 
+var connectionString = configuration["ConnectionStrings:SqlServer"];
+var jwtSecret = configuration["Jwt:Secret"];
+var googleMapsApiKey = configuration["GoogleMapsApiKey"];
+var apiKey = configuration["ApiKey"];
+var adminApiKey = configuration["AdminApiKey"];
+
 services.AddDbContext<DataContext>(x => x.UseSqlServer(configuration.GetConnectionString("SqlServer")));
 
 services.AddHttpContextAccessor();
@@ -72,8 +78,6 @@ services.AddAuthentication()
     facebookOptions.Fields.Add("first_name");
     facebookOptions.Fields.Add("last_name");
 });
-
-var googleMapsApiKey = configuration["GoogleMapsApiKey"];
 
 var app = builder.Build();
 app.UseHsts();

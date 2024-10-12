@@ -21,8 +21,13 @@ builder.Host.UseSerilog();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 builder.Services.RegisterSwagger();
+
+var connectionString = builder.Configuration["ConnectionStrings:SqlServer"];
+var jwtSecret = builder.Configuration["Jwt:Secret"];
+var apiKey = builder.Configuration["ApiKey"];
+var adminApiKey = builder.Configuration["AdminApiKey"];
+
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
 
