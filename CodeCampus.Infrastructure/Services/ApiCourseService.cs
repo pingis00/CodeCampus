@@ -1,26 +1,24 @@
-﻿using CodeCampus.Infrastructure.DTOs;
+﻿using Azure.Core;
+using CodeCampus.Infrastructure.DTOs;
+using CodeCampus.Infrastructure.Helpers;
 using CodeCampus.Infrastructure.Interfaces.Services;
 using CodeCampus.Infrastructure.Responses;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Net.Http.Json;
 
 namespace CodeCampus.Infrastructure.Services;
 
-public class ApiCourseService(HttpClient httpClient, ILogger<ApiCourseService> logger, IHttpClientFactory httpClientFactory, IConfiguration configuration) : IApiCourseService
+public class ApiCourseService(ILogger<ApiCourseService> logger, HttpClientHelper httpClientHelper) : IApiCourseService
 {
-    private readonly HttpClient _httpClient = httpClient;
     private readonly ILogger<ApiCourseService> _logger = logger;
-    private readonly IHttpClientFactory _httpClientFactory = httpClientFactory;
-    private readonly IConfiguration _configuration = configuration;
+    private readonly HttpClientHelper _httpClientHelper = httpClientHelper;
 
     public async Task<ResponseResult> GetAllCoursesAsync()
     {
-        var apiKey = _configuration["ApiKey"];
-        _httpClient.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
+        var httpClient = _httpClientHelper.CreateHttpClientWithApiKey();
         try
         {
-            var result = await _httpClient.GetFromJsonAsync<IEnumerable<CourseDto>>("api/courses");
+            var result = await httpClient.GetFromJsonAsync<IEnumerable<CourseDto>>("api/courses");
             return new ResponseResult
             {
                 Status = StatusCode.OK,
@@ -41,12 +39,10 @@ public class ApiCourseService(HttpClient httpClient, ILogger<ApiCourseService> l
 
     public async Task<ResponseResult> GetCourseByIdAsync(int id)
     {
-        using var httpClient = _httpClientFactory.CreateClient();
-        var apiKey = _configuration["ApiKey"];
-        httpClient.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
+        var httpClient = _httpClientHelper.CreateHttpClientWithApiKey();
         try
         {
-            var result = await _httpClient.GetFromJsonAsync<CourseDto>($"api/courses/{id}");
+            var result = await httpClient.GetFromJsonAsync<CourseDto>($"api/courses/{id}");
             if (result == null)
             {
                 _logger.LogWarning("Course with ID {Id} not found.", id);

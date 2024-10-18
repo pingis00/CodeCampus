@@ -34,6 +34,7 @@ services.AddDbContext<DataContext>(x => x.UseSqlServer(configuration.GetConnecti
 
 services.AddHttpContextAccessor();
 services.AddHttpClient();
+services.AddHttpContextAccessor();
 builder.Services.RegisterServices(builder.Configuration);
 
 services.AddDefaultIdentity<UserEntity>(x =>

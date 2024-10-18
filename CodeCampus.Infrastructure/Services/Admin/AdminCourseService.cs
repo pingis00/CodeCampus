@@ -11,9 +11,8 @@ using System.Net.Http.Json;
 
 namespace CodeCampus.Infrastructure.Services.Admin;
 
-public class AdminCourseService(IConfiguration configuration, ILogger<AdminCourseService> logger, HttpClientHelper httpClientHelper) : IAdminCourseService
+public class AdminCourseService(ILogger<AdminCourseService> logger, HttpClientHelper httpClientHelper) : IAdminCourseService
 {
-    private readonly IConfiguration _configuration = configuration;
     private readonly ILogger<AdminCourseService> _logger = logger;
     private readonly HttpClientHelper _httpClientHelper = httpClientHelper;
 
@@ -21,10 +20,7 @@ public class AdminCourseService(IConfiguration configuration, ILogger<AdminCours
     {
         try
         {
-            var httpClient = _httpClientHelper.CreateHttpClientWithToken();
-            var apiKey = _configuration["AdminApiKey"];
-            httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
-
+            var httpClient = _httpClientHelper.CreateHttpClientWithAdminApiKeyAndToken();
 
             var formData = new MultipartFormDataContent();
 
@@ -79,9 +75,7 @@ public class AdminCourseService(IConfiguration configuration, ILogger<AdminCours
     {
         try
         {
-            var httpClient = _httpClientHelper.CreateHttpClientWithToken();
-            var apiKey = _configuration["AdminApiKey"];
-            httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
+            var httpClient = _httpClientHelper.CreateHttpClientWithAdminApiKeyAndToken();
 
             var response = await httpClient.DeleteAsync($"https://localhost:7297/api/courses/admin/{id}");
 
@@ -112,9 +106,7 @@ public class AdminCourseService(IConfiguration configuration, ILogger<AdminCours
     {
         try
         {
-            var httpClient = _httpClientHelper.CreateHttpClientWithToken();
-            var apiKey = _configuration["AdminApiKey"];
-            httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
+            var httpClient = _httpClientHelper.CreateHttpClientWithAdminApiKeyAndToken();
 
             var response = await httpClient.GetAsync("https://localhost:7297/api/courses/admin");
 
@@ -141,9 +133,7 @@ public class AdminCourseService(IConfiguration configuration, ILogger<AdminCours
     {
         try
         {
-            var httpClient = _httpClientHelper.CreateHttpClientWithToken();
-            var apiKey = _configuration["AdminApiKey"];
-            httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
+            var httpClient = _httpClientHelper.CreateHttpClientWithAdminApiKeyAndToken();
 
             var response = await httpClient.GetAsync($"https://localhost:7297/api/courses/admin/{id}");
 
@@ -171,9 +161,7 @@ public class AdminCourseService(IConfiguration configuration, ILogger<AdminCours
     {
         try
         {
-            var httpClient = _httpClientHelper.CreateHttpClientWithToken();
-            var apiKey = _configuration["AdminApiKey"];
-            httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
+            var httpClient = _httpClientHelper.CreateHttpClientWithAdminApiKeyAndToken();
 
             var formData = new MultipartFormDataContent();
 

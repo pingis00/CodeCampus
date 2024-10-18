@@ -1,4 +1,5 @@
 ﻿using CodeCampus.Infrastructure.DTOs;
+using CodeCampus.Infrastructure.Helpers;
 using CodeCampus.Web.Helpers;
 using CodeCampus.Web.ViewModels.Account;
 using CodeCampus.Web.ViewModels.AvailableCourses;
@@ -6,10 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CodeCampus.Web.Controllers;
 
-public class AvailableCoursesController(IConfiguration configuration, IHttpClientFactory httpClientFactory, ILogger<AvailableCoursesController> logger) : Controller
+public class AvailableCoursesController(HttpClientHelper httpClientHelper, ILogger<AvailableCoursesController> logger) : Controller
 {
-    private readonly IConfiguration _configuration = configuration;
-    private readonly IHttpClientFactory _httpClientFactory = httpClientFactory;
+    private readonly HttpClientHelper _httpClientHelper = httpClientHelper;
     private readonly ILogger<AvailableCoursesController> _logger = logger;
 
     [Route("/availablecourses")]
@@ -18,12 +18,10 @@ public class AvailableCoursesController(IConfiguration configuration, IHttpClien
         _logger.LogInformation("Index method called with category: {Category} and searchQuery: {SearchQuery}", category, searchQuery);
         try
         {
-            using var http = _httpClientFactory.CreateClient();
-            var apiKey = _configuration["ApiKey"];
-            http.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
+            var httpClient = _httpClientHelper.CreateHttpClientWithApiKey();
 
             _logger.LogInformation("Fetching categories from API");
-            var categoriesResponse = await http.GetAsync("https://localhost:7297/api/categories");
+            var categoriesResponse = await httpClient.GetAsync("https://localhost:7297/api/categories");
 
             if (!categoriesResponse.IsSuccessStatusCode)
             {
@@ -47,7 +45,7 @@ public class AvailableCoursesController(IConfiguration configuration, IHttpClien
             var encodedCategory = Uri.EscapeDataString(category ?? "all");
             var encodedSearchQuery = Uri.EscapeDataString(searchQuery ?? string.Empty);
             var requestUrl = $"https://localhost:7297/api/courses?category={encodedCategory}&searchQuery={encodedSearchQuery}";
-            var response = await http.GetAsync(requestUrl);
+            var response = await httpClient.GetAsync(requestUrl);
 
             if (!response.IsSuccessStatusCode)
             {

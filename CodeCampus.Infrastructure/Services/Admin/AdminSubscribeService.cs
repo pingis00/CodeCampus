@@ -1,5 +1,6 @@
 ﻿using CodeCampus.Infrastructure.DTOs;
 using CodeCampus.Infrastructure.Factories;
+using CodeCampus.Infrastructure.Helpers;
 using CodeCampus.Infrastructure.Interfaces.Services.Admin;
 using CodeCampus.Infrastructure.Responses;
 using Microsoft.Extensions.Configuration;
@@ -8,19 +9,16 @@ using System.Net.Http.Json;
 
 namespace CodeCampus.Infrastructure.Services.Admin;
 
-public class AdminSubscribeService(IHttpClientFactory httpClientFactory, IConfiguration configuration, ILogger<AdminSubscribeService> logger) : IAdminSubscribeService
+public class AdminSubscribeService(HttpClientHelper httpClientHelper, ILogger<AdminSubscribeService> logger) : IAdminSubscribeService
 {
-    private readonly IHttpClientFactory _httpClientFactory = httpClientFactory;
-    private readonly IConfiguration _configuration = configuration;
     private readonly ILogger<AdminSubscribeService> _logger = logger;
+    private readonly HttpClientHelper _httpClientHelper = httpClientHelper;
 
     public async Task<ResponseResult> GetAllAdminSubscribersAsync()
     {
         try
         {
-            using var httpClient = _httpClientFactory.CreateClient();
-            var apiKey = _configuration["AdminApiKey"];
-            httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
+            var httpClient = _httpClientHelper.CreateHttpClientWithAdminApiKeyAndToken();
 
             var response = await httpClient.GetAsync("https://localhost:7297/api/subscribe");
 
@@ -48,9 +46,7 @@ public class AdminSubscribeService(IHttpClientFactory httpClientFactory, IConfig
     {
         try
         {
-            using var httpClient = _httpClientFactory.CreateClient();
-            var apiKey = _configuration["AdminApiKey"];
-            httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
+            var httpClient = _httpClientHelper.CreateHttpClientWithAdminApiKeyAndToken();
 
             var response = await httpClient.GetAsync($"https://localhost:7297/api/subscribe/{id}");
 
@@ -78,9 +74,7 @@ public class AdminSubscribeService(IHttpClientFactory httpClientFactory, IConfig
     {
         try
         {
-            using var httpClient = _httpClientFactory.CreateClient();
-            var apiKey = _configuration["AdminApiKey"];
-            httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
+            var httpClient = _httpClientHelper.CreateHttpClientWithAdminApiKeyAndToken();
 
             var response = await httpClient.DeleteAsync($"https://localhost:7297/api/subscribe/{id}");
 

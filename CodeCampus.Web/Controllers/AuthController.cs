@@ -9,12 +9,13 @@ using System.Security.Claims;
 
 namespace CodeCampus.Web.Controllers;
 
-public class AuthController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, ILogger<AuthController> logger, ITokenService tokenService) : Controller
+public class AuthController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, ILogger<AuthController> logger, ITokenService tokenService, IConfiguration configuration) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
     private readonly ILogger<AuthController> _logger = logger;
     private readonly ITokenService _tokenService = tokenService;
+    private readonly IConfiguration _configuration = configuration;
 
     [HttpGet]
     [Route("/signup")]
@@ -104,33 +105,72 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
             {
                 var user = await _userManager.FindByEmailAsync(viewModel.Form.Email);
 
-                if (user != null && await _userManager.IsInRoleAsync(user, "Admin"))
+                if (user != null)
                 {
-                    var token = await _tokenService.GenerateToken(user);
-
-                    Response.Cookies.Append("access_token", token, new CookieOptions
+                    if (await _userManager.IsInRoleAsync(user, "Admin"))
                     {
-                        HttpOnly = true,
-                        Secure = true,
-                        SameSite = SameSiteMode.Strict
-                    });
+                        var adminApiKey = _configuration["AdminApiKey"];
+                        Response.Cookies.Append("admin_api_key", adminApiKey!, new CookieOptions
+                        {
+                            HttpOnly = true,
+                            Secure = true,
+                            SameSite = SameSiteMode.Strict
+                        });
+
+                        var apiKey = _configuration["ApiKey"];
+                        Response.Cookies.Append("api_key", apiKey!, new CookieOptions
+                        {
+                            HttpOnly = true,
+                            Secure = true,
+                            SameSite = SameSiteMode.Strict
+                        });
+
+                        var token = await _tokenService.GenerateToken(user);
+                        Response.Cookies.Append("access_token", token, new CookieOptions
+                        {
+                            HttpOnly = true,
+                            Secure = true,
+                            SameSite = SameSiteMode.Strict
+                        });
+
+                        TempData["Message"] = "Welcome, Admin!";
+                        TempData["MessageType"] = "success";
+                    }
+                    else
+                    {
+                        var apiKey = _configuration["ApiKey"];
+                        Response.Cookies.Append("api_key", apiKey!, new CookieOptions
+                        {
+                            HttpOnly = true,
+                            Secure = true,
+                            SameSite = SameSiteMode.Strict
+                        });
+
+                        TempData["Message"] = "Welcome back!";
+                        TempData["MessageType"] = "success";
+                    }
+
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                        return Redirect(returnUrl);
+
+                    return RedirectToAction("Details", "Account");
                 }
 
-                if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                    return Redirect(returnUrl);
-
-                return RedirectToAction("Details", "Account");
+            }
+            else
+            {
+                ModelState.AddModelError("IncorrectValues", "Incorrect email or password");
+                TempData["Message"] = "Incorrect email or password";
+                TempData["MessageType"] = "error";
             }
 
-            ModelState.AddModelError("IncorrectValues", "Incorrect email or password");
-            TempData["Message"] = "Incorrect email or password";
-            TempData["MessageType"] = "error";
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Sign in failed.");
             ModelState.AddModelError("", $"Sign in failed: {ex.Message}");
-            ViewData["ErrorMessage"] = $"Sign in failed: {ex.Message}";
+            TempData["Message"] = "Ett oväntat fel inträffade. Försök igen.";
+            TempData["MessageType"] = "error";
         }
 
         ViewData["ErrorMessage"] = "Incorrect email or password";

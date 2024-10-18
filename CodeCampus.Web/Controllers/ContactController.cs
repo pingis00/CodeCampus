@@ -1,14 +1,15 @@
-﻿using CodeCampus.Web.ViewModels.Contact;
+﻿using CodeCampus.Infrastructure.Helpers;
+using CodeCampus.Web.ViewModels.Contact;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 using System.Text.Json;
 
 namespace CodeCampus.Web.Controllers;
 
-public class ContactController(IConfiguration configuration, HttpClient httpClient, ILogger<ContactController> logger) : Controller
+public class ContactController(HttpClientHelper httpClientHelper, IConfiguration configuration, ILogger<ContactController> logger) : Controller
 {
+    private readonly HttpClientHelper _httpClientHelper = httpClientHelper;
     private readonly IConfiguration _configuration = configuration;
-    private readonly HttpClient _httpClient = httpClient;
     private readonly ILogger<ContactController> _logger = logger;
 
     [HttpGet]
@@ -32,12 +33,11 @@ public class ContactController(IConfiguration configuration, HttpClient httpClie
 
         try
         {
-            var apiKey = _configuration["ApiKey"];
+            var httpClient = _httpClientHelper.CreateHttpClientWithApiKey();
             var content = new StringContent(JsonSerializer.Serialize(viewModel.Form), Encoding.UTF8, "application/json");
 
-            _httpClient.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
 
-            var response = await _httpClient.PostAsync("https://localhost:7297/api/contact", content);
+            var response = await httpClient.PostAsync("https://localhost:7297/api/contact", content);
 
             if (response.IsSuccessStatusCode)
             {

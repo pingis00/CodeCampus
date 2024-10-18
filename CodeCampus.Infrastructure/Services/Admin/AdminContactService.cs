@@ -1,26 +1,24 @@
 ﻿using CodeCampus.Infrastructure.DTOs;
 using CodeCampus.Infrastructure.Factories;
+using CodeCampus.Infrastructure.Helpers;
 using CodeCampus.Infrastructure.Interfaces.Services.Admin;
 using CodeCampus.Infrastructure.Responses;
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Net.Http.Json;
 
 namespace CodeCampus.Infrastructure.Services.Admin;
 
-public class AdminContactService(IHttpClientFactory httpClientFactory, IConfiguration configuration, ILogger<AdminContactService> logger) : IAdminContactService
+public class AdminContactService(HttpClientHelper httpClientHelper, ILogger<AdminContactService> logger) : IAdminContactService
 {
-    private readonly IHttpClientFactory _httpClientFactory = httpClientFactory;
-    private readonly IConfiguration _configuration = configuration;
     private readonly ILogger<AdminContactService> _logger = logger;
+    private readonly HttpClientHelper _httpClientHelper = httpClientHelper;
 
     public async Task<ResponseResult> GetAllAdminContactsAsync()
     {
         try
         {
-            using var httpClient = _httpClientFactory.CreateClient();
-            var apiKey = _configuration["AdminApiKey"];
-            httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
+            var httpClient = _httpClientHelper.CreateHttpClientWithAdminApiKeyAndToken();
 
             var response = await httpClient.GetAsync("https://localhost:7297/api/contact");
 
@@ -48,9 +46,7 @@ public class AdminContactService(IHttpClientFactory httpClientFactory, IConfigur
     {
         try
         {
-            using var httpClient = _httpClientFactory.CreateClient();
-            var apiKey = _configuration["AdminApiKey"];
-            httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
+            var httpClient = _httpClientHelper.CreateHttpClientWithAdminApiKeyAndToken();
 
             var response = await httpClient.GetAsync($"https://localhost:7297/api/contact/{id}");
 
@@ -78,9 +74,7 @@ public class AdminContactService(IHttpClientFactory httpClientFactory, IConfigur
     {
         try
         {
-            using var httpClient = _httpClientFactory.CreateClient();
-            var apiKey = _configuration["AdminApiKey"];
-            httpClient.DefaultRequestHeaders.Add("X-Admin-Api-Key", apiKey);
+            var httpClient = _httpClientHelper.CreateHttpClientWithAdminApiKeyAndToken();
 
             var response = await httpClient.DeleteAsync($"https://localhost:7297/api/contact/{id}");
 

@@ -1,5 +1,6 @@
 ﻿using CodeCampus.Infrastructure.DTOs;
 using CodeCampus.Infrastructure.Entities;
+using CodeCampus.Infrastructure.Helpers;
 using CodeCampus.Web.Helpers;
 using CodeCampus.Web.ViewModels.SelectedCourse;
 using Microsoft.AspNetCore.Identity;
@@ -9,10 +10,9 @@ using System.Text.Json;
 
 namespace CodeCampus.Web.Controllers;
 
-public class SelectedCourseController(IConfiguration configuration, IHttpClientFactory httpClientFactory, UserManager<UserEntity> userManager, ILogger<SelectedCourseController> logger) : Controller
+public class SelectedCourseController(HttpClientHelper httpClientHelper, UserManager<UserEntity> userManager, ILogger<SelectedCourseController> logger) : Controller
 {
-    private readonly IConfiguration _configuration = configuration;
-    private readonly IHttpClientFactory _httpClientFactory = httpClientFactory;
+    private readonly HttpClientHelper _httpClientHelper = httpClientHelper;
     private readonly UserManager<UserEntity> _usermanager = userManager;
     private readonly ILogger<SelectedCourseController> _logger = logger;
 
@@ -21,11 +21,9 @@ public class SelectedCourseController(IConfiguration configuration, IHttpClientF
     {
         try
         {
-            using var http = _httpClientFactory.CreateClient();
-            var apiKey = _configuration["ApiKey"];
-            http.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
+            var httpClient = _httpClientHelper.CreateHttpClientWithApiKey();
 
-            var response = await http.GetAsync($"https://localhost:7297/api/courses/{id}");
+            var response = await httpClient.GetAsync($"https://localhost:7297/api/courses/{id}");
 
             if (!response.IsSuccessStatusCode)
             {
@@ -78,11 +76,9 @@ public class SelectedCourseController(IConfiguration configuration, IHttpClientF
                 return RedirectToAction("Index", "SelectedCourse", new { id = courseId });
             }
 
-            using var http = _httpClientFactory.CreateClient();
-            var apiKey = _configuration["ApiKey"];
-            http.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
+            var httpClient = _httpClientHelper.CreateHttpClientWithApiKey();
 
-            var response = await http.GetAsync($"https://localhost:7297/api/courses/{courseId}");
+            var response = await httpClient.GetAsync($"https://localhost:7297/api/courses/{courseId}");
             if (!response.IsSuccessStatusCode)
             {
                 TempData["Message"] = "Course not found.";
@@ -107,7 +103,7 @@ public class SelectedCourseController(IConfiguration configuration, IHttpClientF
                 return RedirectToAction("Index", "SelectedCourse", new { id = courseId });
             }
 
-            var joinResponse = await http.PostAsync($"https://localhost:7297/api/usercourses/add?userId={user.Id}&courseId={courseId}", null);
+            var joinResponse = await httpClient.PostAsync($"https://localhost:7297/api/usercourses/add?userId={user.Id}&courseId={courseId}", null);
 
             if (!joinResponse.IsSuccessStatusCode)
             {

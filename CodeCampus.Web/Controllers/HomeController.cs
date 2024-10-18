@@ -1,14 +1,15 @@
-﻿using CodeCampus.Web.ViewModels.Home;
+﻿using CodeCampus.Infrastructure.Helpers;
+using CodeCampus.Web.ViewModels.Home;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 
 namespace CodeCampus.Web.Controllers;
 
-public class HomeController(IConfiguration configuration, HttpClient httpClient, ILogger<HomeController> logger) : Controller
+public class HomeController(HttpClientHelper httpClientHelper, ILogger<HomeController> logger) : Controller
 {
-    private readonly IConfiguration _configuration = configuration;
-    private readonly HttpClient _httpClient = httpClient;
+    private readonly HttpClientHelper _httpClientHelper = httpClientHelper;
     private readonly ILogger<HomeController> _logger = logger;
 
 
@@ -45,11 +46,10 @@ public class HomeController(IConfiguration configuration, HttpClient httpClient,
         }
         try
         {
-            var apiKey = _configuration["ApiKey"];
+            var httpClient = _httpClientHelper.CreateHttpClientWithApiKey();
             var content = new StringContent(JsonSerializer.Serialize(viewModel), Encoding.UTF8, "application/json");
-            _httpClient.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
 
-            var response = await _httpClient.PostAsync("https://localhost:7297/api/subscribe", content);
+            var response = await httpClient.PostAsync("https://localhost:7297/api/subscribe", content);
 
             if (response.IsSuccessStatusCode)
             {
